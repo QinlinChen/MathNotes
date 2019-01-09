@@ -1,0 +1,94 @@
+\chapter{矩阵\ 行列式\ 线性方程组}
+
+\section{矩阵及其运算}
+
+\subsection{矩阵的概念}
+\begin{definition}[矩阵]
+  由$m\times n$个数排成$m$行$n$列的矩形数表
+  \begin{equation} \label{eq:mat-def}
+    \mmA = \mmat{cccc}{
+      a_{11} & a_{12} & \cdots & a_{1n} \\
+      a_{21} & a_{22} & \cdots & a_{2n} \\
+      \vdots & \vdots & \ddots & \vdots \\
+      a_{m1} & a_{m2} & \cdots & a_{mn} }
+  \end{equation}
+  称为一个$m\times n$矩阵。
+  其中数$a_{ij}$称为矩阵$\mmA$的元素。
+  $i$为行标，$j$为列标，
+  $a_{ij}$是$\mmA$位于第$i$行第$j$列的元素，或简称$\mmA$的$(i,j)$元素。
+  式\eqref{eq:mat-def}可简记为$\mmA=(a_{ij})_{m\times n}$或$(a_{ij})$。
+\end{definition}
+
+下面是一些特殊的矩阵：
+\begin{itemize}
+  \item
+  $m\times 1$矩阵又称为\textbf{列矩阵}或$m$\textbf{维列向量}，
+  下文主要会用$\beta$来表示。
+  \item
+  $1\times n$矩阵又称为\textbf{行矩阵}或$n$\textbf{维行向量}，
+  下文主要会用$\alpha$来表示。
+  \item
+  $n\times n$矩阵又称为$n$\textbf{阶方阵}。
+  对于$n$阶方阵$\mmA=(a_{ij})$，
+  其对角线上的元素$a_{11},\dots,a_{nn}$又称\textbf{主对角线元素}。
+  \item
+  如果一个$n$阶方阵除主对角线元素外，其余元素都为0，
+  那么我们称这种矩阵为\textbf{对角矩阵}，记为
+  \[ \mdiag(k_1, k_2\dots,k_n)= \mmat{cccc}{
+    k_1 &     &        & \\
+        & k_2 &        & \\
+        &     & \ddots & \\
+        &     &        & k_n } \]
+  \item
+  $\mmI = \mdiag(1,1,\dots,1)$被称为\textbf{单位矩阵}。
+\end{itemize}
+
+\begin{definition}[矩阵相等]
+    如果$\mmA=(a_{ij})$与$\mmB=(b_{ij})$都是$m\times n$矩阵，
+    且对$i=1,2,\dots,m,\ j=1,2,\dots,n$，有$a_{ij}=b_{ij}$，
+    则称$\mmA$与$\mmB$相等，记作$\mmA=\mmB$。
+\end{definition}
+
+\subsection{矩阵的线性运算}
+矩阵的线性运算包含\textbf{加法}和\textbf{数乘}。定义比较简单，在此不加赘述。
+
+它们满足的性质与之后要定义的线性空间一致。
+
+\subsection{矩阵的乘法}
+\begin{definition}[矩阵的乘法]
+  设$\mmA=(a_{ik})_{m\times s}, \mmB=(b_{kj})_{s\times n}$，令
+  \begin{equation}
+  c_{ij}=\sum_{k=1}^{s}a_{ik}b_{kj}
+  \end{equation}
+  则$\mmC=(c_{ij})_{m\times n}$被称为$\mmA$和$\mmB$的乘积，
+  记为$\mmC = \mmA\mmB$。
+\end{definition}
+
+矩阵的乘法满足分配率和结合律，但不满足交换律。
+
+\subsection{矩阵的转置}
+\begin{definition}[矩阵的转置]
+    设$\mmA=(a_{ij})_{m\times n}$，
+    令$b_{ij}=a_{ji}$，
+    则$\mmB=(b_{ij})_{n\times m}$被称为$\mmA$的转置矩阵，
+    记为$\mmA^T$。
+\end{definition}
+
+转置矩阵具有以下性质：
+\begin{enumerate}
+  \item $\left(\mmA^T\right)^T = \mmA$
+  \item $(\mmA+\mmB)^T=\mmA^T + \mmB^T$
+  \item $(k\mmA)^T=k\mmA^T$
+  \item $(\mmA\mmB)^T=\mmB^T\mmA^T$
+\end{enumerate}
+
+\begin{definition}[对称矩阵与反对称矩阵]
+  对于$n$阶方阵$\mmA=(a_{ij})$，
+  如果满足$\mmA^T=\mmA$，则称$\mmA$为\textbf{对称矩阵}。
+  如果满足$\mmA^T=-\mmA$，则称$\mmA$为\textbf{反对称矩阵}。
+\end{definition}
+
+不难看出，反对称矩阵的主对角线元素都为零。
+
+\section{矩阵的分块}
+TODO

@@ -15,12 +15,19 @@
 \newcommand{\mfZ}{\mf{Z}}
 \newcommand{\mfR}{\mf{R}}
 \newcommand{\mfQ}{\mf{Q}}
-% math matrix command
+% math matrix
 \newcommand{\mm}[1]{\mathbf{#1}}
 \newcommand{\mmA}{\mm{A}}
-% math vector command
+\newcommand{\mmB}{\mm{B}}
+\newcommand{\mmC}{\mm{C}}
+\newcommand{\mmE}{\mm{E}}
+\newcommand{\mmI}{\mm{I}}
+\newcommand{\mmat}[2]{\left(\begin{array}{#1} #2 \end{array}\right)}
+% math vector
 \newcommand{\mv}[1]{\vec{#1}}
 \newcommand{\mvx}{\mv{x}}
+% math function
+\newcommand{\mdiag}{\textrm{diag}}
 
 \begin{document}
 
@@ -36,7 +43,8 @@
 \include{Calculus/DifferentialCalculusOfUnaryFunction}
 
 \part{线性代数}
-TODO
+\include{LinearAlgebra/MatDetAndEeqSet}
+\include{LinearAlgebra/LinearSpaceAndLinearTransform}
 
 \part{概率论}
 TODO
