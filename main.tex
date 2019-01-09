@@ -1,0 +1,47 @@
+\documentclass[hyperref,a4paper,UTF8]{ctexbook}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp}
+
+\theoremstyle{definition} \newtheorem{definition}{定义}[chapter]
+\theoremstyle{definition} \newtheorem{theorem}{定理}[chapter]
+
+% math field
+\newcommand{\mf}[1]{\mathbb{#1}}
+\newcommand{\mfN}{\mf{N}}
+\newcommand{\mfZ}{\mf{Z}}
+\newcommand{\mfR}{\mf{R}}
+\newcommand{\mfQ}{\mf{Q}}
+% math matrix command
+\newcommand{\mm}[1]{\mathbf{#1}}
+\newcommand{\mmA}{\mm{A}}
+% math vector command
+\newcommand{\mv}[1]{\vec{#1}}
+\newcommand{\mvx}{\mv{x}}
+
+\begin{document}
+
+\author{陈钦霖}
+\title{数学笔记}
+\date{\today}
+
+\maketitle
+\tableofcontents
+
+\part{微积分}
+\include{Calculus/AnalysisFoundation}
+\include{Calculus/DifferentialCalculusOfUnaryFunction}
+
+\part{线性代数}
+TODO
+
+\part{概率论}
+TODO
+
+\part{数理统计}
+TODO
+
+\end{document}
