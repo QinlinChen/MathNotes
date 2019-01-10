@@ -34,13 +34,22 @@
   \item
   如果一个$n$阶方阵除主对角线元素外，其余元素都为0，
   那么我们称这种矩阵为\textbf{对角矩阵}，记为
-  \[ \mdiag(k_1, k_2\dots,k_n)= \mmat{cccc}{
-    k_1 &     &        & \\
-        & k_2 &        & \\
-        &     & \ddots & \\
-        &     &        & k_n } \]
+  \[
+    \mdiag(k_1, k_2\dots,k_n)= \mmat{cccc}{
+      k_1 &     &        & \\
+          & k_2 &        & \\
+          &     & \ddots & \\
+          &     &        & k_n }
+  \]
   \item
   $\mmI = \mdiag(1,1,\dots,1)$被称为\textbf{单位矩阵}。
+  \item
+  \textbf{零矩阵}0是所有元素都为0的矩阵。
+  \item
+  设$\mmA=(a_{ij})$是$n$阶方阵。
+  若当$i>j$时，$a_{ij}=0$，则称$\mmA$为\textbf{上三角阵}。
+  若当$i<j$时，$a_{ij}=0$，则称$\mmA$为\textbf{下三角阵}。
+  两者统称\textbf{三角阵}。
 \end{itemize}
 
 \begin{definition}[矩阵相等]
@@ -93,4 +102,78 @@
 \end{remark}
 
 \section{矩阵的分块}
+
+\subsection{分块矩阵的概念}
+\begin{definition}[分块矩阵]
+  一般地，将一个$m\times n$矩阵$\mmA$用横线划分成$r$块，
+  用竖线划分成$s$块，就能得到一个$r\times s$分块矩阵。
+  \begin{equation} \label{eq:mat-partition}
+  \mmA = \mmat{cccc}{
+    \mmA_{11} & \mmA_{12} & \cdots & \mmA_{1s} \\
+    \mmA_{21} & \mmA_{22} & \cdots & \mmA_{2s} \\
+    \vdots    & \vdots    & \ddots & \vdots    \\
+    \mmA_{r1} & \mmA_{r2} & \cdots & \mmA_{rs} }
+    = (\mmA_{ij})_{r\times s}
+  \end{equation}
+  其中，$\mmA_{ij}(i=1,\dots,r,\ j=1,\dots,s)$是$m_i\times n_j$矩阵，
+  $\sum_{i=1}^{r}m_i = m$，$\sum_{j=1}^{s}n_j=n$。
+\end{definition}
+
+最常用的一种矩阵分块方法是把$m\times n$划分成$m$个行向量，
+或者$n$个列向量。
+
+\subsection{分块矩阵的运算}
+分块矩阵的运算中需要注意的是转置和乘法。
+
+转置运算不仅需要把矩阵的每一行转成列，而且内部子块也需要转置。
+对于式\ref{eq:mat-partition}中的矩阵$\mmA$，它的转置是
+\[
+  \mmA^T = \mmat{cccc}{
+    \mmA_{11}^T & \mmA_{21}^T & \cdots & \mmA_{r1}^T \\
+    \mmA_{12}^T & \mmA_{22}^T & \cdots & \mmA_{r2}^T \\
+    \vdots      & \vdots      & \ddots & \vdots      \\
+    \mmA_{1s}^T & \mmA_{2s}^T & \cdots & \mmA_{sr}^T }
+\]
+
+对于乘法运算，
+给定两个矩阵$\mmA=(a_{ij})_{m\times n}$，$\mmB=(b_{jk})_{n\times p}$，
+只要使$\mmB$的行分法与$\mmA$的列分法一致，
+就能把子块当作数一样按照矩阵乘法的规则进行计算。
+
+\subsection{准对角矩阵}
+\begin{definition}[准对角矩阵] 
+  对于$n$阶方阵$\mmA$，
+  如果有一种分法，使$\mmA$的主对角线以外的子块都是零矩阵，
+  且主对角线上子块都是方阵，则称$\mmA$为准对角矩阵。
+\end{definition}
+
+\begin{remark}
+  当然，准对角矩阵包含对角矩阵作为特殊情况。
+\end{remark}
+
+
+设$\mmA$和$\mmB$都是$n$阶方阵。
+如果有相同的分法，使得
+\[
+\mmA = \mmat{cccc}{
+  \mmA_1 &        &        & \\
+         & \mmA_2 &        & \\
+         &        & \ddots & \\
+         &        &        & \mmA_n },\quad
+\mmB = \mmat{cccc}{
+  \mmB_1 &        &        & \\
+         & \mmB_2 &        & \\
+         &        & \ddots & \\
+         &        &        & \mmB_n }
+\]
+都是准对角矩阵，那么显然有
+\[
+\mmA\mmB = \mmat{cccc}{
+    \mmA_1\mmB_1 &              &        & \\
+                 & \mmA_2\mmB_2 &        & \\
+                 &              & \ddots & \\
+                 &              &        & \mmA_n\mmB_n }
+\]
+
+\section{逆阵与初等变换}
 TODO
