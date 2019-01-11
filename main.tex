@@ -7,32 +7,49 @@
 \usepackage{textcomp}
 
 \theoremstyle{definition} \newtheorem{definition}{定义}[chapter]
-\theoremstyle{definition} \newtheorem{lemma}{引理}[chapter]
-\theoremstyle{definition} \newtheorem{theorem}{定理}[chapter]
+\theoremstyle{definition} \newtheorem{theorem}[definition]{定理}
+\theoremstyle{definition} \newtheorem{lemma}[definition]{引理}
+\theoremstyle{definition} \newtheorem{corollary}[definition]{推论}
 \theoremstyle{remark} \newtheorem*{remark}{Remark}
 
-% math field
+% math field begin
 \newcommand{\mf}[1]{\mathbb{#1}}
 \newcommand{\mfN}{\mf{N}}
 \newcommand{\mfZ}{\mf{Z}}
 \newcommand{\mfR}{\mf{R}}
 \newcommand{\mfQ}{\mf{Q}}
-% math matrix
+% math field end
+
+% math matrix begin
 \newcommand{\mm}[1]{\mathbf{#1}}
 \newcommand{\mmA}{\mm{A}}
 \newcommand{\mmB}{\mm{B}}
 \newcommand{\mmC}{\mm{C}}
 \newcommand{\mmE}{\mm{E}}
 \newcommand{\mmI}{\mm{I}}
+\newcommand{\mmP}{\mm{P}}
+\newcommand{\mmQ}{\mm{Q}}
+\newcommand{\mmZero}{\mm{0}}
 \newcommand{\mmat}[2]{\left(\begin{array}{#1} #2 \end{array}\right)}
-% math vector
+% three elementry row transformation and matrix
+\newcommand{\mTfRowSwi}[2]{#1 \leftrightarrow #2}
+\newcommand{\mTfRowMul}[2]{#1(#2)}
+\newcommand{\mTfRowAdd}[3]{#1 #2 (#3)}
+\newcommand{\mmRowSwi}[2]{P(\mTfRowSwi{#1}{#2})}
+\newcommand{\mmRowMul}[2]{P(\mTfRowMul{#1}{#2})}
+\newcommand{\mmRowAdd}[3]{P(\mTfRowAdd{#1}{#2}{#3})}
+% math matrix end
+
+% math vector begin
 \newcommand{\mv}[1]{\vec{#1}}
 \newcommand{\mvx}{\mv{x}}
-% math function
+% math vector end
+
+% math function name begin
 \newcommand{\mdiag}{\textrm{diag}}
+% math function name end
 
 \begin{document}
-
 \author{陈钦霖}
 \title{数学笔记}
 \date{\today}

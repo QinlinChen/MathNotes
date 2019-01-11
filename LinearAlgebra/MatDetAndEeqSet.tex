@@ -44,7 +44,7 @@
   \item
   $\mmI = \mdiag(1,1,\dots,1)$被称为\textbf{单位矩阵}。
   \item
-  \textbf{零矩阵}0是所有元素都为0的矩阵。
+  \textbf{零矩阵}$\mmZero$是所有元素都为0的矩阵。
   \item
   设$\mmA=(a_{ij})$是$n$阶方阵。
   若当$i>j$时，$a_{ij}=0$，则称$\mmA$为\textbf{上三角阵}。
@@ -83,13 +83,15 @@
     记为$\mmA^T$。
 \end{definition}
 
-转置矩阵具有以下性质：
-\begin{enumerate}
-  \item $\left(\mmA^T\right)^T = \mmA$
-  \item $(\mmA+\mmB)^T=\mmA^T + \mmB^T$
-  \item $(k\mmA)^T=k\mmA^T$
-  \item $(\mmA\mmB)^T=\mmB^T\mmA^T$
-\end{enumerate}
+\begin{theorem}[转置矩阵的性质]
+  转置矩阵具有以下性质：
+  \begin{enumerate}
+    \item $\left(\mmA^T\right)^T = \mmA$
+    \item $(\mmA+\mmB)^T=\mmA^T + \mmB^T$
+    \item $(k\mmA)^T=k\mmA^T$
+    \item $(\mmA\mmB)^T=\mmB^T\mmA^T$
+  \end{enumerate}
+\end{theorem}
 
 \begin{definition}[对称矩阵与反对称矩阵]
   对于$n$阶方阵$\mmA=(a_{ij})$，
@@ -175,5 +177,130 @@
                  &              &        & \mmA_n\mmB_n }
 \]
 
-\section{逆阵与初等变换}
-TODO
+\section{逆矩阵与初等变换}
+
+\subsection{逆矩阵}
+\begin{definition}[逆矩阵]
+  设$\mmA$是$n$阶方阵。如果存在$n$阶方阵$\mmB$，使
+  \begin{equation}
+    AB=BA=I
+  \end{equation}
+  则称$\mmB$为$\mmA$的\textbf{逆矩阵}，记作$A^{-1}$，
+  并说$\mmA$是\textbf{非奇异矩阵}或\textbf{可逆矩阵}，
+  否则便称$\mmA$是\textbf{奇异矩阵}或\textbf{不可逆矩阵}。
+\end{definition}
+
+\begin{theorem}[逆矩阵的唯一性]
+  可逆矩阵的逆矩阵是唯一的。
+\end{theorem}
+
+\begin{theorem}[可逆矩阵的性质]
+  若$\mmA,\mmB$是可逆矩阵，
+  则$\mmA^{-1}$，$k\mmA\,(k\neq 0)$，$\mmA^T$，$\mmA\mmB$都是可逆矩阵，且
+  \begin{enumerate}
+    \item $(\mmA^{-1})^{-1} = \mmA$
+    \item $(k\mmA)^{-1} = \frac{1}{k}\mmA^{-1}$
+    \item $(\mmA^T)^{-1} = (\mmA^{-1})^T$
+    \item $(\mmA\mmB)^{-1} = \mmB^{-1}\mmA^{-1}$
+  \end{enumerate}
+\end{theorem}
+
+\subsection{初等变换与初等阵}
+矩阵的\textbf{初等变换}可以分为\textbf{初等行变换}和\textbf{初等列变换}。
+下面主要讨论初等行变换。初等列变换与之相似。
+
+\begin{definition}[初等行变换]
+  初等行变换有三种：
+  \begin{enumerate}
+    \item 交换矩阵的第$i$行和第$j$行，记为$\mTfRowSwi{i}{j}$。
+    \item 将矩阵的第$i$行乘非零常数$k$，记为$\mTfRowMul{k}{j}$。
+    \item 把矩阵的第$i$行加上第$j$行的$k$倍，记为$\mTfRowAdd{i}{+k}{j}$。
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[初等阵]
+  单位矩阵经过一次初等变换得到的矩阵叫做\textbf{初等矩阵}，
+  或简称\textbf{初等阵}。
+\end{definition}
+
+\begin{remark}
+  显然，初等阵是方阵，并且都是可逆的。
+\end{remark}
+
+使用三种初等行变换能得到三个初等阵，
+我们把它们分别记作
+$\mmRowSwi{i}{j}$，$\mmRowMul{k}{i}$和$\mmRowAdd{i}{+k}{j}$。
+对单位矩阵实行一次初等列变换，同样能得到上述三种形式的初等阵，
+所以初等阵只有以上三种。
+
+\begin{theorem}[一般矩阵的初等变换与初等阵的联系]
+  对于一个$m\times n$矩阵$\mmA$做一次初等行变换，
+  就相当于对$\mmA$左乘一个$m$阶初等矩阵；
+  对$\mmA$做一次初等列变换，
+  就相当于对$\mmA$右乘一个$n$阶初等矩阵。
+\end{theorem}
+
+\begin{definition}[矩阵等价]
+  如果矩阵$\mmA$可以通过有限次初等变换化为矩阵$\mmB$，
+  那么就说$\mmA$与$\mmB$等价。
+\end{definition}
+
+\begin{remark}
+  矩阵等价是一个等价关系，即满足自反性、对称性、传递性。
+\end{remark}
+
+\begin{theorem}[标准型]
+  任意非零$m\times n$矩阵$\mmA$都等价于矩阵
+  \[
+    \mmat{cc}{\mmI_r & \mmZero \\ \mmZero & \mmZero}
+    \quad (1\le r \le \min(m,n))
+  \]
+  它称为矩阵$\mmA$的\textbf{标准型}。
+  换句话说，任意非零$m\times n$矩阵$\mmA$，
+  必有初等矩阵$\mmP_1,\dots,\mmP_s$，$\mmQ_1,\dots,\mmQ_t$，
+  使得
+  \[
+    \mmP_s\dots\mmP_1\cdot\mmA\cdot\mmQ_1\dots\mmQ_t = 
+      \mmat{cc}{\mmI_r & \mmZero \\ \mmZero & \mmZero}
+  \]
+\end{theorem}
+
+因为初等矩阵可逆，所以有如下推论
+
+\begin{corollary}
+  对于任意非零$m\times n$矩阵$\mmA$，
+  存在可逆$m\times m$矩阵$\mmP$和可逆$n\times n$矩阵$\mmQ$，
+  使得
+  \[
+    \mmP\mmA\mmQ = \mmat{cc}{\mmI_r & \mmZero \\ \mmZero & \mmZero}
+    \quad (1\le r \le \min(m,n))
+  \]
+  或写成
+  \[
+    \mmA = \mmP^{-1}\mmat{cc}{\mmI_r & \mmZero \\ \mmZero & \mmZero}\mmQ^{-1}
+    \quad (1\le r \le \min(m,n))
+  \]
+\end{corollary}
+
+\subsection{矩阵可逆的充要条件}
+
+\begin{theorem}
+  设$\mmA,\mmB$是$n$阶方阵，
+  若$\mmA\mmB=\mmI_n$，
+  则$\mmA,\mmB$都是可逆阵，且它们互为逆阵。
+\end{theorem}
+
+\begin{theorem}
+  设$\mmA$是$n$阶方阵，则下列结论等价：
+  \begin{enumerate}
+    \item $\mmA$是可逆矩阵。
+    \item $\mmA$可以表示为有限个初等阵的乘积。
+    \item $\mmA$可以经过有限次初等变换化为单位矩阵。
+  \end{enumerate}
+\end{theorem}
+
+\subsection{用初等变换求逆矩阵}
+\[
+  \mmat{c|c}{\mmA & \mmI} \xrightarrow{\text{初等行变换}}
+  \mmat{c|c}{\mmI & \mmA^{-1}}
+\]
