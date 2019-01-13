@@ -440,8 +440,58 @@ $\mmRowSwi{i}{j}$，$\mmRowMul{k}{i}$和$\mmRowAdd{i}{+k}{j}$。
 使用行列式的性质把行列式转化成上三角矩阵的行列式。
 后者的行列式即为对角线之积。
 
-\section{行列式按行展开}
-TODO
+\section{行列式按行(列)展开}
+本小节讨论另一种行列式的计算方法。
+
+\subsection{行列式按一行(列)展开}
+\begin{definition}[余子式]
+  在$n$阶行列式$|\mmA|=|a_{ij}|_{n\times n}$中划去第$i$行第$j$列后
+  所剩下的$(n-1)^2$个元素按照原来的相对位置排成的$n-1$阶子式$M_{ij}$
+  叫做元素$a_{ij}$在$\mmA$中的\textbf{余子式}。
+  而\[ A_{ij} = (-1)^{i+j}M_{ij} \]
+  叫做元素$a_{ij}$在$\mmA$中的\textbf{代数余子式}。
+  这里$1\le i, j \le n$。
+\end{definition}
+
+\begin{theorem}[按行(列)展开] \label{thrm-det-expansion}
+  $n$阶行列式$|\mmA|=|a_{ij}|_{n\times n}$
+  等于任一行(列)各元素与其代数余子式的乘积之和，即
+  \begin{align*}
+  |\mmA| &= a_{i1}A_{i1}+a_{i2}A_{i2}+\dots+a_{in}A_{in}\quad(i=1,2,\dots,n) \\
+  |\mmA| &= a_{1j}A_{1j}+a_{2j}A_{2j}+\dots+a_{nj}A_{nj}\quad(j=1,2,\dots,n)
+  \end{align*}
+\end{theorem}
+
+\begin{theorem} \label{thrm-det-expansion-zero}
+  $n$阶行列式$|\mmA|=|a_{ij}|_{n\times n}$
+  的任一行(列)元素与另一行(列)元素的代数余子式乘积之和等于零，即
+  \begin{align*}
+    a_{i1}A_{j1}+a_{i2}A_{j2}+\dots+a_{in}A_{jn} &= 0\quad(i\neq j) \\
+    a_{1i}A_{1j}+a_{2i}A_{2j}+\dots+a_{ni}A_{nj} &= 0\quad(i\neq j)
+  \end{align*}
+\end{theorem}
+
+\begin{remark}
+  定理\ref{thrm-det-expansion}和\ref{thrm-det-expansion-zero}
+  可以统一表示为(仅列出行的情况)
+  \begin{displaymath}
+  \sum_{k=1}^{n}a_{ik}A_{jk} = \begin{cases}
+    |\mmA| & (i=j) \\
+    0      & (i\neq j)
+  \end{cases}
+  \end{displaymath}
+\end{remark}
+
+\subsection{范德蒙(Vandermonde)行列式}
+\begin{displaymath}
+  V_n = \mdet{ccccc}{
+    1         & 1         & 1         & \cdots & 1      \\
+    x_1       & x_2       & x_3       & \cdots & x_n    \\
+    x_1^2     & x_2^2     & x_3^2     & \cdots & x_n^2  \\
+    \vdots    & \vdots    & \vdots    & \ddots & \vdots \\
+    x_1^{n-1} & x_2^{n-1} & x_3^{n-1} & \cdots & x_n^{n-1} 
+  } = \prod_{1\le i<j\le n}(x_j - x_i)
+\end{displaymath}
 
 \section{用行列式求逆阵\ 克莱姆法则}
 \begin{theorem} \label{thrm-det-mul}
