@@ -306,7 +306,7 @@ $\mmRowSwi{i}{j}$，$\mmRowMul{k}{i}$和$\mmRowAdd{i}{+k}{j}$。
   则$\mmA,\mmB$都是可逆阵，且它们互为逆阵。
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem} \label{thrm-inv-equiv-cond}
   设$\mmA$是$n$阶方阵，则下列结论等价：
   \begin{enumerate}
     \item $\mmA$是可逆矩阵。
@@ -429,13 +429,6 @@ $\mmRowSwi{i}{j}$，$\mmRowMul{k}{i}$和$\mmRowAdd{i}{+k}{j}$。
   即\[ |\mmRowAdd{i}{+k}{j}\mmA| = |\mmA| \]
 \end{theorem}
 
-\begin{remark}
-  由行列式的定义不难看出，
-  $|\mmRowSwi{i}{j}|=-1$，$|\mmRowAdd{i}{+k}{j}|=1$。
-  所以定理\ref{thrm-det-rowswi}和\ref{thrm-det-rowadd}
-  也可以由下面给出的定理\ref{thrm-det-mul}推导。
-\end{remark}
-
 \subsection{用行列式的性质求行列式}
 使用行列式的性质把行列式转化成上三角矩阵的行列式。
 后者的行列式即为对角线之积。
@@ -494,6 +487,114 @@ $\mmRowSwi{i}{j}$，$\mmRowMul{k}{i}$和$\mmRowAdd{i}{+k}{j}$。
 \end{displaymath}
 
 \section{用行列式求逆阵\ 克莱姆法则}
-\begin{theorem} \label{thrm-det-mul}
-  $|\mmA\mmB|=|\mmA||\mmB|$
+本小节通过引入伴随矩阵这个中间媒介，
+来探索方阵可逆与行列式之间的关系，
+从而得到方阵可逆的充要条件，以及通过行列式求逆阵方法。
+
+有了上述方法，我们就能利用行列式来解线性方程组，
+并总结出了克莱姆法则。但克莱姆法则也有其局限性。
+后面会讲高斯消元来解一般线性方程组。
+
+\subsection{用行列式求逆矩阵}
+\begin{theorem}[行列式乘法规则] \label{thrm-det-mul}
+  对任意$n$阶方阵$\mmA,\mmB$,有
+  \[ |\mmA\mmB|=|\mmA||\mmB| \]
 \end{theorem}
+
+\begin{remark}
+  证明思路是，首先证明引理：对任意$n$阶方阵$\mmA$和$n$阶初等阵$\mmP$，
+  有$|\mmA\mmP|=|\mmP\mmA|=|\mmP||\mmA|$。
+  然后利用定理\ref{thrm-inv-equiv-cond}对$\mmB$讨论：
+  如果$\mmB$可逆，就能拆成一系列初等阵之积，从而利用引理得证；
+  如果$\mmB$不可逆，只要证明等式两边都等于0。
+\end{remark}
+
+\begin{theorem}[行列式数乘规则] \label{thrm-det-num-mul}
+  对任意$n$阶方阵$\mmA$和$\lambda\in\mfR$，有
+  \[ |\lambda\mmA| = \lambda^n|\mmA| \]
+\end{theorem}
+
+\begin{definition}[伴随矩阵]
+  $n$阶方阵$\mmA$的\textbf{伴随矩阵}为
+  \begin{displaymath}
+    \mmA^* = \mmat{cccc}{
+      A_{11} & A_{12} & \cdots & A_{1n} \\
+      A_{21} & A_{22} & \cdots & A_{2n} \\
+      \vdots & \vdots & \ddots & \vdots \\
+      A_{m1} & A_{m2} & \cdots & A_{mn} }^T
+  \end{displaymath}
+\end{definition}
+
+\begin{theorem}[伴随矩阵的性质] \label{thrm-adjugate-mat-prop}
+  设$\mmA$是$n$阶方阵，那么有
+  \[ \mmA\mmA^*=\mmA^*\mmA=|\mmA|\mmI \]
+\end{theorem}
+
+\begin{remark}
+  伴随矩阵就是为了这个性质而定义的。
+\end{remark}
+
+\begin{theorem}[伴随矩阵的行列式]
+  设$\mmA$是$n$阶方阵，那么有
+  \[ |\mmA^*| = |\mmA|^{n-1} \]
+\end{theorem}
+
+\begin{remark}
+  该式对$|\mmA|$取任意值都成立。
+  当$|\mmA|\neq 0$时，
+  对伴随矩阵的性质\ref{thrm-adjugate-mat-prop}
+  应用行列式乘法规则\ref{thrm-det-mul}
+  以及数乘规则\ref{thrm-det-num-mul}即可证明该式。
+  当$|\mmA|=0$时，
+  则直接通过定义来证明。
+\end{remark}
+
+\begin{theorem}[方阵可逆的充要条件]
+  设$\mmA$是$n$阶方阵，那么
+  \[ \mmA\ \text{可逆} \iff |\mmA| \neq 0 \]
+  并且对于可逆矩阵$\mmA$有
+  \begin{enumerate}
+    \item $\mmA^{-1} = \mmA^*/|\mmA|$
+    \item $(\mmA^*)^{-1} = \mmA/|\mmA|$
+  \end{enumerate}
+\end{theorem}
+
+\subsection{线性方程组与克莱姆(Cramer)法则}
+$n$元方程组的矩阵形式为
+\begin{equation} \label{eq-linear-eq-set}
+  \mmA \mvx = \mvb
+\end{equation}
+其中$\mmA = (a_{ij})_{n\times n}$是\textbf{系数矩阵}，
+$\overline{\mmA}=(\mmA, \mvb)$是\textbf{增广矩阵}，
+$\mvx = (x_1,\dots,x_n)^T$与$\mvb = (b_1,\dots,b_n)^T$是$n$维列向量，
+分别称为\textbf{未知向量}与\textbf{常数向量}。
+若$\mvx$的一组取值$\hat{\mvx}$能满足\ref{eq-linear-eq-set}，
+则称$\hat{\mvx}$为\ref{eq-linear-eq-set}的一个\textbf{解向量}。
+
+若常数向量不为$\mvZero$，则称\ref{eq-linear-eq-set}为\textbf{非齐次线性方程组}，
+否则，叫做\textbf{齐次线性方程组}。
+
+\begin{theorem}[克莱姆(Cramer)法则]
+  若$n$元线性方程组的系数矩阵$\mmA$的行列式$|\mmA|\neq 0$，
+  则方程组有唯一解$\mvx = (x_1,\dots,x_n)$，其中
+  \begin{displaymath}
+    x_j = \frac{D_j}{|\mmA|} \quad (j=1,\dots,n)
+  \end{displaymath}
+  $D_j$是将$|\mmA|$的第$j$列换成$\mvb$所得的行列式。
+\end{theorem}
+
+\begin{corollary}
+  对于$n$元齐次线性方程组$\mmA\mvx=\mvZero$，
+  若$|\mmA|\neq 0$，则只有零解；
+  若$|\mmA| = 0$，则有无穷多非零解。
+\end{corollary}
+
+\begin{remark}
+  值得注意的是，克莱姆法则只适用于方程个数等于未知量个数的方程组，
+  而且系数行列式不能为零。
+  此外，克莱姆法则的计算复杂度也更高，为$O(n^4)$，
+  不如后面要介绍的高斯消元法$O(n^3)$的复杂度。
+\end{remark}
+
+\section{向量组的线性无关}
+TODO
