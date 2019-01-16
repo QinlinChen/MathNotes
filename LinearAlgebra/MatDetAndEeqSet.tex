@@ -732,4 +732,59 @@ $\mvx = (x_1,\dots,x_n)^T$与$\mvb = (b_1,\dots,b_n)^T$是$n$维列向量，
 \end{theorem}
 
 \section{矩阵的秩}
+矩阵如果按行划分，或者按列划分，其实都能看成一个向量组。
+既然向量组有秩，那么矩阵的秩也可以因此定义出来。
+我们会发现，不管是按行划分，还是按列划分，
+行向量组与列向量组的秩都是相同的，
+这个同一的值就是矩阵的秩。
+
+\subsection{矩阵的行秩、列秩和秩}
+\begin{definition}[行秩与列秩]
+  一个矩阵$\mmA=(a_{ij})_{m\times n}$的行向量组的秩叫做$\mmA$的\textbf{行秩}，
+  列向量组的秩叫做$\mmA$的\textbf{列秩}。
+\end{definition}
+
+\begin{theorem}[行秩与列秩的不变性]
+  一个矩阵的行秩和列秩在初等变换下保持不变。
+\end{theorem}
+
+\begin{remark}
+  因为任何矩阵都能通过初等变换化为标准型，标准型的行秩与列秩相同，
+  所以更进一步的结论呼之欲出。
+\end{remark}
+
+\begin{theorem}[行秩与列秩相等]
+  一个矩阵的行秩等于列秩。
+\end{theorem}
+
+\begin{remark}
+  有了这个定理，我们就能把行秩和列秩统称为秩。
+\end{remark}
+
+\begin{theorem}[秩]
+  矩阵$\mmA$的行秩或列秩称为这个矩阵的\textbf{秩}，记作$r(\mmA)$。
+\end{theorem}
+
+\subsection{矩阵的秩的性质}
+\begin{theorem}
+  设$\mmA=(a_{ij})_{m\times s}, \mmB=(b_{jk})_{s\times p}$，则
+  \[ r(\mmA\mmB) \le \min\{ r(\mmA), r(\mmB) \} \]
+\end{theorem}
+
+\begin{remark}
+  根据需要也可以写成$r(\mmA\mmB) \le r(\mmA)$，$r(\mmA\mmB)\le r(\mmB)$。
+\end{remark}
+
+\begin{theorem}
+  设$\mmA$是$m\times n$阶矩阵，
+  $\mmP$是$m$阶可逆方阵，$\mmQ$是$n$阶可逆方阵，则
+  \[ r(\mmA) = r(\mmP\mmA) = r(\mmA\mmQ) \]
+\end{theorem}
+
+\begin{theorem}
+  设$\mmA$和$\mmB$都是$m\times n$阶矩阵，则
+  \[ r(\mmA+\mmB) \le r(\mmA) + r(\mmB) \]
+\end{theorem}
+
+\section{线性代数方程组}
 TODO
