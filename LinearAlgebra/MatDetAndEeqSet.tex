@@ -787,4 +787,115 @@ $\mvx = (x_1,\dots,x_n)^T$与$\mvb = (b_1,\dots,b_n)^T$是$n$维列向量，
 \end{theorem}
 
 \section{线性代数方程组}
-TODO
+本小节研究高斯消元解线性代数方程组。
+
+\subsection{高斯消元}
+对于线性代数方程组$\mmA\mvx=\mvb$，它的增广矩阵$\overline{\mmA}$是
+\begin{displaymath}
+  \mmat{cccc|c}{
+    a_{11} & a_{12} & \cdots & a_{1n} & b_1 \\
+    a_{21} & a_{22} & \cdots & a_{2n} & b_2 \\
+    \vdots & \vdots & \ddots & \vdots & \vdots \\
+    a_{m1} & a_{m2} & \cdots & a_{mn} & b_m 
+  }
+\end{displaymath}
+通过高斯消元，可以转化为如下形式：
+\begin{equation} \label{eq-gauss-elim}
+  \mmat{cccccc|c}{
+    c_{11} & c_{12} & \cdots & c_{1r} & \cdots & c_{1n} & c_1    \\
+           & c_{22} & \cdots & c_{2r} & \cdots & c_{2n} & c_2    \\
+           &        & \ddots & \vdots &        & \vdots & \vdots \\
+           &        &        & c_{rr} & \cdots & c_{rn} & c_r    \\
+           &        &        &        &        &        & c_{r+1}
+  }
+\end{equation}
+其中$c_{ii}\neq 0\ (i=1,\dots,r)$。
+当$c_{r+1}=0$时，方程组有解。
+当$c_{r+1}\neq 0$时，方程组无解。
+因此有如下结论：
+
+\begin{theorem}[方程组有解的判定条件]
+  线性代数方程组$\mmA\mvx=\mvb$有解当且仅当
+  \[ r(\mmA) = r(\overline{\mmA}) \]
+  若有解：
+  \begin{enumerate}
+    \item 若$r(\mmA)=n$，则有唯一解。
+    \item 若$r(\mmA) < n$，则有无穷多解。
+  \end{enumerate}
+\end{theorem}
+
+\begin{remark}
+  对于齐次方程组$\mmA\mvx=\mvZero$，
+  必有$r(\mmA)=r(\overline{\mmA})$，
+  因此齐次方程组一定有解。
+  当$r(\mmA)=n$时，则只有零解。
+  当$r(\mmA)\neq n$时，则有无穷多解。
+\end{remark}
+
+\subsection{线性代数方程组解的结构}
+经过高斯消元得到的式\ref{eq-gauss-elim}如果有解(即$c_{r+1}=0$)，
+那么可以进一步转化为
+\begin{equation} \label{eq-gauss-elim-further}
+  \mmat{ccccccc|c}{
+    1 &        &        &   & d_{r1}   & \cdots & d_{r1} & d_1    \\
+      & 1      &        &   & d_{r2}   & \cdots & d_{r2} & d_2    \\
+      &        & \ddots &   & \vdots   & \ddots & \vdots & \vdots \\
+      &        &        & 1 & d_{rr+1} & \cdots & d_{rn} & d_r
+  }
+\end{equation}
+方程的解应该是一目了然的了。
+据此，我们开始讨论线性代数方程组解的结构。
+首先是齐次线性方程组。
+
+\begin{definition}[基础解系]
+    齐次线性方程组$\mmA\mvx=\mvZero$的解向量组(构成解空间)的一个极大线性无关组
+    叫做它的一个\textbf{基础解系}。
+\end{definition}
+
+\begin{theorem}
+    若齐次线性方程组的系数矩阵$\mmA$的秩小于$n$，
+    则方程组必有基础解系。且基础解系所含解的个数等于$n-r$。
+\end{theorem}
+
+\begin{remark}
+  把式\ref{eq-gauss-elim-further}中$d_1,\dots,d_r$设为0，
+  则有如下形式的解：
+  \begin{displaymath}
+  \meqs{rcl}{
+    x_1 &=& \xi_{11}x_{r+1}+\xi_{12}x_{r+2}+\cdots+\xi_{1n-r}x_{n} \\
+    x_2 &=& \xi_{21}x_{r+1}+\xi_{22}x_{r+2}+\cdots+\xi_{2n-r}x_{n} \\
+    & \vdots & \\
+    x_r &=& \xi_{r1}x_{r+1}+\xi_{r2}x_{r+2}+\cdots+\xi_{rn-r}x_{n} \\
+  }
+  \end{displaymath}
+  由此得到一个基础解系为
+  \begin{displaymath}
+  \meqs{rcl} {
+    \xi_1 &=& (\xi_{11}, \xi_{21}, \dots, \xi_{r1}, 1, 0, \dots, 0)^T \\
+    \xi_2 &=& (\xi_{12}, \xi_{22}, \dots, \xi_{r2}, 0, 1, \dots, 0)^T \\
+    & \vdots & \\
+    \xi_{n-r} &=& (\xi_{1n-r}, \xi_{2n-r}, \dots, \xi_{rn-r}, 0, 0, \dots, 1)^T
+  }
+  \end{displaymath}
+  方程组任何解$\xi$都可以由$\xi_1,\dots,\xi_{n-r}$线性表示。
+\end{remark}
+
+接下来是非齐次线性方程组的解的结构。
+设非齐次线性方程组为$\mmA\mvx=\mvb$。
+它对应的齐次线性方程组为$\mmA\mvx=\mvZero$，
+称为\textbf{导出组}。它们解的结构有着密切的联系：
+\begin{enumerate}
+  \item
+  若$\eta_1,\eta_2$是$\mmA\mvx=\mvb$的解，
+  那么$\eta_1-\eta_2$是$\mmA\mvx=\mvZero$的解。
+  \item
+  若$\eta$是$\mmA\mvx=\mvb$的解，$\xi$是$\mmA\mvx=\mvZero$的解，
+  那么$\eta+\xi$是$\mmA\mvx=\mvb$的解。
+\end{enumerate}
+
+\begin{theorem}
+  设$\eta_0$是$\mmA\mvx=\mvb$的一个解，那么它任意解$\eta$都能表示为
+  \[ \eta = \eta_0 + k_1\xi_1 + \cdots + k_{n-r}\xi_{n-r} \]
+  其中$\xi_1,\dots,\xi_{n-r}$是它导出组$\mmA\mvx=\mvZero$的基础解系，
+  $k_1,\dots,k_{n-r} \in \mfR$。
+\end{theorem}
