@@ -1,1 +1,111 @@
 \chapter{线性空间\ 线性变换\ 欧几里得空间}
+
+\section{线性空间}
+
+\subsection{线性空间}
+\begin{definition}[线性空间]
+  设$V$是非空集合，$\mfF$是一个数域。
+  若在$V$上定义两种运算：加法$\oplus$和数乘$\otimes$，满足
+  \begin{description}
+    \item[加法]
+    \begin{enumerate}
+      \item 封闭性：
+      $\forall\alpha,\beta\in V,\ \alpha\oplus\beta\in V$。
+      \item 交换律：
+      $\forall\alpha,\beta\in V,\ \alpha\oplus\beta = \beta\oplus\alpha$
+      \item 结合律：
+      $\forall\alpha,\beta,\gamma\in V,\ 
+        (\alpha\oplus\beta)\oplus\gamma = \alpha\oplus(\beta\oplus\gamma)$。
+      \item 零元存在：
+      $\exists\theta\in V,\forall\alpha\in V,\ \alpha\oplus\theta=\alpha$。
+      \item 逆元存在：
+      $\forall\alpha\in V,\exists\beta\in V,\ \alpha\oplus\beta=\theta$。
+      我们把$\beta$记为``$-\alpha$''。
+    \end{enumerate}  
+    \item[数乘]
+    \begin{enumerate}
+      \item 封闭性：
+      $\forall\lambda\in\mfF,\alpha\in V,\ \lambda\otimes\alpha\in V$。
+      \item 结合律：
+      $\forall\lambda_1,\lambda_2\in\mfF,\alpha\in V,\ 
+        \lambda_1\otimes(\lambda_2\otimes\alpha) =
+        (\lambda_1\lambda_2)\otimes\alpha$。
+      \item 分配律1：
+      $\forall\lambda_1,\lambda_2\in\mfF,\alpha\in V,\ 
+        (\lambda_1\oplus\lambda_2)\otimes\alpha =
+        (\lambda_1\otimes\alpha)\oplus(\lambda_2\otimes\alpha)$
+      \item 分配律2：
+      $\forall\lambda\in\mfF,\alpha,\beta\in V,\ 
+        \lambda\otimes(\alpha\oplus\beta) =
+        (\lambda\otimes\alpha)\oplus(\lambda\otimes\beta)$。
+      \item 单位元存在：
+      $\forall\alpha\in V,\ 
+        1\otimes\alpha = \alpha$。
+    \end{enumerate}
+  \end{description}
+  则称$V$是数域$\mfF$上的一个线性空间。
+  若$\mfF$是实数域$\mfR$，则称$V$是\textbf{实线性空间}。
+  若$\mfF$是复数域$\mfC$，则称$V$是\textbf{复线性空间}。
+\end{definition}
+
+\begin{remark}
+  如果有点抽象代数的背景，读者不难发现上述加法满足的是阿贝尔群的性质。
+\end{remark}
+
+\begin{theorem}[线性空间的性质]
+  设$V$是$\mfF$上的线性空间，那么
+  \begin{enumerate}
+    \item 加法零元的具有唯一性
+    \item 加法逆元的具有唯一性
+    \item 加法零元的求法：
+    $\forall\alpha\in V,\ 0\otimes\alpha=\theta$
+    \item 加法逆元的求法：
+    $\forall\alpha\in V,\ (-1)\otimes\alpha=-\alpha$
+    \item $\forall k\in\mfF,\ k\otimes\theta=\theta$
+    \item 若$\lambda\otimes\alpha=\theta$，则$\lambda=0$或$\alpha=\theta$。
+  \end{enumerate}
+\end{theorem}
+为了书写与阅读的方便，以后``$\oplus$''用正常的加号来表示，
+``$\otimes$''可省略。参考向量的记法。
+
+\subsection{基与坐标}
+向量组的线性相关、线性无关、线性表示的概念也适用于线性空间。
+
+\begin{definition}[线性相关与线性无关]
+  设$V$是线性空间，$\alpha_1,\alpha_2,\dots,\alpha_s\in V$。
+  若数域中存在一组不全为0的数$k_1,k_2,\dots,k_s$，使得
+  \[ k_1\alpha_1 + k_2\alpha_2 + \dots + k_s\alpha_s = \theta \]
+  则称$\alpha_1,\alpha_2,\dots,\alpha_s$\textbf{线性相关}。
+  否则，则称\textbf{线性无关}。
+\end{definition}
+
+\begin{definition}[线性表示]
+  设$V$是线性空间，$\alpha,\alpha_1,\alpha_2,\dots,\alpha_s\in V$。
+  若数域中存在一组数$k_1,k_2,\dots,k_s$，使得
+  \[ \alpha = k_1\alpha_1 + k_2\alpha_2 + \dots + k_s\alpha_s \]
+  则称$\alpha$为$\alpha_1,\alpha_2,\dots,\alpha_s$的\textbf{线性组合}，
+  也称$\alpha$可以由$\alpha_1,\alpha_2,\dots,\alpha_s$\textbf{线性表示}。
+\end{definition}
+
+\begin{definition}[维数]
+  如果一个线性空间$V$中，线性无关的元素的最大个数是$n$，
+  则称该线性空间是$n$维的，记作$\mdim V = n$。
+  
+  如果对任意正整数$N$，总存在$N$个线性无关的元素，
+  则称该线性空间是\textbf{无穷维线性空间}。
+  不是无穷维的线性空间叫做有穷维线性空间。
+\end{definition}
+
+\begin{remark}
+  本章中我们不讨论无穷维线性空间。
+\end{remark}
+
+\begin{definition}[基与坐标]
+  若$\alpha_1,\alpha_2,\dots,\alpha_n$是$n$维线性空间$V$中一组线性无关的元素，
+  且$V$中任意元素$\alpha$都可由$\alpha_1,\alpha_2,\dots,\alpha_n$线性表示，
+  即\[ \alpha = k_1\alpha_1 + k_2\alpha_2 + \dots + k_n\alpha_n \]
+  则称$\alpha_1,\alpha_2,\dots,\alpha_n$是$V$的一组\textbf{基底}(简称\textbf{基})。
+  其中，有序元组$(k_1,k_2,\dots,k_n)$称为$\alpha$在
+  基底$\alpha_1,\alpha_2,\dots,\alpha_n$下的坐标。
+\end{definition}
+
