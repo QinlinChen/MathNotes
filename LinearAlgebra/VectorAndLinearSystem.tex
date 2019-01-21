@@ -1,0 +1,308 @@
+\chapter{向量组的线性相关性与线性代数方程组}
+
+\section{向量组的线性无关}
+在一个方程组中，会有一些方程是``无用的''，
+也就是说，它能由其它方程通过线性运算表示出来。
+向量组的线性无关与此概念紧密联系——向量组即是一个方程的系数矩阵。
+向量组的极大线性无关组也就反应了在方程组中去掉那些无用的方程后得到的方程组。
+向量组的秩即是这些有用的方程的个数。
+
+\subsection{线性相关与线性无关}
+\begin{definition}[线性组合与线性表示]
+  设$\alpha,\alpha_1,\alpha_2,\dots,\alpha_r$是一组$n$维向量。
+  如果存在数$k_1,k_2,\dots,k_r$，使得
+  \[ \alpha = k_1\alpha_1+k_2\alpha_2+\dots k_r\alpha_r \]
+  则称$\alpha$是$\alpha_1,\alpha_2,\dots,\alpha_r$的\textbf{线性组合}，
+  或者说$\alpha$可由$\alpha_1,\alpha_2,\dots,\alpha_r$\textbf{线性表示}，
+  其中，$k_1,k_2,\dots,k_r$叫做\textbf{表示系数}。
+\end{definition}
+
+\begin{definition}[线性相关与线性无关]
+  设$\alpha_1,\alpha_2,\dots,\alpha_r$是一组$n$维向量。
+  如果存在一组\textbf{不全为零}的数$k_1,k_2,\dots,k_r$，使得
+  \[ k_1\alpha_1+k_2\alpha_2+\dots k_r\alpha_r = \mvZero \]
+  则称向量组$\alpha_1,\alpha_2,\dots,\alpha_r$\textbf{线性相关}；
+  否则，称\textbf{线性无关}。
+\end{definition}
+
+\begin{theorem}[线性相关与线性组合的联系]
+    $\alpha_1,\alpha_2,\dots,\alpha_r\ (r\ge 2)$线性相关
+    当且仅当至少有一个向量是其它向量的线性组合。
+\end{theorem}
+
+\begin{theorem}[线性相关与线性无关的等价条件]
+  设$\alpha_1,\alpha_2,\dots,\alpha_r$是一组$n$维列向量，
+  $\mvk = (k_1,k_2,\dots,k_r)^T$，
+  矩阵$\mmA = (\alpha_1,\alpha_2,\dots,\alpha_r)$，那么
+  \begin{align*}
+  \alpha_1,\alpha_2,\dots,\alpha_r\ \text{线性相关}
+  &\iff \mmA\mvk = \mvZero\ \text{有非零解} \\
+  &\iff |\mmA|=0 
+  \end{align*}
+  \begin{align*}
+  \alpha_1,\alpha_2,\dots,\alpha_r\ \text{线性无关}
+  &\iff \mmA\mvk = \mvZero\ \text{仅有零解} \\
+  &\iff |\mmA|\neq 0 
+  \end{align*}
+\end{theorem}
+
+\subsection{向量组组内关系}
+\begin{theorem}[接长与补短]
+  设向量组$S_1: \alpha_1,\alpha_2,\dots,\alpha_r$。
+  若在每个向量中添加一个分量，把它变成$n+1$维向量组$S_2$，
+  那么$S_1$线性无关能推出$S_2$线性无关，
+  $S_2$线性相关能推出$S_1$线性相关。
+\end{theorem}
+
+\begin{theorem}[部分与整体]
+  设向量组$S_1: \alpha_1,\alpha_2,\dots,\alpha_r$
+  与向量组$S_2: \alpha_1,\alpha_2,\dots,\alpha_r,\alpha_{r+1},\dots,\alpha_s$
+  是两个$n$维向量组。
+  若$S_1$线性相关，则$S_2$线性相关；
+  反之，若$S_2$线性无关，则$S_1$线性无关。
+\end{theorem}
+
+\begin{remark}
+  直白地说，就是部分相关可以推出整体相关，整体无关可以推出部分无关。
+\end{remark}
+
+\begin{theorem}
+  任意$n+1$个$n$维向量一定线性相关。
+\end{theorem}
+
+\subsection{向量组组间关系}
+\begin{definition}[向量组等价]
+  设向量组
+  \[ S_1: \alpha_1,\alpha_2,\dots,\alpha_r \]
+  \[ S_2: \beta_1,\beta_2,\dots,\beta_s \]
+  若$S_1$中每个向量都可以被向量组$S_2$线性表示，
+  则称向量组$S_1$可被$S_2$\textbf{线性表出}。
+  若$S_1$与$S_2$能互相线性表出，那么称$S_1$和$S_2$\textbf{等价}。
+\end{definition}
+
+\begin{remark}
+  向量组的等价是等价关系。
+\end{remark}
+
+\begin{theorem} \label{thrm-vector-set-size}
+  设有两个向量组$S_1$和$S_2$，分别含有$r$和$s$个向量。
+  若$S_1$能由$S_2$线性表出，且$r > s$，那么$S_1$线性相关。
+  反之，若$S_1$线性无关且能由$S_2$线性表出，那么$r \le s$。
+\end{theorem}
+
+\begin{corollary} \label{thrm-vector-set-equiv}
+  若两个线性无关的向量组$S_1$和$S_2$等价，那么它们包含的向量个数相同。
+\end{corollary}
+
+\subsection{极大线性无关组与向量组的秩}
+\begin{definition}
+  若一个向量组中有部分向量$\alpha_1,\alpha_2,\dots,\alpha_s$具有下面两个性质：
+  \begin{enumerate}
+    \item
+    $\alpha_1,\alpha_2,\dots,\alpha_s$线性无关；
+    \item
+    从原向量组中任选一个新向量(如果还有的话)加入到这个向量组中，
+    所得的部分向量组就线性相关了。
+  \end{enumerate}
+  那么称$\alpha_1,\alpha_2,\dots,\alpha_s$为原向量组的\textbf{极大线性无关组}。
+\end{definition}
+
+\begin{theorem} \label{thrm-vector-set-self-equiv}
+   向量组的任意一个极大线性无关组都与向量组本身等价。
+\end{theorem}
+
+\begin{remark}
+  一个向量组的极大线性无关组不一定是唯一的，
+  但是根据定理\ref{thrm-vector-set-self-equiv}
+  和推论\ref{thrm-vector-set-equiv}可以证明，
+  它们的大小一定是相同的。
+\end{remark}
+
+\begin{definition}[向量组的秩]
+  向量组$S$的极大线性无关组所含向量的个数称为这个向量组的\textbf{秩}，
+  记作$r(S)$。
+\end{definition}
+
+有的秩的概念，定理\ref{thrm-vector-set-size}
+和推论\ref{thrm-vector-set-equiv}可以做出如下推广：
+\begin{theorem}
+  设有向量组$S_1$和$S_2$。
+  \begin{enumerate}
+    \item
+    若$S_1$能由$S_2$线性表出，那么$r(S_1) \le r(S_2)$。
+    \item
+    若$S_1$与$S_2$等价，那么$r(S_1)=r(S_2)$。
+  \end{enumerate}
+\end{theorem}
+
+\section{矩阵的秩}
+矩阵如果按行划分，或者按列划分，其实都能看成一个向量组。
+既然向量组有秩，那么矩阵的秩也可以因此定义出来。
+我们会发现，不管是按行划分，还是按列划分，
+行向量组与列向量组的秩都是相同的，
+这个同一的值就是矩阵的秩。
+
+\subsection{矩阵的行秩、列秩和秩}
+\begin{definition}[行秩与列秩]
+  一个矩阵$\mmA=(a_{ij})_{m\times n}$的行向量组的秩叫做$\mmA$的\textbf{行秩}，
+  列向量组的秩叫做$\mmA$的\textbf{列秩}。
+\end{definition}
+
+\begin{theorem}[行秩与列秩的不变性]
+  一个矩阵的行秩和列秩在初等变换下保持不变。
+\end{theorem}
+
+\begin{remark}
+  因为任何矩阵都能通过初等变换化为标准型，标准型的行秩与列秩相同，
+  所以更进一步的结论呼之欲出。
+\end{remark}
+
+\begin{theorem}[行秩与列秩相等]
+  一个矩阵的行秩等于列秩。
+\end{theorem}
+
+\begin{remark}
+  有了这个定理，我们就能把行秩和列秩统称为秩。
+\end{remark}
+
+\begin{theorem}[秩]
+  矩阵$\mmA$的行秩或列秩称为这个矩阵的\textbf{秩}，记作$r(\mmA)$。
+\end{theorem}
+
+\subsection{矩阵的秩的性质}
+\begin{theorem}
+  设$\mmA=(a_{ij})_{m\times s}, \mmB=(b_{jk})_{s\times p}$，则
+  \[ r(\mmA\mmB) \le \min\{ r(\mmA), r(\mmB) \} \]
+\end{theorem}
+
+\begin{remark}
+  根据需要也可以写成$r(\mmA\mmB) \le r(\mmA)$，$r(\mmA\mmB)\le r(\mmB)$。
+\end{remark}
+
+\begin{theorem}
+  设$\mmA$是$m\times n$阶矩阵，
+  $\mmP$是$m$阶可逆方阵，$\mmQ$是$n$阶可逆方阵，则
+  \[ r(\mmA) = r(\mmP\mmA) = r(\mmA\mmQ) \]
+\end{theorem}
+
+\begin{theorem}
+  设$\mmA$和$\mmB$都是$m\times n$阶矩阵，则
+  \[ r(\mmA+\mmB) \le r(\mmA) + r(\mmB) \]
+\end{theorem}
+
+\section{线性代数方程组}
+先前我们已经讨论过使用行列式与伴随矩阵的方法(克莱姆法则)来解方程组了。
+本小节继上面对向量组相关性的讨论，来研究解线性代数方程组的新方法：
+高斯消元法。
+
+\subsection{高斯消元}
+对于线性代数方程组$\mmA\mvx=\mvb$，它的增广矩阵$\overline{\mmA}$是
+\begin{displaymath}
+  \mmat{cccc|c}{
+    a_{11} & a_{12} & \cdots & a_{1n} & b_1 \\
+    a_{21} & a_{22} & \cdots & a_{2n} & b_2 \\
+    \vdots & \vdots & \ddots & \vdots & \vdots \\
+    a_{m1} & a_{m2} & \cdots & a_{mn} & b_m 
+  }
+\end{displaymath}
+通过高斯消元，可以转化为如下形式：
+\begin{equation} \label{eq-gauss-elim}
+  \mmat{cccccc|c}{
+    c_{11} & c_{12} & \cdots & c_{1r} & \cdots & c_{1n} & c_1    \\
+           & c_{22} & \cdots & c_{2r} & \cdots & c_{2n} & c_2    \\
+           &        & \ddots & \vdots &        & \vdots & \vdots \\
+           &        &        & c_{rr} & \cdots & c_{rn} & c_r    \\
+           &        &        &        &        &        & c_{r+1}
+  }
+\end{equation}
+其中$c_{ii}\neq 0\ (i=1,\dots,r)$。
+当$c_{r+1}=0$时，方程组有解。
+当$c_{r+1}\neq 0$时，方程组无解。
+因此有如下结论：
+
+\begin{theorem}[线性代数方程组有解的充要条件]
+  线性代数方程组$\mmA\mvx=\mvb$有解当且仅当
+  \[ r(\mmA) = r(\overline{\mmA}) \]
+  若有解：
+  \begin{enumerate}
+    \item 若$r(\mmA)=n$，则有唯一解。
+    \item 若$r(\mmA) < n$，则有无穷多解。
+  \end{enumerate}
+\end{theorem}
+
+\begin{remark}
+  对于齐次方程组$\mmA\mvx=\mvZero$，
+  必有$r(\mmA)=r(\overline{\mmA})$，
+  因此齐次方程组一定有解。
+  当$r(\mmA)=n$时，则只有零解。
+  当$r(\mmA)\neq n$时，则有无穷多解。
+\end{remark}
+
+\subsection{线性代数方程组解的结构}
+经过高斯消元得到的式\ref{eq-gauss-elim}如果有解(即$c_{r+1}=0$)，
+那么可以进一步转化为
+\begin{equation} \label{eq-gauss-elim-further}
+  \mmat{ccccccc|c}{
+    1 &        &        &   & d_{r1}   & \cdots & d_{r1} & d_1    \\
+      & 1      &        &   & d_{r2}   & \cdots & d_{r2} & d_2    \\
+      &        & \ddots &   & \vdots   & \ddots & \vdots & \vdots \\
+      &        &        & 1 & d_{rr+1} & \cdots & d_{rn} & d_r
+  }
+\end{equation}
+方程的解应该是一目了然的了。
+据此，我们开始讨论线性代数方程组解的结构。
+首先是齐次线性方程组。
+
+\begin{definition}[基础解系]
+  齐次线性方程组$\mmA\mvx=\mvZero$的解向量组(构成\textbf{解空间})
+  的一个极大线性无关组
+  叫做它的一个\textbf{基础解系}。
+\end{definition}
+
+\begin{theorem}
+  若齐次线性方程组的系数矩阵$\mmA$的秩小于$n$，
+  则方程组必有基础解系。且基础解系所含解的个数等于$n-r$。
+\end{theorem}
+
+\begin{remark}
+  把式\ref{eq-gauss-elim-further}中$d_1,\dots,d_r$设为0，
+  则有如下形式的解：
+  \begin{displaymath}
+  \meqs{rcl}{
+    x_1 &=& \xi_{11}x_{r+1}+\xi_{12}x_{r+2}+\cdots+\xi_{1n-r}x_{n} \\
+    x_2 &=& \xi_{21}x_{r+1}+\xi_{22}x_{r+2}+\cdots+\xi_{2n-r}x_{n} \\
+    & \vdots & \\
+    x_r &=& \xi_{r1}x_{r+1}+\xi_{r2}x_{r+2}+\cdots+\xi_{rn-r}x_{n} \\
+  }
+  \end{displaymath}
+  由此得到一个基础解系为
+  \begin{displaymath}
+  \meqs{rcl} {
+    \xi_1 &=& (\xi_{11}, \xi_{21}, \dots, \xi_{r1}, 1, 0, \dots, 0)^T \\
+    \xi_2 &=& (\xi_{12}, \xi_{22}, \dots, \xi_{r2}, 0, 1, \dots, 0)^T \\
+    & \vdots & \\
+    \xi_{n-r} &=& (\xi_{1n-r}, \xi_{2n-r}, \dots, \xi_{rn-r}, 0, 0, \dots, 1)^T
+  }
+  \end{displaymath}
+  方程组任何解$\xi$都可以由$\xi_1,\dots,\xi_{n-r}$线性表示。
+\end{remark}
+
+接下来是非齐次线性方程组的解的结构。
+设非齐次线性方程组为$\mmA\mvx=\mvb$。
+它对应的齐次线性方程组为$\mmA\mvx=\mvZero$，
+称为\textbf{导出组}。它们解的结构有着密切的联系：
+\begin{enumerate}
+  \item
+  若$\eta_1,\eta_2$是$\mmA\mvx=\mvb$的解，
+  那么$\eta_1-\eta_2$是$\mmA\mvx=\mvZero$的解。
+  \item
+  若$\eta$是$\mmA\mvx=\mvb$的解，$\xi$是$\mmA\mvx=\mvZero$的解，
+  那么$\eta+\xi$是$\mmA\mvx=\mvb$的解。
+\end{enumerate}
+
+\begin{theorem}[非齐次线性方程组的通解]
+  设$\eta_0$是$\mmA\mvx=\mvb$的一个解，那么方程的任意解$\eta$都能表示为
+  \[ \eta = \eta_0 + k_1\xi_1 + \cdots + k_{n-r}\xi_{n-r} \]
+  其中$\xi_1,\dots,\xi_{n-r}$是方程导出组$\mmA\mvx=\mvZero$的基础解系，
+  $k_1,\dots,k_{n-r} \in \mfR$。
+\end{theorem}

@@ -1,4 +1,4 @@
-\chapter{线性空间\ 线性变换\ 欧几里得空间}
+\chapter{线性空间与线性变换}
 
 \section{线性空间}
 在这一小节，我们把先前向量的概念进一步抽象，得到了线性空间的概念。
@@ -54,7 +54,7 @@
         1\otimes\alpha = \alpha$。
     \end{enumerate}
   \end{description}
-  则称$V$是数域$\mfF$上的一个线性空间。
+  则称$V$是数域$\mfF$上的一个\textbf{线性空间}，又称\textbf{向量空间}。
   若$\mfF$是实数域$\mfR$，则称$V$是\textbf{实线性空间}。
   若$\mfF$是复数域$\mfC$，则称$V$是\textbf{复线性空间}。
 \end{definition}
@@ -335,27 +335,37 @@
 首先，如果知道一个$n$维线性空间$V$上的线性变换$T$，
 我们就能知道它在基$\epsilon_1,\epsilon_2\dots,\epsilon_n$下对应的矩阵：
 对任意$i=1,2,\dots,n$，应该有一组坐标$a_{1i},a_{2i},\dots,a_{ni}$，使得
-\[ T(\epsilon_i) = a_{1i}\epsilon_1+a_{2i}\epsilon_2+\dots+a_{ni}\epsilon_n \]
+\begin{displaymath}
+  T(\epsilon_i) = a_{1i}\epsilon_1+a_{2i}\epsilon_2+\dots+a_{ni}\epsilon_n
+\end{displaymath}
 写成矩阵的形式，即是
-\[ (T(\epsilon_1), T(\epsilon_2),\dots,T(\epsilon_n)) =
-  (\epsilon_1,\epsilon_2,\dots,\epsilon_n)\mmA \]
+\begin{displaymath}
+  (T(\epsilon_1), T(\epsilon_2),\dots,T(\epsilon_n)) =
+    (\epsilon_1,\epsilon_2,\dots,\epsilon_n)\mmA
+\end{displaymath}
 其中$\mmA=(a_{ij})_{n\times n}$。
 这样，对任意$\alpha=x_1\epsilon_1+x_2\epsilon_2+\dots+x_n\epsilon_n\in V$，
 我们就能通过矩阵求出它经过线性变换后元素：
-\[ T(\alpha)=(\epsilon_1,\epsilon_2,\dots,\epsilon_n)\mmA
-  (x_1,x_2,\dots,x_n)^T \]
+\begin{equation} \label{eq-coord-after-linear-trans}
+  T(\alpha) = (\epsilon_1,\epsilon_2,\dots,\epsilon_n)\mmA
+    (x_1,x_2,\dots,x_n)^T
+\end{equation}
 因此，我们称$\mmA$是
 \textbf{线性变换$T$在基$\epsilon_1,\epsilon_2\dots,\epsilon_n$下的矩阵}。
 
 反之，在线性空间$V$的一组基$\epsilon_1,\epsilon_2\dots,\epsilon_n$下，
 给定矩阵$\mmA=(a_{ij})_{n\times n}$，
 存在线性变换$T$，使得
-\[ (T(\epsilon_1), T(\epsilon_2),\dots,T(\epsilon_n)) =
-  (\epsilon_1,\epsilon_2,\dots,\epsilon_n)\mmA \]
+\begin{displaymath}
+  (T(\epsilon_1), T(\epsilon_2),\dots,T(\epsilon_n)) =
+    (\epsilon_1,\epsilon_2,\dots,\epsilon_n)\mmA
+\end{displaymath}
 这个$T$是这样构造的：
 对任意$\alpha=x_1\epsilon_1+x_2\epsilon_2+\dots+x_n\epsilon_n\in V$，
-\[ T(\alpha) = (\epsilon_1,\epsilon_2,\dots,\epsilon_n)\mmA
-  (x_1,x_2,\dots,x_n)^T \]
+\begin{displaymath}
+  T(\alpha) = (\epsilon_1,\epsilon_2,\dots,\epsilon_n)\mmA
+    (x_1,x_2,\dots,x_n)^T
+\end{displaymath}
 
 总结一下上面的论述，有如下定理：
 \begin{theorem}
@@ -408,3 +418,148 @@
 
 \section{特征值与特征向量}
 TODO
+\subsection{特征值与特征向量}
+对于$n$维线性空间$V$内的一个线性变换$T$，
+我们总希望找一组基$\xi_1,\xi_2,\dots,\xi_n$，
+使得$T$在这组基下的矩阵具有最简单的形式，即有
+\begin{displaymath}
+  (T(\xi_1), T(\xi_2),\dots,T(\xi_n)) = (\xi_1,\xi_2,\dots,\xi_n)
+    \cdot \mdiag(\lambda_1,\lambda_2,\dots,\lambda_n)
+\end{displaymath}
+这样，根据式\ref{eq-coord-after-linear-trans}，
+任意$\alpha\in V$经过$T$变换后的坐标就是把它在
+基$\xi_1,\xi_2,\dots,\xi_n$下的坐标放大常数倍。
+
+根据上面的分析，我们需要找这样一组$\xi$和$\lambda$，使得$T(\xi) = \lambda\xi$。
+这就引出了线性变换的特征值和特征向量的定义(注意，还不是矩阵的特征值与特征向量)。
+
+\begin{definition}[线性变换的特征值和特征向量]
+  设$V$是数域$\mfF$上的一个线性空间，$T$是$V$上的一个线性变换。
+  如果对$\lambda\in\mfF$，存在非零向量$\xi\in V$，使得
+  \[ T(\xi) = \lambda\xi \]
+  则称$\lambda$是$T$的一个\textbf{特征值}，
+  而称$\xi$是$T$对应于$\lambda$的一个\textbf{特征向量}。
+\end{definition}
+
+\begin{theorem}[特征子空间]
+  设$V$是数域$\mfF$上的线性空间，$T$是$V$上的线性变换，
+  则给定一个特征值$\lambda\in\mfF$，
+  \begin{displaymath}
+    V_\lambda = \{ \xi\in V: T(\xi)=\lambda\xi \}
+  \end{displaymath}
+  构成了$V$的一个子空间。
+  我们把它称为$T$对应于$\lambda$的特征子空间。
+\end{theorem}
+
+下面，我们要考虑如何求解线性变换的特征值与特征向量。
+因为线性变换在给定一组基下与矩阵有着一一对应的关系，
+所以我们尝试从矩阵开始入手。
+
+我们设$\epsilon_1,\epsilon_2,\dots,\epsilon_n$是线性空间$V$的一组基，
+$T$在这组基下的矩阵是$\mmA$。
+设$\xi$是线性变换$T$的一个特征向量，它对应的特征值是$\lambda$，
+它在基$\epsilon_1,\epsilon_2,\dots,\epsilon_n$下的坐标是
+$\mvx=(x_1,\dots,x_n)^T$。
+那么，根据式\ref{eq-coord-after-linear-trans}，我们有
+\[ T(\xi) = (\epsilon_1,\epsilon_2,\dots,\epsilon_n)\mmA\mvx \]
+又因为
+\[ T(\xi) = \lambda\xi = \lambda(\epsilon_1,\epsilon_2,\dots,\epsilon_n)\mvx \]
+所以联立以上两个等式，我们就有
+\begin{displaymath}
+  (\epsilon_1,\epsilon_2,\dots,\epsilon_n)(\mmA\mvx - \lambda\mvx)=0
+\end{displaymath}
+因为$\epsilon_1,\epsilon_2,\dots,\epsilon_n$线性无关，
+所以只可能是$\mmA\mvx - \lambda\mvx = \mvZero$，即
+\begin{equation} \label{eq-eigen}
+  (\mmA - \lambda\mmI)\mvx = \mvZero
+\end{equation}
+
+接下来我们需要解这个方程来得到特征值$\lambda$
+和特征向量对应的坐标$\mvx$。
+想要$\mvx$有非零解，充要条件是$|\mmA - \lambda\mmI| = 0$。
+我们就能根据这一条件解出$\lambda$，
+然后把$\lambda$代入上面的方程\ref{eq-eigen}中，
+最后按照解方程的一般步骤，就能获得$\mvx$的基础解系。
+
+我们还能发现，对式\ref{eq-eigen}变形，能得到类似于$T(\xi)=\lambda\xi$形式的等式
+\begin{displaymath}
+\mmA\mvx=\lambda\mvx
+\end{displaymath}
+而且上面一大堆分析都是针对矩阵$\mmA$的，和线性变换$T$基本上没关系。
+所以，我们不如也定义矩阵的特征值与特征向量，先针对更加具体的矩阵进行研究，
+再与$T$的特征值与特征向量联系起来。
+
+\begin{definition}[矩阵的特征值和特征向量]
+  对于$n$阶矩阵$\mmA$，记
+  \[P(\lambda)=|\mmA-\lambda\mmI|\]
+  $P(\lambda)$被称为$\mmA$的\textbf{特征多项式}。
+  $P(\lambda)=0$的根称为$\mmA$的\textbf{特征值}或\textbf{特征根}。
+  如果$\lambda$是$P(\lambda)=0$的$k$重根，
+  那么又称$\lambda$是\textbf{$k$重特征值}，$k$叫做\textbf{代数重数}。
+  
+  对于一个特征值$\lambda_0$，
+  我们称方程$(\mmA-\lambda_0\mmI)\mvx=0$的非零解为
+  $\mmA$对应于$\lambda_0$的\textbf{特征向量}。
+  解空间线性无关的特征向量的个数叫做\textbf{几何重数}。
+\end{definition}
+
+\begin{remark}
+  线性变换和矩阵的特征值还是有区别的。
+  线性变换的特征值属于线性空间的数域$\mfF$，
+  而矩阵的特征值属于复数域。
+\end{remark}
+
+\begin{definition}[矩阵的谱]
+  $n$阶矩阵$\mmA$的所有特征值$\lambda_1,\dots,\lambda_n$
+  叫做矩阵$\mmA$的\textbf{谱}。
+  $\max\{|\lambda_1|,\dots,|\lambda_n|\}$被称为\textbf{谱半径}。
+\end{definition}
+
+\begin{definition}[矩阵的迹]
+  设矩阵$\mmA=(a_{ij})_{n\times n}$。
+  定义$\sum_{i=1}^{n}a_{ii}$叫做矩阵$\mmA$的迹，记为$\mtr\mmA$。
+\end{definition}
+
+\begin{theorem}[特征值的性质]
+  设$n$阶矩阵$\mmA$的所有特征值为$\lambda_1,\dots,\lambda_n$，则
+  \begin{enumerate}
+    \item $|\mmA| = \prod_{i=1}^{n}\lambda_i$
+    \item $\mtr\mmA = \sum_{i=1}^{n}\lambda_i$
+  \end{enumerate}
+\end{theorem}
+
+\subsection{矩阵之间特征值的关联}
+\begin{theorem}[矩阵运算对特征值和特征向量的影响]
+  设$\mmA$是$n$阶方阵，$\lambda_0$是$\mmA$的一个特征值，
+  $\alpha_0$是对应$\lambda_0$的一个特征向量。
+  \begin{enumerate}
+    \item
+    对于逆矩阵，有$\mmA^{-1}\alpha_0 = \frac{1}{\lambda_0}\alpha_0$
+    \item
+    对于伴随矩阵，有$\mmA^*\alpha_0 = \frac{|\mmA|}{\lambda_0}\alpha_0$
+    \item
+    对于转置矩阵，它的特征多项式与$\mmA$的特征多项式相同，
+    所以它们有相同的特征值。但是特征向量未必相同。
+    \item
+    对于矩阵多项式$f(\mmA)=\sum_{i=1}^{k} c_i\mmA^i$，
+    有$f(\mmA)\alpha_0=\left(\sum_{i=1}^{k} c_i\lambda_0^i\right)\alpha_0$
+  \end{enumerate}
+\end{theorem}
+
+\begin{remark}
+  如果知道$\mmA$的特征值和特征向量，就可以利用上述定理
+  快速求出这些相关的矩阵的特征值与特征向量。
+\end{remark}
+
+\begin{theorem}[相似矩阵之间特征值的联系]
+  相似矩阵有相同的特征多项式，从而也有相同的谱。
+\end{theorem}
+
+\begin{remark}
+  这符合直观：相似矩阵是同一个线性变换在不同基下的矩阵，
+  因此求出的特征值都应该是相同的。
+\end{remark}
+
+\subsection{矩阵的对角化}
+TODO
+

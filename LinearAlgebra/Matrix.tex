@@ -1,0 +1,320 @@
+\chapter{矩阵}
+
+\section{矩阵及其运算}
+这一小节主要介绍了矩阵的基本概念和基本运算。
+
+矩阵的概念对学过线性代数的人来说是稀松平常的了，
+所以这里主要给出了重要概念和特殊矩阵的定义和符号，
+方便后面的讨论。
+
+矩阵的基本运算涉及了线性运算、乘积、转置。
+大家应该对此都很熟悉，这里就简单给出了一些性质，并不作证明。
+此外，我们还由转置运算给出了对称矩阵、反对称矩阵的概念。
+
+\subsection{矩阵的概念}
+\begin{definition}[矩阵]
+  由$m\times n$个数排成$m$行$n$列的矩形数表
+  \begin{equation} \label{eq:mat-def}
+    \mmA = \mmat{cccc}{
+      a_{11} & a_{12} & \cdots & a_{1n} \\
+      a_{21} & a_{22} & \cdots & a_{2n} \\
+      \vdots & \vdots & \ddots & \vdots \\
+      a_{m1} & a_{m2} & \cdots & a_{mn} }
+  \end{equation}
+  称为一个$m\times n$矩阵。
+  其中数$a_{ij}$称为矩阵$\mmA$的元素。
+  $i$为行标，$j$为列标，
+  $a_{ij}$是$\mmA$位于第$i$行第$j$列的元素，或简称$\mmA$的$(i,j)$元素。
+  式\eqref{eq:mat-def}可简记为$\mmA=(a_{ij})_{m\times n}$或$(a_{ij})$。
+\end{definition}
+
+下面是一些特殊的矩阵：
+\begin{itemize}
+  \item
+  $m\times 1$矩阵又称为\textbf{列矩阵}或$m$\textbf{维列向量}。
+  \item
+  $1\times n$矩阵又称为\textbf{行矩阵}或$n$\textbf{维行向量}。
+  \item
+  $n\times n$矩阵又称为$n$\textbf{阶方阵}。
+  对于$n$阶方阵$\mmA=(a_{ij})$，
+  其对角线上的元素$a_{11},\dots,a_{nn}$又称\textbf{主对角线元素}。
+  \item
+  如果一个$n$阶方阵除主对角线元素外，其余元素都为0，
+  那么我们称这种矩阵为\textbf{对角矩阵}，记为
+  \[
+    \mdiag(k_1, k_2\dots,k_n)= \mmat{cccc}{
+      k_1 &     &        & \\
+          & k_2 &        & \\
+          &     & \ddots & \\
+          &     &        & k_n }
+  \]
+  \item
+  $\mmI = \mdiag(1,1,\dots,1)$被称为\textbf{单位矩阵}。
+  \item
+  \textbf{零矩阵}$\mmZero$是所有元素都为0的矩阵。
+  \item
+  设$\mmA=(a_{ij})$是$n$阶方阵。
+  若当$i>j$时，$a_{ij}=0$，则称$\mmA$为\textbf{上三角阵}。
+  若当$i<j$时，$a_{ij}=0$，则称$\mmA$为\textbf{下三角阵}。
+  两者统称\textbf{三角阵}。
+\end{itemize}
+
+\begin{definition}[矩阵相等]
+  如果$\mmA=(a_{ij})$与$\mmB=(b_{ij})$都是$m\times n$矩阵，
+  且对$i=1,2,\dots,m,\ j=1,2,\dots,n$，有$a_{ij}=b_{ij}$，
+  则称$\mmA$与$\mmB$相等，记作$\mmA=\mmB$。
+\end{definition}
+
+\subsection{矩阵的线性运算}
+矩阵的线性运算包含\textbf{加法}和\textbf{数乘}。定义比较简单，在此不加赘述。
+
+根据后面线性空间的定义\ref{def-linear-space}，
+矩阵空间也是线性空间。
+
+\subsection{矩阵的乘法}
+\begin{definition}[矩阵的乘法]
+  设$\mmA=(a_{ik})_{m\times s}, \mmB=(b_{kj})_{s\times n}$，令
+  \begin{equation}
+  c_{ij}=\sum_{k=1}^{s}a_{ik}b_{kj}
+  \end{equation}
+  则$\mmC=(c_{ij})_{m\times n}$被称为$\mmA$和$\mmB$的乘积，
+  记为$\mmC = \mmA\mmB$。
+\end{definition}
+
+矩阵的乘法满足分配率和结合律，但不满足交换律。
+
+\subsection{矩阵的转置}
+\begin{definition}[矩阵的转置]
+    设$\mmA=(a_{ij})_{m\times n}$，
+    令$b_{ij}=a_{ji}$，
+    则$\mmB=(b_{ij})_{n\times m}$被称为$\mmA$的转置矩阵，
+    记为$\mmA^T$。
+\end{definition}
+
+\begin{theorem}[转置矩阵的性质]
+  转置矩阵具有以下性质：
+  \begin{enumerate}
+    \item $\left(\mmA^T\right)^T = \mmA$
+    \item $(\mmA+\mmB)^T=\mmA^T + \mmB^T$
+    \item $(k\mmA)^T=k\mmA^T$
+    \item $(\mmA\mmB)^T=\mmB^T\mmA^T$
+  \end{enumerate}
+\end{theorem}
+
+\begin{definition}[对称矩阵与反对称矩阵]
+  对于$n$阶方阵$\mmA=(a_{ij})$，
+  如果满足$\mmA^T=\mmA$，则称$\mmA$为\textbf{对称矩阵}。
+  如果满足$\mmA^T=-\mmA$，则称$\mmA$为\textbf{反对称矩阵}。
+\end{definition}
+
+\begin{remark}
+  不难看出，反对称矩阵的主对角线元素都为零。
+\end{remark}
+
+\section{矩阵的分块}
+矩阵的分块是化简矩阵运算简单而又重要的思想。
+其中最重要的是分块矩阵的乘法。
+
+\subsection{分块矩阵的概念}
+\begin{definition}[分块矩阵]
+  一般地，将一个$m\times n$矩阵$\mmA$用横线划分成$r$块，
+  用竖线划分成$s$块，就能得到一个$r\times s$分块矩阵。
+  \begin{equation} \label{eq:mat-partition}
+  \mmA = \mmat{cccc}{
+    \mmA_{11} & \mmA_{12} & \cdots & \mmA_{1s} \\
+    \mmA_{21} & \mmA_{22} & \cdots & \mmA_{2s} \\
+    \vdots    & \vdots    & \ddots & \vdots    \\
+    \mmA_{r1} & \mmA_{r2} & \cdots & \mmA_{rs} }
+    = (\mmA_{ij})_{r\times s}
+  \end{equation}
+  其中，$\mmA_{ij}(i=1,\dots,r,\ j=1,\dots,s)$是$m_i\times n_j$矩阵，
+  $\sum_{i=1}^{r}m_i = m$，$\sum_{j=1}^{s}n_j=n$。
+\end{definition}
+
+最常用的一种矩阵分块方法是把$m\times n$划分成$m$个行向量，
+或者$n$个列向量。
+
+\subsection{分块矩阵的运算}
+分块矩阵的运算中需要注意的是转置和乘法。
+
+转置运算不仅需要把矩阵的每一行转成列，而且内部子块也需要转置。
+对于式\ref{eq:mat-partition}中的矩阵$\mmA$，它的转置是
+\[
+  \mmA^T = \mmat{cccc}{
+    \mmA_{11}^T & \mmA_{21}^T & \cdots & \mmA_{r1}^T \\
+    \mmA_{12}^T & \mmA_{22}^T & \cdots & \mmA_{r2}^T \\
+    \vdots      & \vdots      & \ddots & \vdots      \\
+    \mmA_{1s}^T & \mmA_{2s}^T & \cdots & \mmA_{sr}^T }
+\]
+
+对于乘法运算，
+给定两个矩阵$\mmA=(a_{ij})_{m\times n}$，$\mmB=(b_{jk})_{n\times p}$，
+只要使$\mmB$的行分法与$\mmA$的列分法一致，
+就能把子块当作数一样按照矩阵乘法的规则进行计算。
+
+\subsection{准对角矩阵}
+\begin{definition}[准对角矩阵] 
+  对于$n$阶方阵$\mmA$，
+  如果有一种分法，使$\mmA$的主对角线以外的子块都是零矩阵，
+  且主对角线上子块都是方阵，则称$\mmA$为准对角矩阵。
+\end{definition}
+
+\begin{remark}
+  当然，准对角矩阵包含对角矩阵作为特殊情况。
+\end{remark}
+
+设$\mmA$和$\mmB$都是$n$阶方阵。
+如果有相同的分法，使得
+\[
+\mmA = \mmat{cccc}{
+  \mmA_1 &        &        & \\
+         & \mmA_2 &        & \\
+         &        & \ddots & \\
+         &        &        & \mmA_n },\quad
+\mmB = \mmat{cccc}{
+  \mmB_1 &        &        & \\
+         & \mmB_2 &        & \\
+         &        & \ddots & \\
+         &        &        & \mmB_n }
+\]
+都是准对角矩阵，那么显然有
+\[
+\mmA\mmB = \mmat{cccc}{
+    \mmA_1\mmB_1 &              &        & \\
+                 & \mmA_2\mmB_2 &        & \\
+                 &              & \ddots & \\
+                 &              &        & \mmA_n\mmB_n }
+\]
+
+\section{逆矩阵与初等变换}
+本小节开始讨论逆矩阵，
+并试图通过初等变换的概念，从更本质的视角来看待矩阵
+——矩阵就是所谓标准型乘上有限个初等阵。
+也因为初等阵具有良好的性质——可逆性，
+所以矩阵可逆当且仅当它的标准型就是单位矩阵。
+
+\subsection{逆矩阵}
+\begin{definition}[逆矩阵]
+  设$\mmA$是$n$阶方阵。如果存在$n$阶方阵$\mmB$，使
+  \begin{equation}
+    AB=BA=I
+  \end{equation}
+  则称$\mmB$为$\mmA$的\textbf{逆矩阵}，记作$A^{-1}$，
+  并说$\mmA$是\textbf{非奇异矩阵}或\textbf{可逆矩阵}，
+  否则便称$\mmA$是\textbf{奇异矩阵}或\textbf{不可逆矩阵}。
+\end{definition}
+
+\begin{theorem}[逆矩阵的唯一性]
+  可逆矩阵的逆矩阵是唯一的。
+\end{theorem}
+
+\begin{theorem}[可逆矩阵的性质]
+  若$\mmA,\mmB$是可逆矩阵，
+  则$\mmA^{-1}$，$k\mmA\,(k\neq 0)$，$\mmA^T$，$\mmA\mmB$都是可逆矩阵，且
+  \begin{enumerate}
+    \item $(\mmA^{-1})^{-1} = \mmA$
+    \item $(k\mmA)^{-1} = \frac{1}{k}\mmA^{-1}$
+    \item $(\mmA^T)^{-1} = (\mmA^{-1})^T$
+    \item $(\mmA\mmB)^{-1} = \mmB^{-1}\mmA^{-1}$
+  \end{enumerate}
+\end{theorem}
+
+\subsection{初等变换与初等阵}
+矩阵的\textbf{初等变换}可以分为\textbf{初等行变换}和\textbf{初等列变换}。
+下面主要讨论初等行变换。初等列变换与之相似。
+
+\begin{definition}[初等行变换]
+  初等行变换有三种：
+  \begin{enumerate}
+    \item 交换矩阵的第$i$行和第$j$行，记为$\mTfRowSwi{i}{j}$。
+    \item 将矩阵的第$i$行乘非零常数$k$，记为$\mTfRowMul{k}{j}$。
+    \item 把矩阵的第$i$行加上第$j$行的$k$倍，记为$\mTfRowAdd{i}{+k}{j}$。
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[初等阵]
+  单位矩阵经过一次初等变换得到的矩阵叫做\textbf{初等矩阵}，
+  或简称\textbf{初等阵}。
+\end{definition}
+
+\begin{remark}
+  显然，初等阵是方阵，并且都是可逆的。
+\end{remark}
+
+使用三种初等行变换能得到三个初等阵，
+我们把它们分别记作
+$\mmRowSwi{i}{j}$，$\mmRowMul{k}{i}$和$\mmRowAdd{i}{+k}{j}$。
+对单位矩阵实行一次初等列变换，同样能得到上述三种形式的初等阵，
+所以初等阵只有以上三种。
+
+\begin{theorem}[一般矩阵的初等变换与初等阵的联系]
+  对于一个$m\times n$矩阵$\mmA$做一次初等行变换，
+  就相当于对$\mmA$左乘一个$m$阶初等矩阵；
+  对$\mmA$做一次初等列变换，
+  就相当于对$\mmA$右乘一个$n$阶初等矩阵。
+\end{theorem}
+
+\begin{definition}[矩阵等价]
+  如果矩阵$\mmA$可以通过有限次初等变换化为矩阵$\mmB$，
+  那么就说$\mmA$与$\mmB$等价。
+\end{definition}
+
+\begin{remark}
+  矩阵等价是一个等价关系，即满足自反性、对称性、传递性。
+\end{remark}
+
+\begin{theorem}[标准型]
+  任意非零$m\times n$矩阵$\mmA$都等价于矩阵
+  \[
+    \mmat{cc}{\mmI_r & \mmZero \\ \mmZero & \mmZero}
+    \quad (1\le r \le \min(m,n))
+  \]
+  它称为矩阵$\mmA$的\textbf{标准型}。
+  换句话说，任意非零$m\times n$矩阵$\mmA$，
+  必有初等矩阵$\mmP_1,\dots,\mmP_s$，$\mmQ_1,\dots,\mmQ_t$，
+  使得
+  \[
+    \mmP_s\dots\mmP_1\cdot\mmA\cdot\mmQ_1\dots\mmQ_t = 
+      \mmat{cc}{\mmI_r & \mmZero \\ \mmZero & \mmZero}
+  \]
+\end{theorem}
+
+因为初等矩阵可逆，所以有如下推论
+
+\begin{corollary}
+  对于任意非零$m\times n$矩阵$\mmA$，
+  存在可逆$m\times m$矩阵$\mmP$和可逆$n\times n$矩阵$\mmQ$，
+  使得
+  \[
+    \mmP\mmA\mmQ = \mmat{cc}{\mmI_r & \mmZero \\ \mmZero & \mmZero}
+    \quad (1\le r \le \min(m,n))
+  \]
+  或写成
+  \[
+    \mmA = \mmP^{-1}\mmat{cc}{\mmI_r & \mmZero \\ \mmZero & \mmZero}\mmQ^{-1}
+    \quad (1\le r \le \min(m,n))
+  \]
+\end{corollary}
+
+\subsection{矩阵可逆的充要条件}
+
+\begin{theorem}
+  设$\mmA,\mmB$是$n$阶方阵，
+  若$\mmA\mmB=\mmI_n$，
+  则$\mmA,\mmB$都是可逆阵，且它们互为逆阵。
+\end{theorem}
+
+\begin{theorem} \label{thrm-inv-equiv-cond}
+  设$\mmA$是$n$阶方阵，则下列结论等价：
+  \begin{enumerate}
+    \item $\mmA$是可逆矩阵。
+    \item $\mmA$可以表示为有限个初等阵的乘积。
+    \item $\mmA$可以经过有限次初等变换化为单位矩阵。
+  \end{enumerate}
+\end{theorem}
+
+\subsection{用初等变换求逆矩阵}
+\[
+  \mmat{c|c}{\mmA & \mmI} \xrightarrow{\text{初等行变换}}
+  \mmat{c|c}{\mmI & \mmA^{-1}}
+\]

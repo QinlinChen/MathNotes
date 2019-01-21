@@ -1,0 +1,276 @@
+\chapter{行列式}
+
+\section{行列式}
+本小节开始讨论行列式的概念。
+
+首先我们给出了行列式的定义。
+但是，如果我们根据行列式的定义来计算行列式，除了一些特殊矩阵，
+用计算科学的说法，大部分$n$阶行列式的计算复杂度是$O(n!)$，
+因此我们需要探索更高效的方法来计算行列式。
+
+接下来，我们给出了行列式的一些基本性质。
+有了这些性质，我们得到了新的行列式计算方法，
+而且稍加分析，就能惊喜地看出这个方法的时间复杂度是$O(n^3)$。
+
+\subsection{$n$阶行列式}
+\begin{definition}[$n$级排列]
+  $n$个自然数按任意固定的顺序构成的一个排列称为$n$\textbf{级排列}。
+  所有$n$级排列构成的集合记作$\pi_n$。
+\end{definition}
+
+\begin{definition}[逆序数]
+  在一个$n$级排列$(i_1,i_2,\dots,i_n)$中，
+  如果$i_r>i_s$，但是$r<s$，即前面的数大于后面的数，
+  就称这两个数构成\textbf{逆序对}。
+  一个排列中逆序对的个数叫做这个排列的\textbf{逆序数}，
+  记作$\tau(i_1,i_2,\dots,i_n)$。
+\end{definition}
+
+\begin{definition}[奇、偶排列]
+  逆序数为奇数的排列叫做\textbf{奇排列}；
+  逆序数为偶数的排列叫做\textbf{偶排列}。
+\end{definition}
+
+\begin{definition}[$n$阶行列式]
+  设$\mmA=(a_{ij})_{n\times n}$是$n$阶方阵，它的$n$阶行列式为
+  \begin{align*}
+    |\mmA| &= \sum_{(j_1,j_2,\dots,j_n)\in\pi_n}
+    (-1)^{\tau(j_1,j_2,\dots,j_n)}a_{1j_1}a_{2j_2}\dots a_{nj_n} \\
+    &= \sum_{(i_1,i_2,\dots,i_n)\in\pi_n}
+    (-1)^{\tau(i_1,i_2,\dots,i_n)}a_{i_1 1}a_{i_2 2}\dots a_{i_n n} 
+  \end{align*}
+\end{definition}
+
+特殊矩阵的行列式：
+\begin{enumerate}
+  \item $|\mdiag(d_1,d_2,\dots,d_n)| = d_1d_2\dots d_n$
+  \item 三角阵的行列式为对角线之积
+\end{enumerate}
+
+\subsection{行列式的性质}
+\begin{theorem}
+  若$\mmA$为方阵，那么$|\mmA^T| = |\mmA|$
+\end{theorem}
+
+\begin{theorem}
+  \begin{align*}
+    &\quad\mdet{cccc}{
+      a_{11} & a_{12} & \cdots & a_{1n} \\
+      \vdots &        &        &        \\
+      b_{i1} + c_{i1} & b_{i2} + c_{i2}  & \cdots & b_{in} + c_{in} \\
+      \vdots &        &        &        \\
+      a_{n1} & a_{n2} & \cdots & a_{nn} } \\
+    &= \mdet{cccc}{
+      a_{11} & a_{12} & \cdots & a_{1n} \\
+      \vdots &        &        &        \\
+      b_{i1} & b_{i2} & \cdots & b_{in} \\
+      \vdots &        &        &        \\
+      a_{n1} & a_{n2} & \cdots & a_{nn} }
+    + \mdet{cccc}{
+      a_{11} & a_{12} & \cdots & a_{1n} \\
+      \vdots &        &        &        \\
+      c_{i1} & c_{i2} & \cdots & c_{in} \\
+      \vdots &        &        &        \\
+      a_{n1} & a_{n2} & \cdots & a_{nn} }
+    \end{align*}
+\end{theorem}
+
+\begin{theorem}
+  设$\mmA$为$n$阶方阵。
+  若$\mmA$有两行元素相等或对应成比例，
+  那么$|\mmA| = 0$。
+\end{theorem}
+
+\begin{theorem}
+  \begin{displaymath}
+    \mdet{cccc}{
+      a_{11} & a_{12} & \cdots & a_{1n} \\
+      \vdots &        &        &        \\
+      \lambda a_{i1} & \lambda a_{i2} & \cdots & \lambda a_{in} \\
+      \vdots &        &        &        \\
+      a_{n1} & a_{n2} & \cdots & a_{nn} }
+    = \lambda \mdet{cccc}{
+      a_{11} & a_{12} & \cdots & a_{1n} \\
+      \vdots &        &        &        \\
+      a_{i1} & a_{i2} & \cdots & a_{in} \\
+      \vdots &        &        &        \\
+      a_{n1} & a_{n2} & \cdots & a_{nn} }
+  \end{displaymath}
+\end{theorem}
+
+\begin{theorem} \label{thrm-det-rowswi}
+  交换方阵$\mmA$的两行，仅改变$\mmA$行列式的符号，
+  即\[ |\mmRowSwi{i}{j}\mmA| = -|\mmA| \]
+\end{theorem}
+
+\begin{theorem} \label{thrm-det-rowadd}
+  对方阵$\mmA$做$\mTfRowAdd{i}{+k}{j}$变换，不改变$\mmA$的行列式，
+  即\[ |\mmRowAdd{i}{+k}{j}\mmA| = |\mmA| \]
+\end{theorem}
+
+\subsection{用行列式的性质求行列式}
+使用行列式的性质把行列式转化成上三角矩阵的行列式。
+后者的行列式即为对角线之积。
+
+\section{行列式按行(列)展开}
+本小节讨论另一种行列式的计算方法。
+
+\subsection{行列式按一行(列)展开}
+\begin{definition}[余子式]
+  在$n$阶行列式$|\mmA|=|a_{ij}|_{n\times n}$中划去第$i$行第$j$列后
+  所剩下的$(n-1)^2$个元素按照原来的相对位置排成的$n-1$阶子式$M_{ij}$
+  叫做元素$a_{ij}$在$\mmA$中的\textbf{余子式}。
+  而\[ A_{ij} = (-1)^{i+j}M_{ij} \]
+  叫做元素$a_{ij}$在$\mmA$中的\textbf{代数余子式}。
+  这里$1\le i, j \le n$。
+\end{definition}
+
+\begin{theorem}[按行(列)展开] \label{thrm-det-expansion}
+  $n$阶行列式$|\mmA|=|a_{ij}|_{n\times n}$
+  等于任一行(列)各元素与其代数余子式的乘积之和，即
+  \begin{align*}
+  |\mmA| &= a_{i1}A_{i1}+a_{i2}A_{i2}+\dots+a_{in}A_{in}\quad(i=1,2,\dots,n) \\
+  |\mmA| &= a_{1j}A_{1j}+a_{2j}A_{2j}+\dots+a_{nj}A_{nj}\quad(j=1,2,\dots,n)
+  \end{align*}
+\end{theorem}
+
+\begin{theorem} \label{thrm-det-expansion-zero}
+  $n$阶行列式$|\mmA|=|a_{ij}|_{n\times n}$
+  的任一行(列)元素与另一行(列)元素的代数余子式乘积之和等于零，即
+  \begin{align*}
+    a_{i1}A_{j1}+a_{i2}A_{j2}+\dots+a_{in}A_{jn} &= 0\quad(i\neq j) \\
+    a_{1i}A_{1j}+a_{2i}A_{2j}+\dots+a_{ni}A_{nj} &= 0\quad(i\neq j)
+  \end{align*}
+\end{theorem}
+
+\begin{remark}
+  定理\ref{thrm-det-expansion}和\ref{thrm-det-expansion-zero}
+  可以统一表示为(仅列出行的情况)
+  \begin{displaymath}
+  \sum_{k=1}^{n}a_{ik}A_{jk} = \begin{cases}
+    |\mmA| & (i=j) \\
+    0      & (i\neq j)
+  \end{cases}
+  \end{displaymath}
+\end{remark}
+
+\subsection{范德蒙(Vandermonde)行列式}
+\begin{displaymath}
+  V_n = \mdet{ccccc}{
+    1         & 1         & 1         & \cdots & 1      \\
+    x_1       & x_2       & x_3       & \cdots & x_n    \\
+    x_1^2     & x_2^2     & x_3^2     & \cdots & x_n^2  \\
+    \vdots    & \vdots    & \vdots    & \ddots & \vdots \\
+    x_1^{n-1} & x_2^{n-1} & x_3^{n-1} & \cdots & x_n^{n-1} 
+  } = \prod_{1\le i<j\le n}(x_j - x_i)
+\end{displaymath}
+
+\section{用行列式求逆阵\ 克莱姆法则}
+本小节通过引入伴随矩阵这个中间媒介，
+来探索方阵可逆与行列式之间的关系，
+从而得到方阵可逆的充要条件，以及通过行列式求逆阵方法。
+
+有了上述方法，我们就能利用行列式来解线性方程组，
+并总结出了克莱姆法则。但克莱姆法则也有其局限性。
+后面会讲高斯消元来解一般线性方程组。
+
+\subsection{用行列式求逆矩阵}
+\begin{theorem}[行列式乘法规则] \label{thrm-det-mul}
+  对任意$n$阶方阵$\mmA,\mmB$,有
+  \[ |\mmA\mmB|=|\mmA||\mmB| \]
+\end{theorem}
+
+\begin{remark}
+  证明思路是，首先证明引理：对任意$n$阶方阵$\mmA$和$n$阶初等阵$\mmP$，
+  有$|\mmA\mmP|=|\mmP\mmA|=|\mmP||\mmA|$。
+  然后利用定理\ref{thrm-inv-equiv-cond}对$\mmB$讨论：
+  如果$\mmB$可逆，就能拆成一系列初等阵之积，从而利用引理得证；
+  如果$\mmB$不可逆，只要证明等式两边都等于0。
+\end{remark}
+
+\begin{theorem}[行列式数乘规则] \label{thrm-det-num-mul}
+  对任意$n$阶方阵$\mmA$和$\lambda\in\mfR$，有
+  \[ |\lambda\mmA| = \lambda^n|\mmA| \]
+\end{theorem}
+
+\begin{definition}[伴随矩阵]
+  $n$阶方阵$\mmA$的\textbf{伴随矩阵}为
+  \begin{displaymath}
+    \mmA^* = \mmat{cccc}{
+      A_{11} & A_{12} & \cdots & A_{1n} \\
+      A_{21} & A_{22} & \cdots & A_{2n} \\
+      \vdots & \vdots & \ddots & \vdots \\
+      A_{m1} & A_{m2} & \cdots & A_{mn} }^T
+  \end{displaymath}
+\end{definition}
+
+\begin{theorem}[伴随矩阵的性质] \label{thrm-adjugate-mat-prop}
+  设$\mmA$是$n$阶方阵，那么有
+  \[ \mmA\mmA^*=\mmA^*\mmA=|\mmA|\mmI \]
+\end{theorem}
+
+\begin{remark}
+  伴随矩阵就是为了这个性质而定义的。
+\end{remark}
+
+\begin{theorem}[伴随矩阵的行列式]
+  设$\mmA$是$n$阶方阵，那么有
+  \[ |\mmA^*| = |\mmA|^{n-1} \]
+\end{theorem}
+
+\begin{remark}
+  该式对$|\mmA|$取任意值都成立。
+  当$|\mmA|\neq 0$时，
+  对伴随矩阵的性质\ref{thrm-adjugate-mat-prop}
+  应用行列式乘法规则\ref{thrm-det-mul}
+  以及数乘规则\ref{thrm-det-num-mul}即可证明该式。
+  当$|\mmA|=0$时，
+  则直接通过定义来证明。
+\end{remark}
+
+\begin{theorem}[方阵可逆的充要条件]
+  设$\mmA$是$n$阶方阵，那么
+  \[ \mmA\ \text{可逆} \iff |\mmA| \neq 0 \]
+  并且对于可逆矩阵$\mmA$有
+  \begin{enumerate}
+    \item $\mmA^{-1} = \mmA^*/|\mmA|$
+    \item $(\mmA^*)^{-1} = \mmA/|\mmA|$
+  \end{enumerate}
+\end{theorem}
+
+\subsection{线性代数方程组与克莱姆(Cramer)法则}
+$n$元方程组的矩阵形式为
+\begin{equation} \label{eq-linear-eq-set}
+  \mmA \mvx = \mvb
+\end{equation}
+其中$\mmA = (a_{ij})_{n\times n}$是\textbf{系数矩阵}，
+$\overline{\mmA}=(\mmA, \mvb)$是\textbf{增广矩阵}，
+$\mvx = (x_1,\dots,x_n)^T$与$\mvb = (b_1,\dots,b_n)^T$是$n$维列向量，
+分别称为\textbf{未知向量}与\textbf{常数向量}。
+若$\mvx$的一组取值$\hat{\mvx}$能满足\ref{eq-linear-eq-set}，
+则称$\hat{\mvx}$为\ref{eq-linear-eq-set}的一个\textbf{解向量}。
+
+若常数向量不为$\mvZero$，则称\ref{eq-linear-eq-set}为\textbf{非齐次线性方程组}，
+否则，叫做\textbf{齐次线性方程组}。
+
+\begin{theorem}[克莱姆(Cramer)法则]
+  若$n$元线性代数方程组的系数矩阵$\mmA$的行列式$|\mmA|\neq 0$，
+  则方程组有唯一解$\mvx = (x_1,\dots,x_n)$，其中
+  \begin{displaymath}
+    x_j = \frac{D_j}{|\mmA|} \quad (j=1,\dots,n)
+  \end{displaymath}
+  $D_j$是将$|\mmA|$的第$j$列换成$\mvb$所得的行列式。
+\end{theorem}
+
+\begin{corollary}[齐次线性方程组有非零解的充要条件]
+  对于$n$元齐次线性方程组$\mmA\mvx=\mvZero$，
+  若$|\mmA|\neq 0$，则只有零解；
+  若$|\mmA| = 0$，则有无穷多非零解。
+\end{corollary}
+
+\begin{remark}
+  值得注意的是，克莱姆法则只适用于方程个数等于未知量个数的方程组，
+  而且系数行列式不能为零。
+  此外，克莱姆法则的计算复杂度也更高，为$O(n^4)$，
+  不如后面要介绍的高斯消元法$O(n^3)$的复杂度。
+\end{remark}
