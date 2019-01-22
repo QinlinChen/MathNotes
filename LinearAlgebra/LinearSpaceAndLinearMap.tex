@@ -411,21 +411,25 @@
   矩阵的相似是等价关系。
 \end{remark}
 
-\begin{theorem}[矩阵相似的等价条件]
+\begin{theorem}[矩阵相似的等价条件] \label{thrm-mat-sim-equiv-cond}
   两个$n$阶方阵$\mmA,\mmB$相似当且仅当
   它们是$n$维线性空间$V$上的某一线性变换$T$在不同基下的矩阵。
 \end{theorem}
 
 \section{特征值与特征向量}
-TODO
+本小节首先会花一些篇幅来分析特征值，而不是简单给出求解特征值的方法。
+这样是试图加强对特征值意义的理解。
+然后会给出一些矩阵之间特征值的关联。
+最后讨论一下矩阵的对角化问题。
+
 \subsection{特征值与特征向量}
 对于$n$维线性空间$V$内的一个线性变换$T$，
 我们总希望找一组基$\xi_1,\xi_2,\dots,\xi_n$，
 使得$T$在这组基下的矩阵具有最简单的形式，即有
-\begin{displaymath}
+\begin{equation} \label{eq-diagonalizable}
   (T(\xi_1), T(\xi_2),\dots,T(\xi_n)) = (\xi_1,\xi_2,\dots,\xi_n)
     \cdot \mdiag(\lambda_1,\lambda_2,\dots,\lambda_n)
-\end{displaymath}
+\end{equation}
 这样，根据式\ref{eq-coord-after-linear-trans}，
 任意$\alpha\in V$经过$T$变换后的坐标就是把它在
 基$\xi_1,\xi_2,\dots,\xi_n$下的坐标放大常数倍。
@@ -504,9 +508,10 @@ $\mvx=(x_1,\dots,x_n)^T$。
 \end{definition}
 
 \begin{remark}
-  线性变换和矩阵的特征值还是有区别的。
-  线性变换的特征值属于线性空间的数域$\mfF$，
-  而矩阵的特征值属于复数域。
+  线性变换和矩阵的特征值、特征向量还是有区别的。
+  线性变换的特征值属于线性空间的数域$\mfF$，而矩阵的特征值属于复数域。
+  另外，矩阵的特征向量在线性变换眼里就是一个坐标，
+  它需要与线性变换对应这个矩阵的基相乘，才是线性空间的特征向量。
 \end{remark}
 
 \begin{definition}[矩阵的谱]
@@ -560,6 +565,84 @@ $\mvx=(x_1,\dots,x_n)^T$。
   因此求出的特征值都应该是相同的。
 \end{remark}
 
-\subsection{矩阵的对角化}
-TODO
+\begin{theorem}[分块对角矩阵的特征值]
+  设$\mmA$是分块对角矩阵
+  \begin{displaymath}
+    \mmA = \mmat{cccc}{
+      \mmA_1 & & & \\
+      & \mmA_2 & & \\
+      & & \ddots & \\
+      & & & \mmA_n }
+  \end{displaymath}
+  则$\mmA$的特征多项式就是$\mmA_1,\dots,\mmA_n$的特征多项式的乘积。
+  从而$\mmA_1,\dots,\mmA_n$的所有特征值就是$\mmA$的全部特征值。
+\end{theorem}
 
+\subsection{矩阵的对角化}
+回想一下式\ref{eq-diagonalizable}，
+这是我们一开始就想要获得的性质，
+我们把这个性质称为``可对角化''。
+经过之前的讨论，我们现在知道，
+式\ref{eq-diagonalizable}中对角矩阵上的对角线元素就是特征值，
+那一组基就是特征向量。
+然而，尽管我们现在会找特征值与特征向量了，
+但是能找到的所有特征向量未必能构成一组基。
+我们现在要研究在什么条件下，这个可对角化的性质可以被满足。
+
+\begin{definition}[可对角化的矩阵]
+  设$T$是$n$维线性空间上的一个线性变换。
+  如果存在一组基，使$T$在这组基下的矩阵是对角形，
+  则说$T$所对应的矩阵是\textbf{可对角化矩阵}。
+\end{definition}
+
+\begin{remark}
+  根据定理\ref{thrm-mat-sim-equiv-cond}，
+  我们可以得到另一种说法：
+  矩阵可对角化当且仅当它相似于对角矩阵。
+\end{remark}
+
+\begin{theorem}[矩阵可对角化的充要条件]
+  $n$阶矩阵$\mmA$可对角化当且仅当它有$n$个线性无关的特征向量。
+\end{theorem}
+
+\begin{remark}
+  如果$\xi_1,\dots,\xi_n$是$\mmA$的$n$个线性无关的特征向量，
+  它们各自对应的特征值是$\lambda_1,\dots,\lambda_n$，
+  那么，存在矩阵$\mmP=(\xi_1,\dots,\xi_n)$，使得
+  \begin{displaymath}
+    \mmP^{-1}\mmA\mmP = \mmat{ccc}{
+      \lambda_1 & & \\
+      & \ddots    & \\
+      & & \lambda_n }
+  \end{displaymath}
+\end{remark}
+
+接下来，我们再进一步细化这个充要条件。
+\begin{lemma}
+  矩阵互异的特征值所对应的特征向量线性无关。
+\end{lemma}
+
+\begin{lemma}
+  设矩阵的两个互异的特征值为$\lambda_1,\lambda_2$，
+  $\xi_1,\dots,\xi_m$是$\lambda_1$的特征向量，
+  $\eta_1,\dots,\eta_n$是$\lambda_2$的特征向量，
+  则$\xi_1,\dots,\xi_m,\eta_1,\dots,\eta_n$线性无关。
+\end{lemma}
+
+\begin{lemma}
+  矩阵特征值的几何重数小于等于代数重数。
+  换句话说，假设$\lambda$是矩阵的一个$k$重特征根，
+  则对应于$\lambda$的特征向量中，
+  极大线性无关组的大小不会超过$k$。
+\end{lemma}
+
+\begin{theorem}[矩阵可对角化的充要条件]
+  $n$阶矩阵$\mmA$可对角化当且仅当
+  对于每个$k_i$重特征根$\lambda_i$，
+  $\mmA-\lambda_i\mmI$的秩为$n-k_i$
+\end{theorem}
+
+\begin{remark}
+  换句话说，矩阵可对角化当且仅当
+  所有特征根的几何重数等于代数重数。
+\end{remark}
