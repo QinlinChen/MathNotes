@@ -32,7 +32,7 @@
 
 \begin{theorem}[线性相关与线性无关的等价条件]
   设$\alpha_1,\alpha_2,\dots,\alpha_r$是一组$n$维列向量，
-  $\mvk = (k_1,k_2,\dots,k_r)^T$，
+  $\mvk = (k_1,k_2,\dots,k_r)^\mT$，
   矩阵$\mmA = (\alpha_1,\alpha_2,\dots,\alpha_r)$，那么
   \begin{align*}
   \alpha_1,\alpha_2,\dots,\alpha_r\ \text{线性相关}
@@ -278,10 +278,10 @@
   由此得到一个基础解系为
   \begin{displaymath}
   \meqs{rcl} {
-    \xi_1 &=& (\xi_{11}, \xi_{21}, \dots, \xi_{r1}, 1, 0, \dots, 0)^T \\
-    \xi_2 &=& (\xi_{12}, \xi_{22}, \dots, \xi_{r2}, 0, 1, \dots, 0)^T \\
+    \xi_1 &=& (\xi_{11}, \xi_{21}, \dots, \xi_{r1}, 1, 0, \dots, 0)^\mT \\
+    \xi_2 &=& (\xi_{12}, \xi_{22}, \dots, \xi_{r2}, 0, 1, \dots, 0)^\mT \\
     & \vdots & \\
-    \xi_{n-r} &=& (\xi_{1n-r}, \xi_{2n-r}, \dots, \xi_{rn-r}, 0, 0, \dots, 1)^T
+    \xi_{n-r} &=& (\xi_{1n-r}, \xi_{2n-r}, \dots, \xi_{rn-r}, 0, 0, \dots, 1)^\mT
   }
   \end{displaymath}
   方程组任何解$\xi$都可以由$\xi_1,\dots,\xi_{n-r}$线性表示。

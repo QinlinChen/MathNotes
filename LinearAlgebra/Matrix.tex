@@ -88,23 +88,23 @@
     设$\mmA=(a_{ij})_{m\times n}$，
     令$b_{ij}=a_{ji}$，
     则$\mmB=(b_{ij})_{n\times m}$被称为$\mmA$的转置矩阵，
-    记为$\mmA^T$。
+    记为$\mmA^\mT$。
 \end{definition}
 
 \begin{theorem}[转置矩阵的性质]
   转置矩阵具有以下性质：
   \begin{enumerate}
-    \item $\left(\mmA^T\right)^T = \mmA$
-    \item $(\mmA+\mmB)^T=\mmA^T + \mmB^T$
-    \item $(k\mmA)^T=k\mmA^T$
-    \item $(\mmA\mmB)^T=\mmB^T\mmA^T$
+    \item $\left(\mmA^\mT\right)^\mT = \mmA$
+    \item $(\mmA+\mmB)^\mT=\mmA^\mT + \mmB^\mT$
+    \item $(k\mmA)^\mT=k\mmA^\mT$
+    \item $(\mmA\mmB)^\mT=\mmB^\mT\mmA^\mT$
   \end{enumerate}
 \end{theorem}
 
 \begin{definition}[对称矩阵与反对称矩阵]
   对于$n$阶方阵$\mmA=(a_{ij})$，
-  如果满足$\mmA^T=\mmA$，则称$\mmA$为\textbf{对称矩阵}。
-  如果满足$\mmA^T=-\mmA$，则称$\mmA$为\textbf{反对称矩阵}。
+  如果满足$\mmA^\mT=\mmA$，则称$\mmA$为\textbf{对称矩阵}。
+  如果满足$\mmA^\mT=-\mmA$，则称$\mmA$为\textbf{反对称矩阵}。
 \end{definition}
 
 \begin{remark}
@@ -140,11 +140,11 @@
 转置运算不仅需要把矩阵的每一行转成列，而且内部子块也需要转置。
 对于式\ref{eq:mat-partition}中的矩阵$\mmA$，它的转置是
 \[
-  \mmA^T = \mmat{cccc}{
-    \mmA_{11}^T & \mmA_{21}^T & \cdots & \mmA_{r1}^T \\
-    \mmA_{12}^T & \mmA_{22}^T & \cdots & \mmA_{r2}^T \\
-    \vdots      & \vdots      & \ddots & \vdots      \\
-    \mmA_{1s}^T & \mmA_{2s}^T & \cdots & \mmA_{sr}^T }
+  \mmA^\mT = \mmat{cccc}{
+    \mmA_{11}^\mT & \mmA_{21}^\mT & \cdots & \mmA_{r1}^\mT \\
+    \mmA_{12}^\mT & \mmA_{22}^\mT & \cdots & \mmA_{r2}^\mT \\
+    \vdots        & \vdots        & \ddots & \vdots        \\
+    \mmA_{1s}^\mT & \mmA_{2s}^\mT & \cdots & \mmA_{sr}^\mT }
 \]
 
 对于乘法运算，
@@ -210,11 +210,11 @@
 
 \begin{theorem}[可逆矩阵的性质]
   若$\mmA,\mmB$是可逆矩阵，
-  则$\mmA^{-1}$，$k\mmA\,(k\neq 0)$，$\mmA^T$，$\mmA\mmB$都是可逆矩阵，且
+  则$\mmA^{-1}$，$k\mmA\,(k\neq 0)$，$\mmA^\mT$，$\mmA\mmB$都是可逆矩阵，且
   \begin{enumerate}
     \item $(\mmA^{-1})^{-1} = \mmA$
     \item $(k\mmA)^{-1} = \frac{1}{k}\mmA^{-1}$
-    \item $(\mmA^T)^{-1} = (\mmA^{-1})^T$
+    \item $(\mmA^\mT)^{-1} = (\mmA^{-1})^\mT$
     \item $(\mmA\mmB)^{-1} = \mmB^{-1}\mmA^{-1}$
   \end{enumerate}
 \end{theorem}

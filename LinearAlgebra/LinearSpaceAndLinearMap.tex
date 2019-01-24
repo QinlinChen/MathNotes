@@ -154,7 +154,7 @@
 \begin{theorem}[坐标变换公式]
   设$\mmBasis{\alpha}$和$\mmBasis{\beta}$是线性空间$V$的两组基底，
   $\mmP$是从$\mmBasis{\alpha}$到$\mmBasis{\beta}$的过渡矩阵。
-  若$\mvx=(x_1,\dots,x_n)^T$和$\mvy=(y_1,\dots,y_n)^T$
+  若$\mvx=(x_1,\dots,x_n)^\mT$和$\mvy=(y_1,\dots,y_n)^\mT$
   分别是元素$\alpha\in V$在基底$\mmBasis{\alpha}$和$\mmBasis{\beta}$下的坐标，即
   \[ \alpha = \mmBasis{\beta}\mvy = \mmBasis{\alpha}\mvx \]
   那么有
@@ -348,7 +348,7 @@
 我们就能通过矩阵求出它经过线性变换后元素：
 \begin{equation} \label{eq-coord-after-linear-trans}
   T(\alpha) = (\epsilon_1,\epsilon_2,\dots,\epsilon_n)\mmA
-    (x_1,x_2,\dots,x_n)^T
+    (x_1,x_2,\dots,x_n)^\mT
 \end{equation}
 因此，我们称$\mmA$是
 \textbf{线性变换$T$在基$\epsilon_1,\epsilon_2\dots,\epsilon_n$下的矩阵}。
@@ -364,7 +364,7 @@
 对任意$\alpha=x_1\epsilon_1+x_2\epsilon_2+\dots+x_n\epsilon_n\in V$，
 \begin{displaymath}
   T(\alpha) = (\epsilon_1,\epsilon_2,\dots,\epsilon_n)\mmA
-    (x_1,x_2,\dots,x_n)^T
+    (x_1,x_2,\dots,x_n)^\mT
 \end{displaymath}
 
 总结一下上面的论述，有如下定理：
@@ -463,7 +463,7 @@
 $T$在这组基下的矩阵是$\mmA$。
 设$\xi$是线性变换$T$的一个特征向量，它对应的特征值是$\lambda$，
 它在基$\epsilon_1,\epsilon_2,\dots,\epsilon_n$下的坐标是
-$\mvx=(x_1,\dots,x_n)^T$。
+$\mvx=(x_1,\dots,x_n)^\mT$。
 那么，根据式\ref{eq-coord-after-linear-trans}，我们有
 \[ T(\xi) = (\epsilon_1,\epsilon_2,\dots,\epsilon_n)\mmA\mvx \]
 又因为

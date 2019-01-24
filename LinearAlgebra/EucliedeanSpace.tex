@@ -1,7 +1,168 @@
-\chapter{欧几里得空间}
+\chapter{内积空间与正交性}
 
-\section{欧几里得空间}
+\section{内积空间}
 我们知道线性空间是对向量的抽象，而向量还有内积的概念没有出现在线性空间中。
-所以，本小节在实线性空间的基础上引入内积操作，
+所以，本小节在线性空间的基础上引入内积操作来定义内积空间，
 从而建立了长度、交角、正交性的概念。
-TODO
+根据线性空间数域的不同，我们会在有限维上分别讨论欧几里得空间和酉空间。
+
+\subsection{实内积空间与欧几里得空间}
+\begin{definition}[实内积空间与欧几里得空间]
+  设$V$是实数域$\mfR$上的一个线性空间。
+  对于任意$\alpha,\beta\in V$，
+  定义一个返回实数的运算$(\alpha,\beta)$，满足：
+  \begin{enumerate}
+    \item 对称性：
+    $(\alpha,\beta)=(\beta,\alpha)$
+    \item 线性性：
+    $(k\alpha,\beta)=k(\alpha,\beta),\quad
+      (\alpha+\beta,\gamma)=(\alpha,\gamma)+(\beta,\gamma)$
+    \item 正定性：
+    $(\alpha,\alpha)\ge 0$。
+    当且仅当$\alpha=\theta$时，$(\alpha,\alpha)=0$
+  \end{enumerate}
+  其中$\alpha,\beta,\gamma\in V, k\in\mfR$。
+  我们称$(\alpha,\beta)$为$\alpha,\beta$的\textbf{内积}，
+  $V$为\textbf{实内积空间}。
+  有限维的实内积空间又称\textbf{欧几里得空间}。
+\end{definition}
+
+\begin{theorem}[实内积空间的性质] \label{thrm-real-inner-prod-space-prop}
+  设$V$是实内积空间。对于$\alpha,\beta,\gamma\in V, k\in\mfR$，有
+  \begin{enumerate}
+    \item \label{thrm-RIPS-prop1}
+    $(\alpha,\beta+\gamma)=(\alpha,\gamma)+(\beta,\gamma)$
+    \item
+    $(\alpha,k\beta)=k(\alpha,\beta)$
+    \item
+    $(\theta,\beta)=0=(\alpha,\theta)$
+    \item
+    $(\alpha,\beta)=
+      \left(\sum_{i=1}^{m}a_i\alpha_i,\sum_{j=1}{n}b_j\beta_j\right) $
+    \begin{equation} \label{eq-metric-mat}
+      = (a_1,a_2,\dots,a_m) \mmat{cccc}{
+        (\alpha_1,\beta_1)&(\alpha_1,\beta_2)&\cdots&(\alpha_1,\beta_n)\\
+        (\alpha_2,\beta_1)&(\alpha_2,\beta_2)&\cdots&(\alpha_2,\beta_n)\\
+        \vdots            &\vdots            &\ddots&\vdots            \\
+        (\alpha_m,\beta_1)&(\alpha_m,\beta_2)&\cdots&(\alpha_m,\beta_n)}
+        \mmat{c}{b_1 \\ b_2 \\ \vdots \\ b_n}
+    \end{equation}
+  \end{enumerate}
+\end{theorem}
+
+\begin{definition}[长度]
+  设$V$是实内积空间。对于$\alpha\in V$，
+  $\| \alpha \| = \sqrt{(\alpha,\alpha)}$
+  称为$\alpha$的\textbf{长度}或\textbf{模}。
+\end{definition}
+
+\begin{theorem}[柯西-施瓦兹(Cauchy-Schwartz)不等式]
+  设$V$是实内积空间。对于任意$\alpha,\beta\in V$，有
+  \begin{displaymath}
+    |(\alpha,\beta)| \le \|\alpha\|\cdot\|\beta\|
+  \end{displaymath}
+  等号仅在$\alpha,\beta$线性相关时成立。
+\end{theorem}
+
+\begin{definition}[交角]
+  实内积空间中的两个非零向量$\alpha,\beta$的交角$\theta$定义为
+  \begin{displaymath}
+    \theta = \arccos\frac{(\alpha,\beta)}{\|\alpha\|\cdot\|\beta\|},
+    \quad  0\le\theta\le\pi 
+  \end{displaymath}
+\end{definition}
+
+\begin{definition}[正交]
+  设$\alpha,\beta$是实内积空间中的两个向量。
+  若$(\alpha,\beta)=0$，则称$\alpha,\beta$\textbf{正交}，
+  记作$\alpha\perp\beta$。
+\end{definition}
+
+\begin{remark}
+  零向量与任意向量正交。
+\end{remark}
+
+\begin{theorem}[正交的充要条件]
+  设$\alpha,\beta$是实内积空间中的两个向量，则
+  \begin{displaymath}
+    \alpha\perp\beta \iff \|\alpha+\beta\|^2=\|\alpha\|^2+\|\beta\|^2
+  \end{displaymath}
+\end{theorem}
+
+\subsection{复内积空间与酉空间}
+\begin{definition}[复内积空间与酉空间]
+  设$V$是复数域$\mfC$上的一个线性空间。
+  对于任意$\alpha,\beta\in V$，
+  定义一个返回复数的运算$(\alpha,\beta)$，满足：
+  \begin{enumerate}
+    \item 共轭对称性：
+    $(\alpha,\beta)=\mconj{(\beta,\alpha)}$
+    \item 线性性：
+    $(k\alpha,\beta)=k(\alpha,\beta),\quad
+      (\alpha+\beta,\gamma)=(\alpha,\gamma)+(\beta,\gamma)$
+    \item 正定性：
+    $(\alpha,\alpha)$是非负实数。
+    当且仅当$\alpha=\theta$时，$(\alpha,\alpha)=0$
+  \end{enumerate}
+  其中$\alpha,\beta,\gamma\in V, k\in\mfC$。
+  我们称$(\alpha,\beta)$为$\alpha,\beta$的\textbf{内积}，
+  $V$为\textbf{复内积空间}。
+  有限维的复内积空间又称\textbf{酉空间}。
+\end{definition}
+
+\begin{theorem}[复内积空间的性质]
+  复内积空间满足定理\ref{thrm-real-inner-prod-space-prop}列出的
+  除了性质\ref{thrm-RIPS-prop1}以外的所有性质。
+  性质\ref{thrm-RIPS-prop1}应该改写为：
+  \[ (\alpha,k\beta)=\mconj{k}(\alpha,\beta) \]
+\end{theorem}
+
+复内积空间的长度、正交性同实内积空间定义。
+柯西-施瓦兹不等式依旧成立。
+只有交角要重新定义为
+\begin{displaymath}
+  \theta = \arccos\frac{|(\alpha,\beta)|}{\|\alpha\|\cdot\|\beta\|},
+  \quad 0\le\theta\le\frac{\pi}{2}
+\end{displaymath}
+
+下面是复矩阵相关的三个概念。
+只用了解一下，不会深入讨论。
+
+\begin{definition}[共轭矩阵]
+  设$\mmA$是$n$阶复矩阵。
+  把$\mmA$的元素都取共轭得到的矩阵叫做\textbf{共轭矩阵}，
+  记作$\mconj{\mmA}$。
+\end{definition}
+
+\begin{definition}[酉矩阵]
+  设$\mmA$是$n$阶复矩阵。
+  若$\mmA$满足$\mconj{\mmA^\mT}\mmA=\mmA\mconj{\mmA^\mT}=\mmI$，
+  则称$\mmA$是\textbf{酉矩阵}。
+\end{definition}
+
+\begin{remark}
+  酉矩阵是对正交矩阵的推广。正交矩阵会在下面讨论。
+\end{remark}
+
+\begin{definition}[厄米特(Hermite)矩阵]
+  设$\mmA$是$n$阶复矩阵。
+  若$\mmA$满足$\mconj{\mmA^\mT}=\mmA$，
+  则称$\mmA$是\textbf{厄米特(Hermite)矩阵}
+\end{definition}
+
+\begin{remark}
+  厄米特矩阵是对对称矩阵的推广。
+\end{remark}
+
+\section{正交性}
+
+\subsection{欧几里得空间的标准正交基}
+\begin{definition}[度量矩阵]
+  设$V$是$n$维欧几里得空间，$\alpha_1,\dots,\alpha_n$是一组基底。
+  对任意$\alpha,\beta\in V$，
+  有$\alpha=\mmBasis{\alpha}\mvx$，$\beta=\mmBasis{\alpha}\mvy$。
+  根据式\ref{eq-metric-mat}，我们有
+  \begin{displaymath}
+    (\alpha,\beta) = \mvx^\mT\mmA\mvy
+  \end{displaymath}
+\end{definition}
