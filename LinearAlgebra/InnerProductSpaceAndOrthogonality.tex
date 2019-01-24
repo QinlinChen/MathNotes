@@ -154,15 +154,102 @@
   厄米特矩阵是对对称矩阵的推广。
 \end{remark}
 
-\section{正交性}
+\section{欧几里得空间的标准正交基}
+根据式\ref{eq-metric-mat}，我们能发现，给定一组基，
+任意两个元素的内积可以通过坐标向量和一个与这组基相关联矩阵来计算，
+我们把这样的矩阵定义为度量矩阵，以此为起点开始讨论。
 
-\subsection{欧几里得空间的标准正交基}
+首先，我们会探寻不同基的度量矩阵之间的关系，并把这种关系称为合同关系。
+
+然后，我们希望会有这样一组基，它的度量矩阵是单位矩阵，
+因为这样能大大简化我们的内积运算。我们把这样的基叫做标准正交基。
+我们会证明，标准正交基一定是存在的，
+并给出求标准正交基的方法——施密特(Schmit)正交化。
+
+
+\subsection{度量矩阵与矩阵的合同}
 \begin{definition}[度量矩阵]
   设$V$是$n$维欧几里得空间，$\alpha_1,\dots,\alpha_n$是一组基底。
-  对任意$\alpha,\beta\in V$，
-  有$\alpha=\mmBasis{\alpha}\mvx$，$\beta=\mmBasis{\alpha}\mvy$。
+  对任意$\alpha,\beta\in V$，存在坐标向量$\mvx,\mvy$，使得
+  $\alpha=\mmBasis{\alpha}\mvx$，$\beta=\mmBasis{\alpha}\mvy$。
   根据式\ref{eq-metric-mat}，我们有
   \begin{displaymath}
     (\alpha,\beta) = \mvx^\mT\mmA\mvy
   \end{displaymath}
+  其中，$\mmA$如式\ref{eq-metric-mat}中所示。
+  我们称矩阵$\mmA$为维欧几里得空间在基底$\alpha_1,\dots,\alpha_n$下的
+  \textbf{度量矩阵}。
 \end{definition}
+
+线性变换在不同基下对应的矩阵之间有着相似关系，
+那么欧几里得空间不同基下的度量矩阵有什么关系呢？
+
+\begin{definition}[矩阵的合同]
+  设$\mmA,\mmB$是两个$n$阶方阵，如果有满秩方阵$M$，
+  使得$\mmB=\mmM^T\mmA\mmM$，则称$\mmA$与$\mmB$\textbf{合同}。
+\end{definition}
+
+\begin{remark}
+  合同关系是等价关系。
+\end{remark}
+
+\begin{theorem}[不同基底下的度量矩阵的关系]
+  欧几里得空间中两组不同基底下的度量矩阵是合同的。
+\end{theorem}
+
+\begin{remark}
+  如果$\mmBasis{\alpha},\mmBasis{\beta}$是欧几里得空间的两组基底，
+  它们的度量矩阵分别是$\mmA$和$\mmB$，
+  由$\mmBasis{\alpha}$到$\mmBasis{\beta}$的过渡矩阵为$\mmP$，
+  那么$\mmB=\mmP^\mT\mmA\mmP$。
+  合同关系就是由此来定义的。
+\end{remark}
+
+\subsection{标准正交基与施密特(Schmit)正交化}
+\begin{definition}[标准正交基]
+  若$n$维欧几里得空间在基底$\alpha_1,\dots,\alpha_n$下的度量矩阵为单位矩阵，
+  那么我们称$\alpha_1,\dots,\alpha_n$为\textbf{标准正交基}。
+\end{definition}
+
+\begin{remark}
+  欧几里得空间的标准正交基是一组长度为1的两两正交的向量组。
+  欧几里得空间的任意两个元素的内积就是它们对于标准正交基的坐标向量的内积。
+\end{remark}
+
+\begin{theorem}[施密特(Schmit)正交化]
+  在$n$维欧几里得空间$V$中给定任意一组基$\alpha,\alpha_2,\alpha_n$，
+  我们都由此找到一组标准正交基$\beta_1,\beta_2,\dots,\beta_n$：
+  \begin{enumerate}
+    \item 
+    令$\beta_1=\alpha_1$。
+    \item
+    令$\beta_2=k_1\beta_1+\alpha_2$。利用$(\beta_2,\beta_1)=0$能解得
+    \begin{displaymath}
+      k_1 = -\frac{(\alpha_2,\beta_1)}{(\beta_1,\beta_1)}
+    \end{displaymath}
+    代入回去就能得到$\beta_2$。
+    \item
+    令$\beta_3=k_1\beta_1+k_2\beta_2+\alpha_3$。
+    利用$(\beta_3,\beta_1)=0,(\beta_3,\beta_2)=0$，能解得
+    \begin{displaymath}
+      k_1 = -\frac{(\alpha_3,\beta_1)}{(\beta_1,\beta_1)},\quad
+      k_2 = -\frac{(\alpha_3,\beta_2)}{(\beta_2,\beta_2)}
+    \end{displaymath}
+    代入回去就能得到$\beta_3$。
+    \item
+    以此类推，令$\beta_{s+1}=k_1\beta_1+\dots+k_2\beta_s+\alpha_{s+1}$。
+    利用\[ (\beta_{s+1},\beta_{i})=0,\ i=1,\dots,s \]
+    能解得
+    \begin{displaymath}
+      k_i = -\frac{(\alpha_{s+1},\beta_{i})}{(\beta_{i},\beta_{i})},
+      \ i=1,\dots,s
+    \end{displaymath}
+    代入回去就能得到$\beta_s$。
+    \item
+    最后对求得的$\beta_1,\dots,\beta_n$单位化，
+    即令$\beta_i\leftarrow\frac{1}{\|\beta_i\|}\beta_i$，
+    $i=1,\dots,n$。
+  \end{enumerate}
+\end{theorem}
+
+
