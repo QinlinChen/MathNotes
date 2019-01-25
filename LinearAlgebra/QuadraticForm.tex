@@ -1,0 +1,210 @@
+\chapter{二次型}
+
+\section{二次型的概念}
+本小节首先介绍实二次型和标准型的概念，其中最重要的是二次型的矩阵表示。
+然后我们会看到，二次型能通过对变量进行线性变换转化为另一个二次型。
+这两个二次型与表示矩阵的合同有着紧密的联系。
+
+\subsection{二次型与标准型}
+\begin{definition}[实二次型及其矩阵表示]
+  设多项式
+  \begin{equation} \label{eq-quadratic-form}
+    f(x_1,x_2,\dots,x_n)=\sum_{i=1}^n\sum_{j=1}^n a_{ij}x_ix_j,
+    \quad (a_{ij} = a_{ji})
+  \end{equation}
+  其中，$x_1,x_2,\dots,x_n$是变量，$a_{ij}$是实数，
+  那么我们称式\ref{eq-quadratic-form}为\textbf{实二次型}。
+  如果令$\mmA=(a_{ij})_{n\times n}$，$\mvx=(x_1,\dots,x_n)^\mT$，
+  那么$\mmA$是实对称矩阵，且式\ref{eq-quadratic-form}可以用矩阵表示为
+  \begin{displaymath}
+    f(x_1,x_2,\dots,x_n) = \mvx^\mT\mmA\mvx
+  \end{displaymath}
+  我们把$\mmA$叫做$f$的\textbf{表示矩阵}。
+\end{definition}
+
+\begin{remark}
+  下面主要研究的是实二次型。所以下面提到二次型的地方都是指的实二次型。
+\end{remark}
+
+\begin{definition}[标准型]
+  设$\mvx=(x_1,\dots,x_n)^\mT,\mvy=(y_1,\dots,y_n)^\mT$为两组变量，
+  矩阵$\mmP$建立了它们的线性变换关系：$\mvx=\mmP\mvy$。
+  如果$\mmP$为满秩矩阵，那么我们称这种变换为\textbf{满秩线性变换}。
+  如果二次型能通过满秩线性变换变成新变量的平方和，
+  那么我们称新的多项式为该二次型的\textbf{标准型}。
+\end{definition}
+
+\subsection{表示矩阵的合同与二次型的秩}
+如果给定一个二次型$\mvx^\mT\mmA\mvx$和满秩线性变换$\mvx=\mmP\mvy$，
+那么我们能得到
+\begin{displaymath}
+\mvx^\mT\mmA\mvx
+= \mvy^\mT\mmP^\mT\mmA\mmP\mvy
+= \mvy^\mT\mmB\mvy
+\end{displaymath}
+其中$\mmB=\mmP^\mT\mmA\mmP$是二次型$\mvy^\mT\mmB\mvy$的表示矩阵。
+由此可见，经过满秩线性变换联系的两个二次型的表示矩阵$\mmB$和$\mmA$是合同的。
+除此以外，我们不难证明$r(\mmB)=r(\mmA)$。
+据此，我们能定义二次型的秩：
+
+\begin{definition}[二次型的秩]
+  我们称二次型的表示矩阵的秩为\textbf{二次型的秩}。
+\end{definition}
+
+\section{化二次型为标准型}
+下面我们要考虑的问题自然是：如何把二次型化为它的标准型？
+如果我们想要把二次型$\mvx^\mT\mmA\mvx$化为标准型$\mvy^\mT\mmB\mvy$，
+那么$\mmB$必须是对角矩阵。
+所以，把二次型化为标准型的问题就转化为，
+给定一个对称矩阵$\mmA$，如何找到一个与它合同的对角矩阵$\mmB$。
+
+\subsection{实对称矩阵的对角化——正交变换法}
+\begin{theorem}
+  实对称矩阵的特征值都是实数。
+\end{theorem}
+
+\begin{theorem}
+  实对称矩阵不同特征值的特征向量正交。
+\end{theorem}
+
+\begin{theorem}[实对称矩阵的可对角化]
+  对任意实对称矩阵$\mmA$，都存在正交矩阵$\mmQ$，
+  使得$\mmQ^{-1}\mmA\mmQ$为对角矩阵。
+\end{theorem}
+
+以上定理说明了，实对称矩阵是可对角化的，
+所以实对称矩阵必有$n$个线性无关的特征向量。
+又因为实对称矩阵的特征值之间的特征向量都是正交的，
+所以我们只要给特征值内部的特征向量正交化，
+就能得到$n$个正交的特征向量。
+正交矩阵$Q$就是这$n$个特征向量单位化的组合。
+下面是$n$阶实对称矩阵$\mmA$对角化的一般步骤：
+\begin{enumerate}
+  \item
+  求$\mmA$的特征值；
+  \item
+  求$n$个线性无关的特征向量；
+  \item 
+  将每个特征值内的特征向量按照施密特的方法正交化；
+  \item
+  把所有特征向量单位化，就能组合得到$\mmQ$。
+\end{enumerate}
+
+\begin{remark}
+  因为正交矩阵有性质$\mmQ^{-1}=\mmQ$，
+  所以对于实对称矩阵而言，相似于对角矩阵和合同于对角矩阵是一回事——
+  这也就是我们想把二次型化为标准型要做的事情。
+  以上化标准型的方法叫做\textbf{正交变换法}。
+\end{remark}
+
+\begin{theorem}[主轴定理]
+  任何实二次型都可以用正交变换化为标准型。
+\end{theorem}
+
+\subsection{配方法}
+配方法的步骤如下：
+\begin{enumerate}
+  \item 
+  若二次项含有某个变量的平方，那么先集中含有此变量的乘积项，然后配方。
+  \item
+  对剩下的变量依次应用同样的过程。
+  \item
+  最后二次项会化为变量线性组合的平方和。
+\end{enumerate}
+
+\section{规范型与惯性定理}
+从二次型的标准型出发继续做满秩线性变换，能得到平方项的系数只能为$\pm 1$的规范型。
+惯性定理刻画了二次型的本质特征：无论经过怎么样的满秩线性变换，
+最后得到的规范型的正系数和负系数的个数都是相同的。
+
+\subsection{规范型}
+\begin{definition}[规范型]
+  对于二次型，如果能通过满秩线性变换得到形如
+  \begin{displaymath}
+    f = z_1^2+\dots+z_p^2-z_{p+1}^2-\dots-z_{r}^2
+  \end{displaymath}
+  的多项式，则称该多项式为二次型的\textbf{规范型}。
+\end{definition}
+
+\subsection{惯性定理}
+\begin{theorem}
+  秩为$r$的$n$元实二次型$f=\mvx^\mT\mmA\mvx$
+  可以通过满秩线性变换$\mvx=\mmP\mvy$化为规范型
+  \begin{displaymath}
+    f = y_1^2+\dots+y_p^2-y_{p+1}^2-\dots-y_{r}^2
+    + 0\cdot y_{r+1}^2 + \dots + 0\cdot y_{n}^2
+  \end{displaymath}
+  其中$0\le p \le r \le n$。
+\end{theorem}
+
+\begin{theorem}[惯性定理]
+  若对秩为$r$的$n$元实二次型$f=\mvx^\mT\mmA\mvx$
+  做两个满秩线性变换$\mvx=\mmB\mvy$和$\mvx=\mmC\mvz$
+  分别把它们化为规范型
+  \begin{displaymath}
+  f = y_1^2+\dots+y_p^2-y_{p+1}^2-\dots-y_{r}^2
+  \end{displaymath}
+  和
+  \begin{displaymath}
+  f = z_1^2+\dots+z_p^2-z_{q+1}^2-\dots-y_{r}^2
+  \end{displaymath}
+  那么，$p=q$。
+\end{theorem}
+
+\subsection{惯性指数}
+\begin{definition}[正负惯性指数]
+  在二次型$f$的一个标准型中，
+  正项的个数叫做$f$的\textbf{正惯性指数}，
+  负项的个数叫做$f$的\textbf{负惯性指数}。
+\end{definition}
+
+\begin{remark}
+  正负惯性指数之和即是二次型的秩。
+\end{remark}
+
+\begin{theorem}
+  两个$n$元实二次型能够用满秩线性变换相互转化的充要条件是
+  正负惯性指数分别相等。
+\end{theorem}
+
+\section{正定二次型}
+本小节主要讨论一类特殊的实二次型——正定二次型，
+并给出判定正定二次型的充要条件。
+
+\subsection{正定二次型与正定矩阵}
+\begin{definition}[正定二次型与正定矩阵]
+  设$f=\mvx^\mT\mmA\mvx$为实二次型。
+  如果对任意$\mvx\neq\mvZero$，有$\mvx^\mT\mmA\mvx > 0(<0)$，
+  则称这个二次型为\textbf{正定二次型}(\textbf{负定二次型})。
+  $\mmA$则被称为\textbf{正定矩阵}。
+\end{definition}
+
+\begin{theorem}[正定二次型的充要条件]
+  $n$元实二次型是正定二次型的充要条件是它的正惯性指数为$n$。
+\end{theorem}
+
+\begin{definition}[顺序主子式]
+  设$\mmA$为$n$阶矩阵，行列式
+  \begin{displaymath}
+    D_i=\mdet{cccc}{
+      a_{11} & a_{12} & \cdots & a_{1i} \\
+      a_{21} & a_{22} & \cdots & a_{2i} \\
+      \vdots & \vdots & \ddots & \vdots \\
+      a_{i1} & a_{i2} & \cdots & a_{ii} }
+  \end{displaymath}
+  称为$\mmA$的\textbf{$i$阶顺序主子式}($i=1,\dots,n$)。
+\end{definition}
+
+\begin{theorem}[正定矩阵的充要条件]
+  设$\mmA$是$n$阶方阵。以下命题等价：
+  \begin{enumerate}
+    \item
+    $\mmA$是正定矩阵。
+    \item
+    $\mmA$的所有特征值为正。
+    \item
+    $\mmA$合同于单位矩阵。($\mmA$能写成$\mmP^\mT\mmP$)
+    \item
+    $\mmA$的各阶顺序主子式都为正。
+  \end{enumerate}
+\end{theorem}
