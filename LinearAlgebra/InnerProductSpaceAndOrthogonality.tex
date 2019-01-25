@@ -2,9 +2,11 @@
 
 \section{内积空间}
 我们知道线性空间是对向量的抽象，而向量还有内积的概念没有出现在线性空间中。
-所以，本小节在线性空间的基础上引入内积操作来定义内积空间，
+所以，本小节首先在线性空间的基础上引入内积操作来定义内积空间，
 从而建立了长度、交角、正交性的概念。
-根据线性空间数域的不同，我们会在有限维上分别讨论欧几里得空间和酉空间。
+然后根据线性空间数域的不同，我们会在有限维上分别讨论欧几里得空间和酉空间。
+最后，我们讨论一下线性空间和欧几里得空间同构的概念，
+说明它们都同构于我们常用的向量空间。
 
 \subsection{实内积空间与欧几里得空间}
 \begin{definition}[实内积空间与欧几里得空间]
@@ -154,6 +156,45 @@
   厄米特矩阵是对对称矩阵的推广。
 \end{remark}
 
+\subsection{空间的同构}
+\begin{definition}[线性空间的同构]
+  设$V,W$是两个数域$\mfF$上的线性空间。
+  如果存在一个一一映射$f:V\mapsto W$，满足
+  \begin{enumerate}
+    \item 
+    $f(\alpha+\beta)=f(\alpha)+f(\beta)$
+    \item
+    $f(k\alpha)=kf(\alpha)$  
+  \end{enumerate}
+  其中$\alpha,\beta\in V,k\in\mfF$，
+  则称$V$和$W$\textbf{同构}。$f$被称为\textbf{同构映射}。
+\end{definition}
+
+\begin{definition}[欧几里得空间的同构]
+  设$V,W$是两个欧几里得空间。
+  如果存在一个一一映射$f:V\mapsto W$，
+  除了满足线性空间同构的两个条件外，还满足
+  \[ (f(\alpha), f(\beta) = (\alpha, \beta) \]
+  其中$\alpha,\beta\in V$，
+  则称$V$和$W$\textbf{同构}。$f$被称为\textbf{同构映射}。
+\end{definition}
+
+\begin{theorem}[线性空间同构的充要条件]
+  数域$\mfF$上的两个线性空间$V,W$同构当且仅当$\mdim V = \mdim W$。
+\end{theorem}
+
+\begin{remark}
+  这意味着数域$\mfF$上的$n$维线性空间都同构于$\mfF^n$。
+\end{remark}
+
+\begin{theorem}[欧几里得空间同构的充要条件]
+  两个欧几里得空间$V,W$同构当且仅当$\mdim V = \mdim W$。
+\end{theorem}
+
+\begin{remark}
+  这意味着$n$维线性空间都同构于$\mfR^n$。
+\end{remark}
+
 \section{欧几里得空间的标准正交基}
 根据式\ref{eq-metric-mat}，我们能发现，给定一组基，
 任意两个元素的内积可以通过坐标向量和一个与这组基相关联矩阵来计算，
@@ -165,7 +206,6 @@
 因为这样能大大简化我们的内积运算。我们把这样的基叫做标准正交基。
 我们会证明，标准正交基一定是存在的，
 并给出求标准正交基的方法——施密特(Schmit)正交化。
-
 
 \subsection{度量矩阵与矩阵的合同}
 \begin{definition}[度量矩阵]
@@ -193,7 +233,7 @@
   合同关系是等价关系。
 \end{remark}
 
-\begin{theorem}[不同基底下的度量矩阵的关系]
+\begin{theorem}[不同基底下的度量矩阵的关系] \label{thrm-metric-mat-rel}
   欧几里得空间中两组不同基底下的度量矩阵是合同的。
 \end{theorem}
 
@@ -252,4 +292,75 @@
   \end{enumerate}
 \end{theorem}
 
+\section{正交矩阵与正交变换}
+欧几里得空间的两组标准正交基之间的过渡矩阵$\mmP$有着特殊的性质：
+因为标准正交基的度量矩阵是单位矩阵，所以根据定理\ref{thrm-metric-mat-rel}，
+有$\mmI=\mmP^\mT\mmI\mmP=\mmP^\mT\mmP$。
+满足这种性质的矩阵$\mmP$我们将称之为正交矩阵。
 
+这一小节，我们会讨论一些正交矩阵的性质，以及与之对应的正交变换的性质。
+
+\subsection{正交矩阵}
+\begin{definition}[正交矩阵]
+  若$n$阶实矩阵$\mmA$满足
+  \[ \mmA\mmA^\mT = \mmA^\mT\mmA = \mmI \]
+  则称$\mmA$为\textbf{正交矩阵}。
+\end{definition}
+
+\begin{theorem}[正交矩阵的性质]
+  正交矩阵具有以下性质
+  \begin{enumerate}
+    \item 
+    两个同阶正交矩阵的乘积也是正交矩阵。
+    \item
+    正交矩阵的逆矩阵是正交矩阵。
+    \item
+    正交矩阵的行列式为1或-1。
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+  欧几里得空间中由标准正交基到标准正交基的过渡矩阵是正交矩阵。
+\end{theorem}
+
+\begin{remark}
+  这是引言提到的结论。
+\end{remark}
+
+\begin{theorem}
+  设$\epsilon_1,\epsilon_2,\dots,\epsilon_n$是一组标准正交基，
+  $\mmP$是正交矩阵，且
+  \begin{displaymath}
+    (\beta_1,\beta_2,\dots,\beta_n) =
+      (\epsilon_1,\epsilon_2,\dots,\epsilon_n)\mmP
+  \end{displaymath}
+  那么$\beta_1,\beta_2,\dots,\beta_n$也是一组标准正交基。
+\end{theorem}
+
+\subsection{正交变换}
+\begin{definition}[正交变换]
+  设$T$是欧几里得空间$V$的一个线性变换，且对任意$\alpha,\beta\in V$，有
+  \begin{displaymath}
+    (T(\alpha), T(\beta)) = (\alpha,\beta)
+  \end{displaymath}
+  则称$T$是一个正交变换。
+\end{definition}
+
+\begin{theorem}[正交变换的等价条件]
+  设$T$是欧几里得空间$V$的一个线性变换，则以下四个命题等价：
+  \begin{enumerate}
+    \item 
+    $T$是正交变换。
+    \item
+    $T$不改变向量的长度，即$\forall\alpha\in V$，
+    $\|T(\alpha)\|=\|\alpha\|$。
+    \item
+    $T$将一组标准正交基变换成另一组标准正交基。
+    \item
+    $T$在$V$的任一祖标准正交基下的矩阵是正交矩阵。
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+  若$T$是正交变换，则$T^{-1}$也是正交变换。
+\end{theorem}
