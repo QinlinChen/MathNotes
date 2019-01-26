@@ -1,0 +1,292 @@
+\chapter{随机事件与概率}
+
+\section{随机事件与运算}
+本小节首先用集合的概念来定义样本空间与随机事件。
+然后介绍事件之间的关系与运算——类似于集合的关系与运算。
+
+\subsection{随机事件与样本空间}
+\begin{definition}[随机现象]
+  具有不确定性的现象叫做\textbf{随机现象}。
+\end{definition}
+
+\begin{definition}[随机试验]
+  对随机现象的一次观测叫做\textbf{随机试验}。
+\end{definition}
+
+\begin{definition}[样本点]
+  随机试验的一次结果叫做\textbf{样本点}，记作$\omega$。
+\end{definition}
+
+\begin{definition}[样本空间]
+  随机试验所有可能的样本点的集合叫做\textbf{样本空间}，记作$\Omega$。
+\end{definition}
+
+\begin{definition}[随机事件]
+  样本空间的一个子集叫做\textbf{随机事件}。
+\end{definition}
+
+\begin{remark}
+  随机事件本质上是集合。
+  所以\textbf{必然事件}就是样本空间本身。
+  \textbf{不可能事件}就是空集。
+\end{remark}
+
+\subsection{事件的关系与运算}
+
+\begin{definition}[事件的关系]
+  事件有如下三种关系：
+  \begin{description}
+    \item[包含]
+    若事件$A$发生必然导致事件$B$发生，则称$B$包含$A$，
+    记作$A\subset B$。
+    \item[相等]
+    若$A\subset B$且$B\subset A$，则称$A$与$B$相等，
+    记作$A=B$。
+    \item[互斥]
+    若事件$A$和事件$B$不可能同时发生，即$A\cap B=\varnothing$，
+    则称$A$与$B$互斥，也称$A$与$B$互不相容。
+  \end{description}
+\end{definition}
+
+\begin{definition}[事件的运算]
+  事件有如下一些运算：
+  \begin{description}
+    \item[事件的并]
+    事件$A$和事件$B$至少有一个会发生的事件称为$A$和$B$的并，记作$A\cup B$。
+    $n$个事件$A_1,\dots,A_n$中至少有一个会发生的事件称为$A_1,\dots,A_n$的并，
+    记作$\bigcup_{i=1}^n A_i$。
+    \item[事件的交]
+    事件$A$和事件$B$同时发生的事件称为$A$和$B$的交，
+    记作$A\cap B$或简记为$AB$。
+    $n$个事件$A_1,\dots,A_n$中同时发生的事件称为$A_1,\dots,A_n$的交，
+    记作$\bigcap_{i=1}^n A_i$。
+    \item[对立事件]
+    事件$A$不发生的事件称为$A$的对立事件，记作$\mcmpl{A}$。
+    \item[事件的差]
+    事件$A$发生而事件$B$不发生的事件称为$A$与$B$的差，
+    记作$A-B$或$A\mcmpl{B}$。
+  \end{description}
+\end{definition}
+
+事件运算的规律参考集合运算的规律。
+
+\section{概率的概念与性质}
+我们首先介绍一下频率的概念，与概率作区分。
+然后使用公理化的方法给出概率的定义。
+最后介绍概率常用的性质。
+
+\subsection{频率的概念与性质}
+\begin{definition}[频率]
+  在相同的条件下进行$n$次试验，
+  其中事件$A$发生的次数$n_A$称为$A$发生的\textbf{频数}。
+  比值$n_A/n$称为$A$发生的\textbf{频率}，记作$f_n(A)$，即
+  \[ f_n(A) = \frac{n_A}{n} \]
+\end{definition}
+
+\begin{theorem}[频率的性质]
+  频率满足下面一些性质：
+  \begin{enumerate}
+    \item
+    $0 \le f_n(A) \le 1$
+    \item
+    $f_n(\Omega) = 1$
+    \item
+    若$A_1,\dots,A_n$两两互不相容，那么
+    $f_n\left(\bigcup_{i=1}^n A_i\right) = \sum_{i=1}^n f_n(A_i)$。
+  \end{enumerate}
+\end{theorem}
+
+\subsection{概率的概念与性质}
+\begin{definition}[概率]
+  在随机试验的样本空间$\Omega$上，对每一个事件$A$赋予一个实数，
+  记为$P(A)$，称为事件$A$的\textbf{概率}，满足：
+  \begin{enumerate}
+    \item 非负性：
+    $P(A)\ge 0$
+    \item 规范型：
+    $P(\Omega) = 1$
+    \item 可列可加性：
+    若$A_1,\dots,A_n,\dots$两两互不相容，则
+    \begin{displaymath}
+      P\left(\bigcup_{i=1}^\infty A_i\right)=\sum_{i=1}^\infty P(A_i)
+    \end{displaymath}
+  \end{enumerate}
+\end{definition}
+
+\begin{theorem}[概率的性质]
+  从概率的公理化定义能推出下面的性质：
+  \begin{enumerate}
+    \item
+    $P(\varnothing) = 0$
+    \item
+    若$A_1,\dots,A_n$两两互不相容，则
+    \begin{displaymath}
+    P\left(\bigcup_{i=1}^n A_i\right)=\sum_{i=1}^n P(A_i)
+    \end{displaymath}
+    \item 
+    $P(B-A) = P(B) - P(BA)$
+    \item
+    $P(\mcmpl{A}) = 1 - P(A)$
+    \item 
+    $P(A\cup B) = P(A) + P(B) - P(AB)$
+    \item
+    容斥原理：
+    \begin{align*}
+      P\left(\bigcup_{i=1}^n A_i\right) 
+      &= \sum_{i=1}^n P(A_i) - \sum_{1\le i<j\le n} P(A_iA_j)
+      + \sum_{1\le i<j<l\le n} P(A_iA_jA_k) \\
+      &+ \dots + (-1)^{n-1}P(A_1A_2\dots A_n)
+    \end{align*}
+    \item 
+    Union Bound(也称Boole不等式):
+    \begin{displaymath}
+      P\left(\bigcup_i A_i\right) \le \sum_i P(A_i)
+    \end{displaymath}
+  \end{enumerate}
+\end{theorem}
+
+\begin{remark}
+  Union Bound在随机算法分析中是很常用的放缩手段，需要特别留意。
+\end{remark}
+
+\section{两个基本概型}
+下面介绍两个基本概型：古典概型与几何概型。
+
+\subsection{古典概型}
+有这样一类试验，它们的共同特点是样本空间的元素只有有限个，
+每个基本事件发生的可能性相同。
+这类试验被称为\textbf{等可能概型}，又称为\textbf{古典概型}。
+
+在古典概型下，
+\begin{displaymath}
+  P(A)=\frac{\text{$A$包含的样本点数}}{\text{$\Omega$包含的样本点数}}
+  =\frac{|A|}{|\Omega|}
+\end{displaymath}
+概率计算等价于计数问题。
+
+\subsection{几何概型}
+设有一个可度量区域$\Omega$。
+向$\Omega$内任意投点$M$，$M$落于$\Omega$内任一点等可能，
+且落在$\Omega$内任何子区域$A$内上的可能性与$A$的度量成正比，
+而与$A$的位置和形状无关，则称该试验为\textbf{几何概型试验}。
+定义$M$落在$A$中的概率为
+\begin{displaymath}
+  P(A) = \frac{\text{$A$的几何测度}}{\text{$\Omega$的几何测度}}
+\end{displaymath}
+
+\section{条件概率}
+
+\subsection{条件概率的概念}
+\begin{definition}[条件概率]
+  设$A,B$是两个事件，且$P(B)>0$，则称
+  \begin{displaymath}
+    P(A|B) = \frac{P(AB)}{P(B)}
+  \end{displaymath} 
+  为事件$B$发生的条件下，事件$A$的\textbf{条件概率}。
+\end{definition}
+
+\begin{remark}
+  $P(\cdot|B)$满足概率的定义，
+  所以概率的性质对条件概率仍使用。
+\end{remark}
+
+\subsection{条件概率的性质}
+\begin{theorem}[乘法公式]
+  对于事件$A$和$B$，根据条件概率的定义，直接有
+  \begin{displaymath}
+    P(AB) = P(A)P(B|A) = P(B)P(A|B)
+  \end{displaymath}
+  推广至事件$A_1,A_2,A_3,\dots,A_n$，有
+  \begin{displaymath}
+    P(A_1A_2\cdots A_n) = P(A_1)P(A_2|A_1)P(A_3|A_1A_2)
+    \cdots P(A_n|A_1A_2\cdots A_{n-1})
+  \end{displaymath}
+\end{theorem}
+
+\begin{definition}[样本空间的划分]
+  设$\Omega$为试验$E$的样本空间，$A_1,A_2,\dots,A_n$为$E$的一组事件。
+  若满足
+  \begin{enumerate}
+    \item 
+    $A_1,A_2,\dots,A_n$两两互不相容
+    \item 
+    $\bigcup_{i=1}^n A_i = \Omega$
+  \end{enumerate}
+  则称$A_1,A_2,\dots,A_n$为样本空间$\Omega$的一个划分。
+\end{definition}
+
+\begin{theorem}[全概率公式]
+  设事件$A_1,A_2,\dots,A_n$是概率空间$\Omega$的一个划分，
+  且它们的概率都不为零，则对任意事件$B$，有
+  \begin{displaymath}
+    P(B) = \sum_{i=1}^nP(A_i)P(B|A_i)
+  \end{displaymath}
+\end{theorem}
+
+\begin{remark}
+  我们把事件$B$看作某一过程的结果，
+  把$A_1,A_2,\dots,A_n$看作该过程的若干个原因。
+  全概率公式告诉我们，如果
+  \begin{enumerate}
+    \item
+    每一原因发生的概率已知(即$P(A_i)$已知)， 
+    \item
+    每一原因对结果的影响已知(即$P(B|A_i)$已知)， 
+  \end{enumerate}
+  那么即可求出结果发生的概率$P(B)$。
+\end{remark}
+\begin{theorem}[贝叶斯公式]
+  设事件$A_1,A_2,\dots,A_n$是概率空间$\Omega$的一个划分，
+  且它们的概率都不为零，则
+  \begin{align*}
+    P(A_i|B) &= \frac{P(A_iB)}{P(B)} \\
+    &= \frac{P(A_i)P(B|A_i)}{\sum_{k=1}^n P(A_k)P(B|A_k)}
+  \end{align*}
+\end{theorem}
+
+\begin{remark}
+  我们把事件$B$看作某一过程的结果，
+  把$A_1,A_2,\dots,A_n$看作该过程的若干个原因。
+  贝叶斯公式告诉我们，如果
+  \begin{enumerate}
+    \item 
+    每一原因发生的概率已知(即$P(A_k)$已知)，
+    \item 
+    每一原因对结果的影响已知(即$P(B|A_k)$已知)，
+  \end{enumerate}
+  那么就能求出$B$由第$i$个原因引起的概率$P(A_i|B)$。
+\end{remark}
+
+\subsection{独立性}
+\begin{definition}[两个随机事件的相互独立性]
+  若随机事件$A,B$满足
+  \begin{displaymath}
+    P(AB)=P(A)P(B)
+  \end{displaymath}
+  则称$A$与$B$\textbf{相互独立}。
+\end{definition}
+
+\begin{theorem}[两个随机事件相互独立的充要条件]
+  事件$A,B$相互独立当且仅当
+  \begin{displaymath}
+    P(A|B) = P(A)
+  \end{displaymath}
+\end{theorem}
+
+\begin{theorem}[相互独立与互不相容的关系]
+  若两事件相互独立，则它们不可能互不相容。
+  若两事件互不相容，则它们不可能相互独立。
+\end{theorem}
+
+\begin{definition}[$n$个事件的相互独立性]
+  设$A_1,A_2,\dots,A_n$为$n$个随机事件，
+  如果对于任意集合$S \subset[n]$，有
+  \begin{displaymath}
+    P\left(\bigcap_{i\in S} A_i\right) = \prod_{i\in S}P(A_i)
+  \end{displaymath}
+  则称$A_1,A_2,\dots,A_n$相互独立。
+\end{definition}
+
+\begin{remark}
+  $n$个事件相互独立，则其中任意$k$个事件也相互独立，反之不成立。
+\end{remark}
