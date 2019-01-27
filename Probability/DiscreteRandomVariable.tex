@@ -1,0 +1,277 @@
+\chapter{离散型随机变量}
+
+\section{离散型随机变量的概念}
+本小节的主要内容为：
+随机变量的定义，离散型随机变量的分布律，随机变量的函数，
+二维离散型随机变量的联合分布律、边缘分布律，离散型随机变量的独立性。
+
+\subsection{随机变量}
+\begin{definition}[随机变量]
+  设$\Omega$为样本空间。
+  我们把实值函数$X:\Omega\mapsto\mfR$称为\textbf{随机变量}，简记为r.v.。
+\end{definition}
+
+随机变量分为离散型随机变量和连续型随机变量。
+
+\subsection{离散型随机变量的分布律}
+\begin{definition}[离散型随机变量]
+  若随机变量$X$的取值是有限个或者可列无穷个，
+  则称$X$为\textbf{离散型随机变量}。
+\end{definition}
+
+\begin{definition}[离散型随机变量的分布律]
+  设离散型随机变量$X$的所有可能取值为
+  $x_1,x_2,\dots,x_n,\dots$，则称
+  \begin{displaymath}
+  P(X=x_i)=p_i\ (i=1,2,\dots)
+  \end{displaymath}
+  为$X$的\textbf{分布律}。常表示为
+  \begin{center}
+    \begin{tabular}{c|ccccc}
+      $X$ & $x_1$ & $x_2$ & $\dots$ & $x_n$ & $\dots$ \\ 
+      \hline 
+      $P$ & $p_1$ & $p_2$ & $\dots$ & $p_n$ & $\dots$ \\ 
+    \end{tabular} 
+  \end{center}
+\end{definition}
+
+\begin{theorem}[离散型随机变量分布律的性质]
+  设$P(X=x_i)=p_i\ (i=1,2,\dots)$是随机变量$X$的分布律，则
+  \begin{enumerate}
+    \item 
+    $\forall n\in \mfN$，$p_n \ge 0$
+    \item 
+    $\sum_{i}p_i = 1$
+  \end{enumerate}
+\end{theorem}
+
+\subsection{随机变量的函数}
+\begin{definition}[随机变量的函数]
+  设$X$是随机变量，$y=g(x)$是实函数。
+  构造另一随机变量$Y$，当$X$取值$x$时，$Y$取值$y=g(x)$，
+  则称$Y$是随机变量$X$的函数，记为$Y=g(X)$。
+\end{definition}
+
+离散型随机变量的函数的分布律的求法：
+\[ P(Y=y)=\sum_{x:g(x)=y} P(X=x) \]
+
+\subsection{二维离散型随机变量}
+\begin{definition}[二维离散型随机变量]
+  若二维随机变量$(X,Y)$的取值是有限个或可列无穷多个，
+  则称$(X,Y)$为\textbf{二维离散型随机变量}。
+\end{definition}
+
+\begin{definition}[二维离散型随机变量的联合分布律]
+  设$(X,Y)$为二维离散型随机变量，
+  $X,Y$的取值为$(x_i,y_j),\ i,j=1,2,\dots$，则称
+  \begin{displaymath}
+  P(X=x_i,Y=y_j)=p_{ij}\ (i,j=1,2\dots)
+  \end{displaymath}
+  为$(X,Y)$的\textbf{联合分布律}。常表示为
+  \begin{center}
+    \begin{tabular}{c|ccccc}
+      \diagbox{$X$}{$Y$} & $y_1$ & $y_2$ & $\dots$ & $y_j$ & $\dots$ \\ 
+      \hline
+      $x_1$ & $p_{11}$ & $p_{12}$ & $\dots$ & $p_{1j}$ & $\dots$ \\
+      $x_2$ & $p_{21}$ & $p_{22}$ & $\dots$ & $p_{2j}$ & $\dots$ \\
+      $\vdots$ & $\vdots$ & $\vdots$ & & $\vdots$ & \\
+      $x_i$ & $p_{i1}$ & $p_{i2}$ & $\dots$ & $p_{ij}$ & $\dots$ \\
+      $\vdots$ & $\vdots$ & $\vdots$ & & $\vdots$ & \\
+    \end{tabular} 
+  \end{center}
+\end{definition}
+
+\begin{theorem}[二维离散型随机变量联合分布律的性质]
+  设$P(X=x_i,Y=y_j)=p_{ij}\ (i,j=1,2\dots)$
+  是二维随机变量$(X,Y)$的联合分布律，则
+  \begin{enumerate}
+    \item 
+    $\forall i,j\in\mfN$，$p_{ij} \ge 0$
+    \item 
+    $\sum_{ij}p_{ij}=1$
+  \end{enumerate}
+\end{theorem}
+
+\begin{definition}
+  设$P(X=x_i,Y=y_j)=p_{ij}\ (i,j=1,2\dots)$
+  是二维随机变量$(X,Y)$的联合分布律，则
+  \begin{displaymath}
+    P(X=x_i) = \sum_{j} P(X=x_i,Y=y_j) = \sum_{j=1}^{\infty}p_{ij}
+    \meqdef p_{i\cdot}
+  \end{displaymath}
+  被称为$X$的边缘分布律，
+  \begin{displaymath}
+    P(Y=y_j) = \sum_{i} P(X=x_i,Y=y_j) = \sum_{i=1}^{\infty}p_{ij}
+    \meqdef p_{\cdot j}
+  \end{displaymath}
+  被称为$Y$的边缘分布律。
+\end{definition}
+
+\subsection{离散型随机变量的独立性}
+\begin{definition}[两个离散型随机变量的独立性]
+  对于离散型随机变量$X$和$Y$，若对于所有可能取值$x,y$有
+  \begin{displaymath}
+    P(X=x,Y=y)=P(X=x)P(Y=y)
+  \end{displaymath}
+  即$p_{ij}=p_{i\cdot}p_{\cdot j}\ (i,j=1,2,\dots)$，
+  则称$X$与$Y$独立。
+\end{definition}
+
+\begin{definition}[多离散型随机变量的独立性]
+  设$X_1,X_2,\dots,X_n$为离散型随机变量。
+  \begin{enumerate}
+    \item 
+    若对于任意$x_1,x_2,\dots,x_n$，有
+    \begin{displaymath}
+      P(X_1=x_1,\dots,X_n=x_n)=\prod_{i=1}^{n}P(X_i=x_i)
+    \end{displaymath}
+    则称$X_1,X_2,\dots,X_n$\textbf{相互独立}。
+    \item
+    若其中任意两个均独立，
+    则称$X_1,X_2,\dots,X_n$\textbf{两两独立}。
+  \end{enumerate}
+\end{definition}
+
+\section{常见离散型随机变量的分布}
+本小节介绍了常见的离散型随机变量的分布及它们的性质，
+其中包含：0-1分布，二项分布，泊松分布，几何分布。
+
+\subsection{0-1分布}
+
+\begin{definition}[伯努利试验]
+  如果随机试验只有两个结果：$A$与$\mcmpl{A}$，
+  则称该试验为\textbf{伯努利试验}(Bernoulli trial)。
+\end{definition}
+
+\begin{definition}[0-1分布]
+  定义随机变量
+  \begin{displaymath}
+    X = \begin{cases}
+      1 & \text{若$A$发生} \\
+      0 & \text{若$A$不发生}
+    \end{cases}
+  \end{displaymath}
+  记$P(A)=p$，则称$X$服从\textbf{0-1分布}
+  \begin{center}
+    \begin{tabular}{c|cc}
+      $X$ & $0$ & $1$ \\ 
+      \hline 
+      $P$ & $1-p$ & $p$ \\ 
+      \end{tabular} 
+  \end{center}
+\end{definition}
+
+\begin{theorem}[0-1分布的数字特征]
+  设$X$服从0-1分布，则
+  \begin{displaymath}
+    \mexpect[X]=p,\quad \mvar(X) = p(1-p)
+  \end{displaymath}
+\end{theorem}
+
+\subsection{二项分布}
+\begin{definition}[$n$重伯努利试验]
+  有一类独立重复试验概型，具有如下特点：
+  \begin{enumerate}
+    \item 每次试验只有两种结果：$A$与$\mcmpl{A}$
+    \item 试验进行$n$次，每次试验结果相互独立
+  \end{enumerate}
+  则称该独立重复试验为\textbf{$n$重伯努利试验}。
+\end{definition}
+
+\begin{definition}[二项分布]
+  若随机变量$X$的分布律为
+  \begin{displaymath}
+    P(X=i) = \binom{n}{i}p^i(1-p)^{n-i}\ (i=1,2,\dots,n)
+  \end{displaymath}
+  其中$n$为自然数，$0\le p \le 1$，
+  则称$X$服从参数为$n,p$的\textbf{二项分布}，
+  记作$X\sim B(n,p)$。
+\end{definition}
+
+\begin{remark}
+  对于给定的$n,p$，函数$P(X=k)$随$k$的增大先递增后递减。
+  如果要求$k$取何值时$P(X=k)$最大，我们只需要列出方程组
+  \begin{displaymath}
+    \meqs{c}{
+    P(X=k) \ge P(X=k-1) \\
+    P(X=k) \ge P(X=k+1)}
+  \end{displaymath}
+  就能解得，$k$是区间$[\,(n+1)p-1,\,(n+1)p\,]$的一个整数。
+\end{remark}
+
+\begin{theorem}[二项分布的数字特征]
+  设随机变量$X\sim B(n,p)$，则
+  \begin{displaymath}
+    \mexpect[X] = np,\quad \mvar(X) = np(1-p)
+  \end{displaymath}
+\end{theorem}
+
+\begin{theorem}[泊松定理] \label{thrm-poisson}
+  如果$np_n\to\lambda(>0) (n\to\infty)$，
+  那么对于固定的正整数$k$，有
+  \begin{displaymath}
+    \lim_{n\to\infty} \binom{n}{k}p_n^k(1-p_n)^{n-k} =
+      \frac{\lambda^k}{k!}e^{-\lambda}
+  \end{displaymath}
+\end{theorem}
+
+\begin{remark}
+  当$n$很大时，计算$P_n(k)=\binom{n}{k}p^k(1-p)^{n-k}$比较麻烦。
+  但如果$n$很大$(\ge 20)$且$p$很小$(\le 0.1)$时，
+  就可以用上面的泊松近似公式来计算。
+\end{remark}
+
+\subsection{泊松分布}
+\begin{definition}[泊松分布]
+  若随机变量$X$的分布律为
+  \begin{displaymath}
+    P(X=k)=\frac{\lambda^k}{k!}e^{-\lambda}\ (k=0,1,2,\dots)
+  \end{displaymath}
+  其中$\lambda > 0$，
+  则称随机变量$X$服从参数为$\lambda$的\textbf{泊松分布}，
+  记为$X\sim P(\lambda)$。
+\end{definition}
+
+\begin{remark}
+  泊松分布通常用于描述大量试验中稀有事件出现次数的概率模型。
+  从定理\ref{thrm-poisson}就能看出来这一点。
+  参数$\lambda$的物理含义是：事件平均的发生次数。
+\end{remark}
+
+\begin{theorem}[泊松分布的数字特征]
+  设随机变量$X\sim P(\lambda)$，则
+  \begin{displaymath}
+    \mexpect[X]=\lambda,\quad \mvar(X)=\lambda
+  \end{displaymath}
+\end{theorem}
+
+\begin{theorem}[泊松分布的和]
+  若随机变量$X,Y$独立，且$X\sim P(\lambda_1)$，$Y\sim P(\lambda_2)$，
+  则$X+Y \sim P(\lambda_1+\lambda_2)$。
+\end{theorem}
+
+\subsection{几何分布}
+\begin{definition}[几何分布]
+  在多重伯努利试验中，$P(A)=p$，$P(\mcmpl{A})=1-p\meqdef q$。
+  重复独立实验，直到事件$A$首次发生。
+  令$X$表示所需要试验的次数，则$X$服从参数为$p$的\textbf{几何分布}，即
+  \begin{displaymath}
+    P(X=k)=q^{k-1}p\ (k=1,2,\dots)
+  \end{displaymath}
+  记为$X\sim G(p)$。
+\end{definition}
+
+\begin{theorem}[几何分布的无记忆性]
+  假设已经经历了$n$次失败，则从当前起直至成功所需次数与$n$无关。
+  严格地，若随机变量$X\sim G(p)$，则对任意自然数$s,t$，有
+  \begin{displaymath}
+    P(X>s+t|X>s) = P(X>t)
+  \end{displaymath}
+\end{theorem}
+
+\begin{theorem}[几何分布的数字特征]
+  设随机变量$X\sim G(p)$，则
+  \begin{displaymath}
+    \mexpect[X] = \frac{1}{p},\quad \mvar(X)=\frac{1-p}{p^2}
+  \end{displaymath}
+\end{theorem}

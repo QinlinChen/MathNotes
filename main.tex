@@ -5,6 +5,8 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{textcomp}
+\usepackage{diagbox}
+\usepackage{extarrows}
 \usepackage{makeidx}
 \makeindex
 
@@ -69,9 +71,15 @@
 \newcommand{\mker}{\mfuncname{ker}}
 \newcommand{\mtr}{\mfuncname{tr}}
 \newcommand{\mconj}[1]{\overline{#1}}
-\newcommand{\mT}{\mfuncname{T}}
 \newcommand{\mcmpl}[1]{\overline{#1}} % complement set
+\newcommand{\mexpect}{\mathbb{E}}
+\newcommand{\mvar}{V}
 % math function end
+
+% math symbol begin
+\newcommand{\mT}{\textrm{T}}
+\newcommand{\meqdef}{\overset{\text{def}}{=}}
+% math symbol end
 
 \begin{document}
 \author{陈钦霖}
@@ -95,9 +103,11 @@
 
 \part{概率论}
 \include{Probability/RandomEventAndProbability}
+\include{Probability/DiscreteRandomVariable}
+\include{Probability/ContinuousRandomVariable}
+\include{Probability/NumericalCharacteristics}
 
 \part{数理统计}
-TODO
 
 % TODO: \printindex
 

@@ -1,0 +1,44 @@
+\chapter{随机变量的数字特征}
+
+\section{数学期望}
+
+\subsection{离散型随机变量的数学期望}
+\begin{definition}[离散型随机变量的数学期望]
+  设$X$为离散型随机变量，分布律为$P(X=x_i)=p_i\ (i=1,2,\dots)$。
+  若级数$\sum_{i=1}^{\infty}x_ip_i$绝对收敛，
+  则称$\sum_{i=1}^{\infty}x_ip_i$为$X$的\textbf{数学期望}，
+  记为$\mexpect[X]$，即
+  \begin{displaymath}
+    \mexpect[X] = \sum_{i=1}^{\infty}x_ip_i
+  \end{displaymath}
+  若$\sum_{i=1}^{\infty}|x_i|p_i$发散，
+  则称$X$的数学期望不存在。
+\end{definition}
+
+\begin{theorem}[性质]
+  数学期望有如下一些性质：
+  \begin{enumerate}
+    \item 线性性质：
+    $\mexpect[X+Y] = \mexpect[X] + \mexpect[Y]$，
+    $\mexpect[cX] = c\mexpect[X]$
+    \item 
+    $\mexpect[X^2] \ge \mexpect[X]^2$  
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[离散非负随机变量的期望的其它计算方法]
+  设$X$是取值为非负整数的离散随机变量，则
+  \begin{displaymath}
+    \mexpect[X] = \sum_{i=1}^{\infty} P(X\ge i)
+  \end{displaymath}
+\end{theorem}
+
+\subsection{连续型随机变量的期望}
+
+\section{方差与标准差}
+
+\section{协方差}
+
+\section{相关系数}
+
+\section{常见随机变量分布的数字特征}
