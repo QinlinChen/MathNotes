@@ -1,2 +1,268 @@
 \chapter{连续型随机变量}
-TODO
+
+\section{连续型随机变量的概念}
+本小节的主要内容为：
+分布函数，连续型随机变量的概率密度与性质，连续型随机变量函数分布的求法，
+二维连续型随机变量的概率密度、边缘密度和条件密度，
+连续型随机变量的独立性，二维随机变量函数分布的求法。
+
+\subsection{分布函数}
+\begin{definition}[分布函数]
+  设$X$是一个随机变量，$x$是任意实数，则函数
+  \begin{displaymath}
+    F(x)=P(X\le x)
+  \end{displaymath}
+  称为$X$的分布函数。
+\end{definition}
+
+\begin{remark}
+  根据定义可以直接得到，对于任意实数$x_1,x_2\ (x_1<x_2)$，
+  \begin{displaymath}
+  P(x_1 < X \le x_2) = F(x_2) - F(x_1)
+  \end{displaymath}
+\end{remark}
+
+\begin{remark}
+  离散型随机变量和连续型随机变量都适用于分布函数的定义。
+\end{remark}
+
+\begin{theorem}[分布函数的性质]
+  分布函数$F(x)=P(X\le x)$具有以下性质：
+  \begin{enumerate}
+    \item 
+    $F(x)$是单调非递减函数。
+    \item 
+    $0\le F(x)\le 1$且
+    $F(-\infty) = 0$，$F(+\infty) = 1$。
+    \item 
+    $F(x)$是右连续的。
+  \end{enumerate}
+  反之，任一具有以上三性质的函数必是某随机变量的分布函数。
+\end{theorem}
+
+\subsection{连续型随机变量与概率密度}
+\begin{definition}[连续型随机变量] \label{def-continuous-rv}
+  设$X$为随机变量，$F(x)$为$X$的分布函数。
+  若存在非负函数$p(x)$，使对于任意实数$x$有
+  \begin{displaymath}
+    F(x) = \mintcumto{x}p(t)dt
+  \end{displaymath}
+  则称$X$为\textbf{连续型随机变量}，
+  其中$p(x)$称为$X$的\textbf{概率密度函数}，简称\textbf{密度函数}。
+\end{definition}
+
+\begin{theorem}[连续型随机变量$F(x)$与$p(x)$的性质]
+  设$F(x)$和$p(x)$分别是连续型随机变量$X$的分布函数与密度函数，则
+  \begin{enumerate}
+    \item 
+    $p(x) \ge 0$
+    \item 
+    $\mintall p(x)dx = 1$
+    \item 
+    $F(x)$是连续函数。
+    \item 
+    $P(x_1< X\le x_2)=\int_{x_1}^{x_2}p(x)dx$
+    \item 
+    对任意$a\in\mfR$，$P(X=a)=0$。
+    \item 
+    若$p(x)$在点$x$处连续，则有
+    $F'(x)=p(x)$。
+  \end{enumerate}
+\end{theorem}
+
+\subsection{连续型随机变量函数的分布} \label{subsec-con-rv-func-distribution}
+设$X$是连续型随机变量，其密度函数为$p_X(x)$，
+$y=g(x)$是关于$x$的连续函数，$Y=g(X)$是连续型随机变量。
+下面给出求$Y=g(X)$的密度函数$p_Y(y)$的两种方法。
+
+第一种方法是\textbf{分布函数法}。
+我们首先求$Y$的分布函数
+\begin{displaymath}
+  F_Y(y) = P(Y \le y) = P(g(X) \le y) = \int_{x: g(x)\le y} p_X(x)dx
+\end{displaymath}
+然后对分布函数求导，得到$p_Y(y) = F'_Y(y)$。
+
+第二种方法是直接使用定理：
+设$X$的密度函数为
+\begin{displaymath}
+  p_X(x) = \begin{cases}
+    > 0 & a < x < b \\
+    0   & \text{其它}
+  \end{cases}
+\end{displaymath}
+其中$a$可为$-\infty$，$b$可为$+\infty$。
+若$y=g(x)$在$(a,b)$处处可导且单调，
+则$Y=g(X)$也是连续型随机变量，其概率密度为
+\begin{displaymath}
+  p_Y(y)=\begin{cases}
+    p_X(g^{-1}(y))\cdot |(g^{-1}(y))'| & \alpha < y < \beta \\
+    0 & \text{其它}
+  \end{cases}
+\end{displaymath}
+其中，$\alpha=\min\{g(a), g(b) \}, \beta=\max\{g(a),g(b)\}$。
+
+\subsection{二维连续型随机变量}
+\begin{definition}[联合分布函数]
+  设$(X,Y)$是一个二维随机向量，则对于任意实数对$(x,y)$，
+  \begin{displaymath}
+    F(x,y) = P(X\le x, Y\le y)
+  \end{displaymath}
+  是$(x,y)$的函数，称为二维随机向量$(X,Y)$的\textbf{联合分布函数}。
+\end{definition}
+
+\begin{theorem}[联合分布函数的性质]
+  联合分布函数$F(x,y)$具有以下性质：
+  \begin{enumerate}
+    \item 
+    $F(x,y)$分布对每个变量单调非减。
+    \item 
+    $0\le F(x,y)\le 1$且
+    \begin{gather*}
+    F(-\infty,y)=F(x,-\infty) = 0 \\
+    F(-\infty,-\infty)=0,\ F(+\infty,+\infty)=1
+    \end{gather*}
+    \item 
+    $F(x,y)$关于每个变量右连续，即
+    $F(x,y)=F(x+0,y)=F(x,y+0)$。
+    \item
+    $F(x_2,y_2)-F(x_2,y_1)-F(x_1,y_2)+F(x_1,y_1)\ge 0$，
+    其中$x_1\le x_2, y_1 \le y_2$。
+  \end{enumerate}
+\end{theorem}
+
+\begin{definition}[二维连续型随机变量与联合概率密度函数]
+  对于二维随机变量$(X,Y)$的分布函数$F(x,y)$，
+  如果存在非负函数$p(x,y)$，使得对于任意的$x,y$有
+  \begin{displaymath}
+  F(x,y)=\mintcumto{x}\mintcumto{y}p(u,v)dudv
+  \end{displaymath}
+  则称$(X,Y)$是\textbf{二维连续型随机变量}，
+  函数$p(x,y)$称为$(X,Y)$的\textbf{联合概率密度函数}，
+  简称\textbf{概率密度}。
+\end{definition}
+
+\begin{theorem}[联合概率密度函数的性质]
+  设$p(x,y)$是连续随机向量$(X,Y)$的联合概率密度函数，则
+  \begin{enumerate}
+    \item 
+    $p(x,y)\ge 0$
+    \item 
+    $\mintall\mintall p(u,v)dudv = 1$
+    \item 
+    若$p(x,y)$在点$(x,y)$连续，则有
+    \[ \frac{\partial^2 F(x,y)}{\partial x\partial y} = p(x,y) \]
+    \item 
+    $P\left((X,Y)\in G\right) = \iint_G p(x,y)dxdy$
+  \end{enumerate}
+\end{theorem}
+
+\begin{definition}[边缘分布函数]
+  设二维随即向量$(X,Y)$的联合分布函数为$F(x,y)$。
+  我们定义
+  \begin{displaymath}
+    F_X(x)=F(x,+\infty)
+  \end{displaymath}
+  为$X$的\textbf{边缘分布函数}。
+  同样地，$F_Y=F(+\infty,y)$为$Y$的边缘分布函数。
+\end{definition}
+
+\begin{definition}[边缘密度]
+  设二维随即向量$(X,Y)$的概率密度函数为$p(x,y)$，
+  联合分布函数为$F(x,y)$。
+  我们定义
+  \begin{displaymath}
+    p_X(x)=F'_X(x) = \mintall p(x,y)dy
+  \end{displaymath}
+  为$X$的\textbf{边缘密度}。
+  同样地，$p_Y(y)=F'_Y(y) = \mintall p(x,y)dx$
+  为$Y$的边缘密度。
+\end{definition}
+
+\begin{definition}[二维连续型随机变量的条件密度]
+  设$(X,Y)$是连续随机向量，则
+  \begin{displaymath}
+    F_{Y|X=x}(y)=P(Y\le y|X = x)=
+      \mintcumto{y}\frac{p(x,v)}{p_X(x)}dv
+  \end{displaymath}
+  为$Y$在$X=x$的条件下的\textbf{条件分布}。而
+  \begin{displaymath}
+    p_{Y|X=x}(y)=\frac{p(x,y)}{p_X(x)}
+  \end{displaymath}
+  为$Y$在$X=x$的条件下的\textbf{条件密度}，也记为$p_{Y|X}(y|x)$。
+\end{definition}
+
+\begin{theorem}[条件密度的两个公式]
+  条件密度也有乘法公式
+  \begin{displaymath}
+    p(x,y) = p_X(x)p_{Y|X}(y|x)
+  \end{displaymath}
+  和全概率公式
+  \begin{displaymath}
+    p_X(x) = \mintall p(x,y)dy
+    = \mintall p_{X|Y}(x|y)p_Y(y)dy
+  \end{displaymath}
+\end{theorem}
+
+\subsection{连续型随机变量的独立性}
+\begin{definition}[两个随机变量的独立性]
+  设$X,Y$为随机变量。
+  若对任意实数$x,y$，随机事件$X\le x$与$Y\le y$相互独立，即
+  \begin{displaymath}
+    P(X\le Y\le y)=P(X\le x)P(Y\le y)
+  \end{displaymath}
+  或等价地，
+  \begin{displaymath}
+    F(x,y)=F_X(x)F_Y(y)
+  \end{displaymath}
+  则称随机变量$X$与$Y$相互独立。
+\end{definition}
+
+\begin{theorem}[两个连续型随机变量相互独立的条件]
+  设$X,Y$为连续型随机变量。若
+  \begin{displaymath}
+    p(x,y)=p_X(x)p_Y(x)
+  \end{displaymath}
+  则$X,Y$相互独立。
+\end{theorem}
+
+\subsection{二维随机变量函数的分布}
+对于二维随机变量$(X,Y)$，实函数$z=g(x,y)$，
+可定义随机变量$Z=g(X,Y)$。
+
+使用类似\ref{subsec-disc-rv-func-distribution}节
+和\ref{subsec-con-rv-func-distribution}节的方法，
+同样可以求出$Z$的分布。
+下面给出两个比较特殊的二维随机变量函数的分布：
+\textbf{和分布}以及\textbf{极大极小分布}。
+
+\begin{description}
+  \item[和分布]
+  如果$Z=X+Y$，$p(x,y)$是$X,Y$的概率密度函数，则
+  \begin{displaymath}
+    p_Z(z) = \mintall p(x,z-x)dx
+  \end{displaymath}
+  如果$X,Y$相互独立，则能更进一步化为卷积公式
+  \begin{displaymath}
+    p_Z(z) = \mintall p_X(x)p_Y(z-x)dx
+  \end{displaymath}
+  \item[极大极小分布]
+  如果$X,Y$相互独立。设$M=\max\{X,Y\}$，$N=\min\{X,Y\}$，则
+  \begin{align*}
+    F_M(z) &= P(\max\{X,Y\}\le z) = P(X\le z, Y\le z) \\
+    &= P(X\le z)P(Y\le z) \\
+    &= F_X(z)F_Y(z)
+  \end{align*}
+  \begin{align*}
+    F_N(z) &= P(\min\{X,Y\}\le z) = 1 - P(\min\{X,Y\}>z) \\
+    &= 1 - P(X>z,Y>z) = 1 - P(X>z)P(Y>z) \\
+    &= 1 - (1-F_X(z))(1-F_Y(z))
+  \end{align*}
+  推广：如果$X_1,X_2,\dots,X_n$相互独立，则
+  \begin{gather*}
+    F_{\max_iX_i}(z) = \prod_{i=1}^{n}F_{X_i}(z) \\
+    F_{\min_iX_i}(z) = 1-\prod_{i=1}^{n}(1-F_{X_i}(z))
+  \end{gather*}
+\end{description}
+
+\section{常见连续型随机变量的分布}
+% TODO

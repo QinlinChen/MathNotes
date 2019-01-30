@@ -1,6 +1,7 @@
 \chapter{随机变量的数字特征}
 
 \section{数学期望}
+% TODO
 
 \subsection{离散型随机变量的数学期望}
 \begin{definition}[离散型随机变量的数学期望]
@@ -22,19 +23,45 @@
   \end{displaymath}
 \end{theorem}
 
-\begin{theorem}[性质]
-    数学期望有如下一些性质：
-    \begin{enumerate}
-        \item 线性性质：
-        $\mexpect[X+Y] = \mexpect[X] + \mexpect[Y]$，
-        $\mexpect[cX] = c\mexpect[X]$
-        \item 
-        $\mexpect[X^2] \ge \mexpect[X]^2$  
-    \end{enumerate}
+\subsection{连续型随机变量的数学期望}
+\begin{definition}[连续型随机变量的数学期望]
+  设连续型随机变量$X$的概率密度为$p(x)$，
+  若积分$\mintall xp(x)dx$绝对收敛，
+  则称该积分为$X$的\textbf{数学期望}，记为$\mexpect[X]$，即
+  \begin{displaymath}
+    \mexpect[X] = \mintall xp(x)dx
+  \end{displaymath}
+  若积分$\mintall |x|p(x)dx$发散，
+  则称$X$的数学期望不存在。
+\end{definition}
+
+\subsection{数学期望的性质}
+\begin{theorem}[数学期望的性质]
+  数学期望有如下一些性质：
+  \begin{enumerate}
+    \item 线性性质：
+    $\mexpect[X+Y] = \mexpect[X] + \mexpect[Y]$，
+    $\mexpect[cX] = c\mexpect[X]$
+    \item
+    如果$f(x)$是凸函数，那么
+    \begin{displaymath}
+      \mexpect[f(X)] \ge f(\mexpect[X])
+    \end{displaymath}
+  \end{enumerate}
 \end{theorem}
 
-\subsection{连续型随机变量的数学期望}
-% TODO
+\begin{theorem}
+  设连续型随机变量$X$的密度函数为$p(x)$。
+  若$g(x)$连续，那么
+  \begin{displaymath}
+    \mexpect[g(X)] = \mintall g(x)p(x)dx
+  \end{displaymath}
+  类似地，设$X,Y$是连续型随机变量，联合密度为$p(x,y)$。
+  若$g(x,y)$连续，那么
+  \begin{displaymath}
+    \mexpect[g(X,Y)] = \mintall\mintall g(x,y)p(x,y)dxdy
+  \end{displaymath}
+\end{theorem}
 
 \subsection{条件期望}
 \begin{definition}[离散型随机变量的条件期望]
@@ -164,10 +191,13 @@
 \end{theorem}
 
 \subsection{相关系数}
+% TODO
 
 \section{常见随机变量分布的期望与方差}
+% TODO
 
 \section{集中度(Concentration of measure)}
+% TODO
 
 \begin{theorem}[马尔科夫不等式]
   设随机变量$X$非负，则对任意$a>0$，有

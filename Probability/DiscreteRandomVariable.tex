@@ -11,12 +11,13 @@
   我们把实值函数$X:\Omega\mapsto\mfR$称为\textbf{随机变量}，简记为r.v.。
 \end{definition}
 
-随机变量分为离散型随机变量和连续型随机变量。
+随机变量分为离散型随机变量(定义\ref{def-discrete-rv})
+和连续型随机变量(定义\ref{def-continuous-rv})。
 
-\subsection{离散型随机变量的分布律}
-\begin{definition}[离散型随机变量]
-  若随机变量$X$的取值是有限个或者可列无穷个，
-  则称$X$为\textbf{离散型随机变量}。
+\subsection{离散型随机变量与分布律}
+\begin{definition}[离散型随机变量] \label{def-discrete-rv}
+    若随机变量$X$的取值是有限个或者可列无穷个，
+    则称$X$为\textbf{离散型随机变量}。
 \end{definition}
 
 \begin{definition}[离散型随机变量的分布律]
@@ -45,15 +46,17 @@
   \end{enumerate}
 \end{theorem}
 
-\subsection{随机变量的函数}
+\subsection{随机变量的函数} \label{subsec-disc-rv-func-distribution}
 \begin{definition}[随机变量的函数]
   设$X$是随机变量，$y=g(x)$是实函数。
   构造另一随机变量$Y$，当$X$取值$x$时，$Y$取值$y=g(x)$，
   则称$Y$是随机变量$X$的函数，记为$Y=g(X)$。
 \end{definition}
 
-离散型随机变量的函数的分布律的求法：
+离散型随机变量函数的分布律的求法：
 \[ P(Y=y)=\sum_{x:g(x)=y} P(X=x) \]
+
+连续型随机变量函数的分布的求法见小节\ref{subsec-con-rv-func-distribution}。
 
 \subsection{二维离散型随机变量}
 \begin{definition}[二维离散型随机变量]
