@@ -15,17 +15,6 @@
   则称$X$的数学期望不存在。
 \end{definition}
 
-\begin{theorem}[性质]
-  数学期望有如下一些性质：
-  \begin{enumerate}
-    \item 线性性质：
-    $\mexpect[X+Y] = \mexpect[X] + \mexpect[Y]$，
-    $\mexpect[cX] = c\mexpect[X]$
-    \item 
-    $\mexpect[X^2] \ge \mexpect[X]^2$  
-  \end{enumerate}
-\end{theorem}
-
 \begin{theorem}[离散非负随机变量的期望的其它计算方法]
   设$X$是取值为非负整数的离散随机变量，则
   \begin{displaymath}
@@ -33,12 +22,170 @@
   \end{displaymath}
 \end{theorem}
 
-\subsection{连续型随机变量的期望}
+\begin{theorem}[性质]
+    数学期望有如下一些性质：
+    \begin{enumerate}
+        \item 线性性质：
+        $\mexpect[X+Y] = \mexpect[X] + \mexpect[Y]$，
+        $\mexpect[cX] = c\mexpect[X]$
+        \item 
+        $\mexpect[X^2] \ge \mexpect[X]^2$  
+    \end{enumerate}
+\end{theorem}
 
-\section{方差与标准差}
+\subsection{连续型随机变量的数学期望}
+% TODO
 
-\section{协方差}
+\subsection{条件期望}
+\begin{definition}[离散型随机变量的条件期望]
+  在事件$A$的条件下，离散型随机变量$X$的条件期望定义为
+  \begin{displaymath}
+    \mexpect[X|A] = \sum_{x} xP(X=x|A)
+  \end{displaymath}
+\end{definition}
 
-\section{相关系数}
+\begin{theorem}[全期望公式]
+  设事件$A_1,A_2,\dots,A_n$是概率空间的一个划分，
+  则对于随机变量$X$，有
+  \begin{displaymath}
+    \mexpect[X] = \sum_{i=1}^n P(A_i)\mexpect[X|A_i]
+  \end{displaymath}
+\end{theorem}
 
-\section{常见随机变量分布的数字特征}
+\begin{theorem}[条件期望的线性性质]
+  对于有限个随机变量$X_1,X_2,\dots,X_n$，
+  以及常数$c_1,c_2,\dots,c_n$，有
+  \begin{displaymath}
+    \mexpect\left[\sum_{i=1}^{n}c_iX_i\bigg|A\right] =
+      \sum_{i=1}^{n}c_i\mexpect[X|A]
+  \end{displaymath}
+\end{theorem}
+
+\begin{theorem}[条件期望定义的随机变量]
+  如果$X$和$Y$是随机变量，
+  那么$\mexpect[X|Y]$是随机变量$Y$的函数。
+  且拥有性质
+  \begin{displaymath}
+    \mexpect\left[\mexpect[X|Y]\right] = \mexpect[X]
+  \end{displaymath}
+\end{theorem}
+
+\section{方差\ 协方差\ 相关系数}
+\subsection{方差}
+\begin{definition}[中位数]
+  设$X$为随机变量。对于$m\in\mfR$，若
+  $P(X\ge m) \ge 1/2$且$P(X\le m) \ge 1/2$。
+  则称$m$为$X$的\textbf{中位数}。
+\end{definition}
+
+\begin{definition}[方差与标准差]
+  设$X$是一个随机变量，
+  若$\mexpect[(X-\mexpect[X])^2]$存在，
+  则称$\mexpect[(X-\mexpect[X])^2]$为$X$的\textbf{方差}，
+  记为$\mvar(X)$，即
+  \begin{displaymath}
+    \mvar(X) = \mexpect\left[(X-\mexpect[X])^2\right]
+  \end{displaymath}
+  此外，称$\sqrt{\mvar(X)}$为\textbf{标准差}，记为$\msdev(X)$。
+\end{definition}
+
+\begin{theorem}[方差的其它计算方法]
+  设$X$是随机变量，则
+  \begin{displaymath}
+    \mvar(X) = \mexpect\left[X^2\right]-\mexpect[X]^2
+  \end{displaymath}
+\end{theorem}
+
+\begin{theorem}[方差的性质]
+  设$C$为常数，$X$为随机变量，则：
+  \begin{enumerate}
+    \item 
+    $\mvar(C)=0$
+    \item
+    $\mvar(CX)=C^2\mvar(X)$
+  \end{enumerate}
+\end{theorem}
+
+\begin{remark}
+  方差不具有线性性质。
+\end{remark}
+
+\subsection{协方差}
+\begin{definition}[协方差]
+  定义随机变量$X$和$Y$间的\textbf{协方差}为
+  \begin{align*}
+    \mcov(X,Y)
+    &=\mexpect[(X-\mexpect[X])(Y-\mexpect[Y])] \\
+    &= \mexpect[XY] - \mexpect[X]\mexpect[Y]
+  \end{align*}
+  特别地，$\mcov(X,X)=\mvar(X)$。
+\end{definition}
+
+\begin{theorem}[协方差的性质]
+  协方差有如下一些性质：
+  \begin{enumerate}
+    \item 
+    $\mcov(X,C) = 0$，其中$C$为常数。
+    \item
+    $\mcov(X,Y) = \mcov(Y,X)$
+    \item 
+    $\mcov(aX,bY)=ab\mcov(X,Y)$，其中$a,b$为常数。
+    \item 
+    $\mcov(X_1+X_2,Y)=\mcov(X_1,Y)+\mcov(X_2,Y)$
+    \item 
+    $\mvar(X\pm Y)=\mvar(X)+\mvar(Y)\pm 2\mcov(X,Y)$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[相互独立的随机变量的协方差]
+  若随机变量$X,Y$独立，则
+  \begin{displaymath}
+    \mcov(X,Y) = 0
+  \end{displaymath}
+  亦即$\mexpect[XY]=\mexpect[X]\mexpect[Y]$，
+  所以$\mvar(X\pm Y) = \mvar(X)\pm \mvar(Y)$。
+\end{theorem}
+
+\begin{remark}
+  反之并不成立，即$\mcov(X,Y)=0$并不意味着$X,Y$相互独立。
+\end{remark}
+
+\begin{theorem}[随机变量和的方差]
+  对于有限个随机变量$X_1,X_2,\dots,X_n$，
+  \begin{align*}
+    \mvar\left(\sum_{i=1}^{n}X_i\right)
+    &= \sum_{i=1}^{n}\mvar(X) + 2\sum_{1\le i<j\le n}\mcov(X_i,X_j) \\
+    &= \sum_{\substack{1\le i\le n \\ 1\le j\le n}}\mcov(X_i,X_j)
+  \end{align*}
+  特别地，若$X_1,X_2,\dots,X_n$两两独立，则
+  \begin{displaymath}
+    \mvar\left(\sum_{i=1}^{n}X_i\right) = \sum_{i=1}^{n}\mvar(X_i)
+  \end{displaymath}
+\end{theorem}
+
+\subsection{相关系数}
+
+\section{常见随机变量分布的期望与方差}
+
+\section{集中度(Concentration of measure)}
+
+\begin{theorem}[马尔科夫不等式]
+  设随机变量$X$非负，则对任意$a>0$，有
+  \begin{displaymath}
+    P(X\ge a) \le \frac{\mexpect[X]}{a}
+  \end{displaymath}
+\end{theorem}
+
+\begin{theorem}[马尔科夫不等式的推广]
+  设$X$为随机变量，$f(X)$为取值非负的实函数，则对任意$a>0$，有
+  \begin{displaymath}
+    P(f(X)\ge a) \le \frac{\mexpect[f(X)]}{a}
+  \end{displaymath}
+\end{theorem}
+
+\begin{theorem}[切比雪夫不等式]
+  设$X$为随机变量，则对任意$a>0$，有
+  \begin{displaymath}
+    P\left(|X-\mexpect[X]|>a\right) \le \frac{\mvar(X)}{a^2}
+  \end{displaymath}
+\end{theorem}
