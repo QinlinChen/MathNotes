@@ -29,12 +29,12 @@
 \begin{theorem}[分布函数的性质]
   分布函数$F(x)=P(X\le x)$具有以下性质：
   \begin{enumerate}
-    \item 
+    \item
     $F(x)$是单调非递减函数。
-    \item 
+    \item
     $0\le F(x)\le 1$且
     $F(-\infty) = 0$，$F(+\infty) = 1$。
-    \item 
+    \item
     $F(x)$是右连续的。
   \end{enumerate}
   反之，任一具有以上三性质的函数必是某随机变量的分布函数。
@@ -54,17 +54,17 @@
 \begin{theorem}[连续型随机变量$F(x)$与$p(x)$的性质]
   设$F(x)$和$p(x)$分别是连续型随机变量$X$的分布函数与密度函数，则
   \begin{enumerate}
-    \item 
+    \item
     $p(x) \ge 0$
-    \item 
+    \item
     $\mintall p(x)dx = 1$
-    \item 
+    \item
     $F(x)$是连续函数。
-    \item 
+    \item
     $P(x_1< X\le x_2)=\int_{x_1}^{x_2}p(x)dx$
-    \item 
+    \item
     对任意$a\in\mfR$，$P(X=a)=0$。
-    \item 
+    \item
     若$p(x)$在点$x$处连续，则有
     $F'(x)=p(x)$。
   \end{enumerate}
@@ -113,15 +113,15 @@ $y=g(x)$是关于$x$的连续函数，$Y=g(X)$是连续型随机变量。
 \begin{theorem}[联合分布函数的性质]
   联合分布函数$F(x,y)$具有以下性质：
   \begin{enumerate}
-    \item 
+    \item
     $F(x,y)$分布对每个变量单调非减。
-    \item 
+    \item
     $0\le F(x,y)\le 1$且
     \begin{gather*}
     F(-\infty,y)=F(x,-\infty) = 0 \\
     F(-\infty,-\infty)=0,\ F(+\infty,+\infty)=1
     \end{gather*}
-    \item 
+    \item
     $F(x,y)$关于每个变量右连续，即
     $F(x,y)=F(x+0,y)=F(x,y+0)$。
     \item
@@ -144,14 +144,14 @@ $y=g(x)$是关于$x$的连续函数，$Y=g(X)$是连续型随机变量。
 \begin{theorem}[联合概率密度函数的性质]
   设$p(x,y)$是连续随机向量$(X,Y)$的联合概率密度函数，则
   \begin{enumerate}
-    \item 
+    \item
     $p(x,y)\ge 0$
-    \item 
+    \item
     $\mintall\mintall p(u,v)dudv = 1$
-    \item 
+    \item
     若$p(x,y)$在点$(x,y)$连续，则有
     \[ \frac{\partial^2 F(x,y)}{\partial x\partial y} = p(x,y) \]
-    \item 
+    \item
     $P\left((X,Y)\in G\right) = \iint_G p(x,y)dxdy$
   \end{enumerate}
 \end{theorem}
@@ -458,12 +458,12 @@ $y=g(x)$是关于$x$的连续函数，$Y=g(X)$是连续型随机变量。
 \begin{theorem}[二维正态分布的性质]
   设$(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，则
   \begin{enumerate}
-    \item 
+    \item
     $X\sim N(\mu_1,\sigma_1^2)$，$Y\sim N(\mu_2,\sigma_2^2)$，
     即二维正态分布的边缘分布仍是正态分布。
-    \item 
+    \item
     $X,Y$相互独立当且仅当$\rho = 0$。
-    \item 
+    \item
     $\mcov(X,Y) = \rho\sigma_1\sigma_2$
   \end{enumerate}
 \end{theorem}

@@ -123,21 +123,21 @@
     \begin{displaymath}
     P\left(\bigcup_{i=1}^n A_i\right)=\sum_{i=1}^n P(A_i)
     \end{displaymath}
-    \item 
+    \item
     $P(B-A) = P(B) - P(BA)$
     \item
     $P(\mcmpl{A}) = 1 - P(A)$
-    \item 
+    \item
     $P(A\cup B) = P(A) + P(B) - P(AB)$
     \item
     容斥原理：
     \begin{align*}
-      P\left(\bigcup_{i=1}^n A_i\right) 
+      P\left(\bigcup_{i=1}^n A_i\right)
       &= \sum_{i=1}^n P(A_i) - \sum_{1\le i<j\le n} P(A_iA_j)
       + \sum_{1\le i<j<k\le n} P(A_iA_jA_k) \\
       &+ \dots + (-1)^{n-1}P(A_1A_2\dots A_n)
     \end{align*}
-    \item 
+    \item
     Union Bound(也称Boole不等式):
     \begin{displaymath}
       P\left(\bigcup_i A_i\right) \le \sum_i P(A_i)
@@ -181,7 +181,7 @@
   设$A,B$是两个事件，且$P(B)>0$，则称
   \begin{displaymath}
     P(A|B) = \frac{P(AB)}{P(B)}
-  \end{displaymath} 
+  \end{displaymath}
   为事件$B$发生的条件下，事件$A$的\textbf{条件概率}。
 \end{definition}
 
@@ -207,9 +207,9 @@
   设$\Omega$为试验$E$的样本空间，$A_1,A_2,\dots,A_n$为$E$的一组事件。
   若满足
   \begin{enumerate}
-    \item 
+    \item
     $A_1,A_2,\dots,A_n$两两互不相容
-    \item 
+    \item
     $\bigcup_{i=1}^n A_i = \Omega$
   \end{enumerate}
   则称$A_1,A_2,\dots,A_n$为样本空间$\Omega$的一个划分。
@@ -229,9 +229,9 @@
   全概率公式告诉我们，如果
   \begin{enumerate}
     \item
-    每一原因发生的概率已知(即$P(A_i)$已知)， 
+    每一原因发生的概率已知(即$P(A_i)$已知)，
     \item
-    每一原因对结果的影响已知(即$P(B|A_i)$已知)， 
+    每一原因对结果的影响已知(即$P(B|A_i)$已知)，
   \end{enumerate}
   那么即可求出结果发生的概率$P(B)$。
 \end{remark}
@@ -249,9 +249,9 @@
   把$A_1,A_2,\dots,A_n$看作该过程的若干个原因。
   贝叶斯公式告诉我们，如果
   \begin{enumerate}
-    \item 
+    \item
     每一原因发生的概率已知(即$P(A_k)$已知)，
-    \item 
+    \item
     每一原因对结果的影响已知(即$P(B|A_k)$已知)，
   \end{enumerate}
   那么就能求出$B$由第$i$个原因引起的概率$P(A_i|B)$。

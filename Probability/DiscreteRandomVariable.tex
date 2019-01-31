@@ -29,19 +29,19 @@
   为$X$的\textbf{分布律}。常表示为
   \begin{center}
     \begin{tabular}{c|ccccc}
-      $X$ & $x_1$ & $x_2$ & $\dots$ & $x_n$ & $\dots$ \\ 
-      \hline 
-      $P$ & $p_1$ & $p_2$ & $\dots$ & $p_n$ & $\dots$ \\ 
-    \end{tabular} 
+      $X$ & $x_1$ & $x_2$ & $\dots$ & $x_n$ & $\dots$ \\
+      \hline
+      $P$ & $p_1$ & $p_2$ & $\dots$ & $p_n$ & $\dots$ \\
+    \end{tabular}
   \end{center}
 \end{definition}
 
 \begin{theorem}[离散型随机变量分布律的性质]
   设$P(X=x_i)=p_i\ (i=1,2,\dots)$是随机变量$X$的分布律，则
   \begin{enumerate}
-    \item 
+    \item
     $\forall n\in \mfN$，$p_n \ge 0$
-    \item 
+    \item
     $\sum_{i}p_i = 1$
   \end{enumerate}
 \end{theorem}
@@ -73,14 +73,14 @@
   为$(X,Y)$的\textbf{联合分布律}。常表示为
   \begin{center}
     \begin{tabular}{c|ccccc}
-      \diagbox{$X$}{$Y$} & $y_1$ & $y_2$ & $\dots$ & $y_j$ & $\dots$ \\ 
+      \diagbox{$X$}{$Y$} & $y_1$ & $y_2$ & $\dots$ & $y_j$ & $\dots$ \\
       \hline
       $x_1$ & $p_{11}$ & $p_{12}$ & $\dots$ & $p_{1j}$ & $\dots$ \\
       $x_2$ & $p_{21}$ & $p_{22}$ & $\dots$ & $p_{2j}$ & $\dots$ \\
       $\vdots$ & $\vdots$ & $\vdots$ & & $\vdots$ & \\
       $x_i$ & $p_{i1}$ & $p_{i2}$ & $\dots$ & $p_{ij}$ & $\dots$ \\
       $\vdots$ & $\vdots$ & $\vdots$ & & $\vdots$ & \\
-    \end{tabular} 
+    \end{tabular}
   \end{center}
 \end{definition}
 
@@ -88,9 +88,9 @@
   设$P(X=x_i,Y=y_j)=p_{ij}\ (i,j=1,2\dots)$
   是二维随机变量$(X,Y)$的联合分布律，则
   \begin{enumerate}
-    \item 
+    \item
     $\forall i,j\in\mfN$，$p_{ij} \ge 0$
-    \item 
+    \item
     $\sum_{ij}p_{ij}=1$
   \end{enumerate}
 \end{theorem}
@@ -123,7 +123,7 @@
 \begin{definition}[多离散型随机变量的独立性]
   设$X_1,X_2,\dots,X_n$为离散型随机变量。
   \begin{enumerate}
-    \item 
+    \item
     若对于任意$x_1,x_2,\dots,x_n$，有
     \begin{displaymath}
       P(X_1=x_1,\dots,X_n=x_n)=\prod_{i=1}^{n}P(X_i=x_i)
@@ -157,10 +157,10 @@
   记$P(A)=p$，则称$X$服从\textbf{0-1分布}
   \begin{center}
     \begin{tabular}{c|cc}
-      $X$ & $0$ & $1$ \\ 
-      \hline 
-      $P$ & $1-p$ & $p$ \\ 
-      \end{tabular} 
+      $X$ & $0$ & $1$ \\
+      \hline
+      $P$ & $1-p$ & $p$ \\
+      \end{tabular}
   \end{center}
 \end{definition}
 

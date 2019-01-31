@@ -21,37 +21,37 @@
     \item[加法]
     \begin{enumerate}
       \item 封闭性：
-      $\forall\alpha,\beta\in V,\ \alpha\oplus\beta\in V$。
+      $\forall\alpha,\beta\in V$，$\alpha\oplus\beta\in V$。
       \item 交换律：
-      $\forall\alpha,\beta\in V,\ \alpha\oplus\beta = \beta\oplus\alpha$
+      $\forall\alpha,\beta\in V$，$\alpha\oplus\beta = \beta\oplus\alpha$
       \item 结合律：
-      $\forall\alpha,\beta,\gamma\in V,\ 
-        (\alpha\oplus\beta)\oplus\gamma = \alpha\oplus(\beta\oplus\gamma)$。
+      $\forall\alpha,\beta,\gamma\in V$，
+      $(\alpha\oplus\beta)\oplus\gamma = \alpha\oplus(\beta\oplus\gamma)$。
       \item 零元存在：
-      $\exists\theta\in V,\forall\alpha\in V,\ \alpha\oplus\theta=\alpha$。
+      $\exists\theta\in V,\forall\alpha\in V$，$\alpha\oplus\theta=\alpha$。
       \item 逆元存在：
-      $\forall\alpha\in V,\exists\beta\in V,\ \alpha\oplus\beta=\theta$。
+      $\forall\alpha\in V,\exists\beta\in V$，$\alpha\oplus\beta=\theta$。
       我们把$\beta$记为``$-\alpha$''。
-    \end{enumerate}  
+    \end{enumerate}
     \item[数乘]
     \begin{enumerate}
       \item 封闭性：
-      $\forall\lambda\in\mfF,\alpha\in V,\ \lambda\otimes\alpha\in V$。
+      $\forall\lambda\in\mfF,\alpha\in V$，$\lambda\otimes\alpha\in V$。
       \item 结合律：
-      $\forall\lambda_1,\lambda_2\in\mfF,\alpha\in V,\ 
-        \lambda_1\otimes(\lambda_2\otimes\alpha) =
+      $\forall\lambda_1,\lambda_2\in\mfF,\alpha\in V$，
+      $\lambda_1\otimes(\lambda_2\otimes\alpha) =
         (\lambda_1\lambda_2)\otimes\alpha$。
       \item 分配律1：
-      $\forall\lambda_1,\lambda_2\in\mfF,\alpha\in V,\ 
-        (\lambda_1\oplus\lambda_2)\otimes\alpha =
+      $\forall\lambda_1,\lambda_2\in\mfF,\alpha\in V$，
+      $(\lambda_1\oplus\lambda_2)\otimes\alpha =
         (\lambda_1\otimes\alpha)\oplus(\lambda_2\otimes\alpha)$
       \item 分配律2：
-      $\forall\lambda\in\mfF,\alpha,\beta\in V,\ 
-        \lambda\otimes(\alpha\oplus\beta) =
+      $\forall\lambda\in\mfF,\alpha,\beta\in V$，
+      $\lambda\otimes(\alpha\oplus\beta) =
         (\lambda\otimes\alpha)\oplus(\lambda\otimes\beta)$。
       \item 单位元存在：
-      $\forall\alpha\in V,\ 
-        1\otimes\alpha = \alpha$。
+      $\forall\alpha\in V$，
+      $1\otimes\alpha = \alpha$。
     \end{enumerate}
   \end{description}
   则称$V$是数域$\mfF$上的一个\textbf{线性空间}，又称\textbf{向量空间}。
@@ -69,10 +69,10 @@
     \item 加法零元的具有唯一性
     \item 加法逆元的具有唯一性
     \item 加法零元的求法：
-    $\forall\alpha\in V,\ 0\otimes\alpha=\theta$
+    $\forall\alpha\in V$，$0\otimes\alpha=\theta$
     \item 加法逆元的求法：
-    $\forall\alpha\in V,\ (-1)\otimes\alpha=-\alpha$
-    \item $\forall k\in\mfF,\ k\otimes\theta=\theta$
+    $\forall\alpha\in V$，$(-1)\otimes\alpha=-\alpha$
+    \item $\forall k\in\mfF$，$k\otimes\theta=\theta$
     \item 若$\lambda\otimes\alpha=\theta$，则$\lambda=0$或$\alpha=\theta$。
   \end{enumerate}
 \end{theorem}
@@ -101,7 +101,7 @@
 \begin{definition}[维数]
   如果一个线性空间$V$中，线性无关的元素的最大个数是$n$，
   则称该线性空间是$n$维的，记作$\mdim V = n$。
-  
+
   如果对任意正整数$N$，总存在$N$个线性无关的元素，
   则称该线性空间是\textbf{无穷维线性空间}。
   不是无穷维的线性空间叫做有穷维线性空间。
@@ -258,8 +258,8 @@
     \item
     $T(\theta_1) = \theta_2$
     \item
-    $\forall\alpha,\beta\in V,\lambda,\mu\in\mfF,\ 
-      T(\lambda\alpha+\mu\beta)=\lambda T(\alpha)+\mu T(\beta)$
+    $\forall\alpha,\beta\in V,\lambda,\mu\in\mfF$，
+    $T(\lambda\alpha+\mu\beta)=\lambda T(\alpha)+\mu T(\beta)$
     \item
     若$V$中的$\alpha_1,\alpha_2,\dots,\alpha_s$线性相关，
     则$T(\alpha_1),T(\alpha_2),\dots,T(\alpha_s)$也线性相关。
@@ -275,7 +275,7 @@
     \item
     若对任意$\alpha\in V$，$T(\alpha)=\alpha$，
     则称$T$为\textbf{恒等变换}，常用$E$或$I$表示。
-    \item 
+    \item
     若对任意$\alpha\in V$，$T(\alpha)=k\alpha$，其中$k\in\mfF$，
     则称$T$为\textbf{数乘变换}，常用$T_k$来表示。
   \end{enumerate}
@@ -292,7 +292,7 @@
 \begin{theorem}[象空间与核空间的性质]
   设$T$是线性空间$V$到$W$的线性变换，那么
   \begin{enumerate}
-    \item 
+    \item
     $\mim(T)$是$V$的子空间，$\mker(T)$是$W$的子空间。
     \item
     $\mdim(\mim(T)) + \mdim(\ker(T)) = \dim(V)$
@@ -381,7 +381,7 @@
   $\eta_1,\eta_2,\dots,\eta_n$。由$\epsilon_1,\epsilon_2\dots,\epsilon_n$到
   $\eta_1,\eta_2,\dots,\eta_n$的过渡矩阵为$\mmP$。
   $V$上线性变换$T$在这两组基下的矩阵分别为$\mmA,\mmB$，那么有
-  \[ \mmB = \mmP^{-1}\mmA\mmP \]  
+  \[ \mmB = \mmP^{-1}\mmA\mmP \]
 \end{theorem}
 
 \begin{remark}
@@ -500,7 +500,7 @@ $\mvx=(x_1,\dots,x_n)^\mT$。
   $P(\lambda)=0$的根称为$\mmA$的\textbf{特征值}或\textbf{特征根}。
   如果$\lambda$是$P(\lambda)=0$的$k$重根，
   那么又称$\lambda$是\textbf{$k$重特征值}，$k$叫做\textbf{代数重数}。
-  
+
   对于一个特征值$\lambda_0$，
   我们称方程$(\mmA-\lambda_0\mmI)\mvx=0$的非零解为
   $\mmA$对应于$\lambda_0$的\textbf{特征向量}。
