@@ -1,7 +1,8 @@
 \chapter{随机变量的数字特征}
 
 \section{数学期望}
-% TODO
+本小节首先分别给出离散型和连续型随机变量的数学期望的定义，
+然后讨论数学期望的性质，以及条件期望。
 
 \subsection{离散型随机变量的数学期望}
 \begin{definition}[离散型随机变量的数学期望]
@@ -98,6 +99,8 @@
 \end{theorem}
 
 \section{方差\ 协方差\ 相关系数}
+本小节主要讨论：方差，协方差，相关系数与相关性。
+
 \subsection{方差}
 \begin{definition}[中位数]
   设$X$为随机变量。对于$m\in\mfR$，若
@@ -191,7 +194,100 @@
 \end{theorem}
 
 \subsection{相关系数} \label{subset-correlation-coefficent}
-% TODO
+\begin{definition}[标准化随机变量]
+  设随机变量$X$的期望$\mexpect[X]$和方差$\mvar(X)$，则
+  \begin{displaymath}
+    \widetilde{X} = X-\mexpect[X]
+  \end{displaymath}
+  被称为$X$的\textbf{中心化随机变量}，
+  \begin{displaymath}
+    X^* = \frac{X-\mexpect[X]}{\sqrt{\mvar(X)}}
+  \end{displaymath}
+  被称为$X$的\textbf{标准化随机变量}。
+\end{definition}
+
+\begin{remark}
+  随机变量标准化的目的是使期望为0，方差为1。
+\end{remark}
+
+\begin{definition}[相关系数]
+  对随机变量$X,Y$，设$\mvar(X)>0,\mvar(Y)>0$均存在，则称
+  \begin{displaymath}
+    \rho_{XY}=\frac{\mcov(X,Y)}{\sqrt{\mvar(X)\mvar(Y)}}
+  \end{displaymath}
+  为$X$和$Y$的\textbf{相关系数}。
+  在不引起混淆时，记$\rho_{XY}$为$\rho$。  
+\end{definition}
+
+\begin{remark}
+  记$X,Y$的标准化随机变量为$X^*,Y^*$，则有
+  \begin{displaymath}
+    \rho_{XY}=\mcov(X^*,Y^*)
+  \end{displaymath}
+\end{remark}
+
+\begin{theorem}[柯西-施瓦兹(Cauchy-Schwartz)不等式]
+  设$X,Y$为随机变量，则
+  \begin{displaymath}
+    \mexpect[XY]^2 \le \mexpect[X^2]\mexpect[Y^2]
+  \end{displaymath}
+\end{theorem}
+
+\begin{theorem}[相关系数的性质]
+  对随机变量$X,Y$，设$\rho_{XY}$为它们的相关系数，则
+  $|\rho_{XY}|\le 1$，即$\mcov(X,Y)^2 \le \mvar(X)\mvar(Y)$。
+\end{theorem}
+
+\begin{remark}
+  由柯西施瓦兹不等式直接得证。
+\end{remark}
+
+\begin{theorem}
+  $|\rho_{XY}|=1$当且仅当存在常数$a,b$，使得
+  \[ P(Y=aX+b) = 1 \]
+  即$X$与$Y$有线性关系的概率为1。
+\end{theorem}
+
+\begin{theorem}[相关性]
+  对随机变量$X,Y$，
+  \begin{itemize}
+    \item
+    若$|\rho_{XY}|=1$，
+    则称$X,Y$\textbf{线性相关}。
+    \begin{itemize}
+      \item 
+      若$\rho_{XY}=1$，则称$X,Y$\textbf{正相关}。
+      \item 
+      若$\rho_{XY}=-1$，则称$X,Y$\textbf{负相关}。
+    \end{itemize}
+    \item 
+    $|\rho_{XY}|=0$表示$X$与$Y$不存在线性关系，称为\textbf{不相关}。
+  \end{itemize}
+\end{theorem}
+
+\begin{remark}
+  $\rho_{XY}$表示$X$与$X$存在线性关系的强弱程度。
+  $|\rho_{XY}|$越大，则$X$与$Y$线性关系越强，反之越弱。
+\end{remark}
+
+\begin{theorem}[独立与不相关]
+  设$X,Y$为随机变量，则
+  \begin{center}
+    \begin{tabular}{cccl}
+      \multirow{4}{*}{$X,Y$独立} &
+      \multirow{4}{*}{$\Longrightarrow$} &
+      \multirow{4}{*}{$X,Y$不相关} &
+      $\iff \rho_{XY}=0$ \\ 
+      & & & $\iff \mcov(X,Y)=0$ \\ 
+      & & & $\iff \mexpect[XY]=\mexpect[X]\mexpect[Y]$ \\ 
+      & & & $\iff \mvar(X+Y)=\mvar(X)+\mvar(Y)$ \\ 
+    \end{tabular} 
+  \end{center}
+\end{theorem}
+
+\begin{remark}
+  $X,Y$不相关指的是$X,Y$不存在线性关系，不代表$X,Y$独立。
+\end{remark}
 
 \section{常见随机变量分布的期望与方差}
 % TODO
