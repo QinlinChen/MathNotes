@@ -1,11 +1,162 @@
 \chapter{极限理论}
 
 \section{大数定律}
-% TODO
+本小节首先给出依概率收敛的概念，
+然后讨论大数定律以及相关的定理。
 
 \subsection{依概率收敛}
+\begin{definition}[依概率收敛]
+  设$Y_1,Y_2,\dots,Y_n,\dots$是随机变量序列，$a$是一个常数。
+  若对任意$\epsilon >0$，有
+  \begin{displaymath}
+    \lim_{n\to\infty}P(|Y_n - a|<\epsilon) = 1
+  \end{displaymath}
+  或
+  \begin{displaymath}
+    \lim_{n\to\infty}P(|Y_n-a|\ge\epsilon) = 0
+  \end{displaymath}
+  则称$Y_1,Y_2,\dots,Y_n,\dots$\textbf{依概率收敛}于$a$，
+  记为$Y_n \mprto a$。
+\end{definition}
 
-\subsection{大数定律}
+\begin{theorem}[连续映射定理]
+  若$X_n\mprto a$，函数$g(\cdot)$在点$a$处连续，则
+  \begin{displaymath}
+    g(X_n) \mprto g(a)
+  \end{displaymath}
+  若$X_n\mprto a$，$Y_n\mprto b$，
+  函数$g(\cdot,\cdot)$在点$(a,b)$处连续，则
+  \begin{displaymath}
+    g(X_n,Y_n) \mprto g(a,b)
+  \end{displaymath}
+\end{theorem}
+
+\subsection{大数定律的定义}
+\begin{definition}[大数定律]
+  设$X_1,X_2,\dots$是随机变量序列。若
+  \begin{displaymath}
+    \frac{1}{n}\sum_{k=1}^{n}X_k \mprto
+      \frac{1}{n}\sum_{k=1}^{n}\mexpect[X_k]
+  \end{displaymath}
+  则称$\{X_n\}$服从\textbf{大数定律}。
+\end{definition}
+
+\begin{remark}
+  大数定律指的是随机变量的平均值依概率趋向于它们数学期望的平均值。
+\end{remark}
+
+\subsection{大数定律的相关定理}
+\begin{theorem}[马尔可夫大数定律]
+  若随机序列$\{X_n\}$满足
+  \begin{displaymath}
+    \frac{1}{n^2}\mvar\left(\sum_{i=1}^{n}X_i\right)\to n\ (n\to\infty)
+  \end{displaymath}
+  则$\{X_n\}$服从大数定律。
+\end{theorem}
+
+\begin{remark}
+  注意，尽管马尔科夫大数定律叫``定律''，但实质上是``定理''。
+  下面几个定律也是这样的。
+\end{remark}
+
+\begin{theorem}[切比雪夫大数定律]
+  若$\{X_n\}$为\emph{两两互不相关}的随机变量序列，
+  且存在常数$C$，使得对每个随机变量$X_k$，
+  $\mvar(X_k)\le C\ (k=1,2,\dots)$
+  则$\{X_n\}$服从大数定律。
+\end{theorem}
+
+\begin{theorem}[辛钦大数定律]
+  若随机变量序列$\{X_n\}$独立同分布，
+  且数学期望$\mexpect[X_k]=\mu\ (k=1,2,\dots)$均存在，
+  则$\{X_n\}$服从大数定律，即
+  \begin{displaymath}
+    \frac{1}{n}\sum_{k=1}^n X_k \mprto
+      \frac{1}{n}\sum_{k=1}^{n}\mexpect[X_k] = \mu
+  \end{displaymath}
+\end{theorem}
+
+\begin{remark}
+  该定理从理论上指出：用算术平均值来近似实际真值是合理的。
+\end{remark}
+
+\begin{theorem}[伯努利大数定律]
+  设$n_A$为$n$重伯努利试验中事件$A$发生的次数，则
+  \begin{displaymath}
+    \frac{n_A}{n}\mprto P(A)
+  \end{displaymath}
+\end{theorem}
+
+\begin{remark}
+  该定理给出了频率的稳定性的严格的数学意义，
+  即频率$\mprto$概率。
+\end{remark}
 
 \section{中心极限定理}
-% TODO
+本小节主要讨论中心极限定理的定义和相关定理。
+
+\subsection{中心极限定理的定义}
+\begin{definition}[中心极限定理]
+  设$\{X_n\}$为独立随机变量序列，
+  且$\mexpect[X_k],\mvar(X_k)\ (k=1,2,\dots)$存在。
+  令$Z_n$为$\sum_{k=1}^nX_k$标准化随机变量，即
+  \begin{displaymath}
+    Z_n = \frac{\sum_{k=1}^{n}X_k - \sum_{k=1}^{n}\mexpect[X_k]}
+      {\sqrt{\sum_{k=1}^{n}\mvar(X_k)}}
+  \end{displaymath}
+  若对任意$x\in\mfR$，有
+  \begin{displaymath}
+    \lim_{n\to\infty} P(Z_n\le x) =
+      \frac{1}{2\pi}\mintcumto{x} e^{-\frac{t^2}{2}}dt = \Phi(x)
+  \end{displaymath}
+  则称$\{X_n\}$服从\textbf{中心极限定理}。
+\end{definition}
+
+\begin{remark}
+  中心极限定理指的是$\sum_{k=1}^n X_k$的极限分布是正态分布。
+  另外注意，尽管中心极限定理叫``定理''，但它和大数定律一样都是``定义''层面上的。
+\end{remark}
+
+\subsection{中心极限定理的相关定理}
+
+\begin{theorem}[林德贝格-勒维中心极限定理(独立同分布情形)]
+  设$\{X_n\}$独立同分布，
+  且$\mexpect[X_k]=\mu,\mvar(X_k)=\sigma^2\ (k=1,2,\dots)$，
+  则$\{X_n\}$服从中心极限定理，即
+  \begin{displaymath}
+    \lim_{n\to\infty}P\left(\frac{\sum_{k=1}^{n}X_k-n\mu}{\sqrt{n}\sigma}
+      \le x\right) = \Phi(x)
+  \end{displaymath}
+\end{theorem}
+
+\begin{remark}
+  该定理说明，对于独立同分布的随机序列$\{X_n\}$，
+  它们的和$\sum_{k=1}^n X_k$近似服从于$N(n\mu, n\sigma^2)$。
+\end{remark}
+
+\begin{theorem}[德莫佛-拉普拉斯中心极限定理(伯努利情形)]
+  设$\mu_n$是$n$重伯努利试验中事件$A$发生的次数，记
+  $p=P(A)$，则对任意$x\in\mfR$，有
+  \begin{displaymath}
+    \lim_{n\to\infty}P\left(\frac{\mu_n-np}{\sqrt{np(1-p)}}
+      \le x\right) = \Phi(x)
+  \end{displaymath}
+\end{theorem}
+
+\begin{corollary}
+  设$\mu_n\sim B(n,p)$。当$n$充分大时，
+  \begin{displaymath}
+    P(a < \mu_n \le b) \approx
+      \Phi\left(\frac{b-np}{\sqrt{np(1-p)}}\right)
+      - \Phi\left(\frac{a-np}{\sqrt{np(1-p)}}\right)
+  \end{displaymath}
+\end{corollary}
+
+\begin{remark}
+  这个公式给出了$n$较大时二项分布的概率计算方法
+\end{remark}
+
+\subsection{大数定律与中心极限定理的比较}
+对于独立同分布的随机变量序列$\{X_n\}$，
+大数定律描述了其均值(或和)在$n\to\infty$的趋势，
+中心极限定理则能给出给定$n$与$x$时的具体概率近似。
