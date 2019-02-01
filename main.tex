@@ -73,6 +73,7 @@
 \newcommand{\mtr}{\mfuncname{tr}}
 \newcommand{\mconj}[1]{\overline{#1}}
 \newcommand{\mcmpl}[1]{\overline{#1}} % complement set
+\newcommand{\mbar}[1]{\overline{#1}}
 \newcommand{\mexpect}{\mathbb{E}}
 \newcommand{\mvar}{\mfuncname{Var}}
 \newcommand{\msdev}{\sigma}
@@ -96,8 +97,8 @@
 \tableofcontents
 
 \part{微积分}
-\include{Calculus/AnalysisFoundation}
-\include{Calculus/DifferentialCalculusOfUnaryFunction}
+% \include{Calculus/AnalysisFoundation}
+% \include{Calculus/DifferentialCalculusOfUnaryFunction}
 
 \part{线性代数}
 \include{LinearAlgebra/Matrix}
@@ -116,7 +117,8 @@
 
 \part{数理统计}
 \include{MathematicalStatistics/StatisticsAndSamplingDistribution}
-
+\include{MathematicalStatistics/ParameterEstimation}
+\include{MathematicalStatistics/HypothesisTest}
 % TODO: \printindex
 
 \end{document}

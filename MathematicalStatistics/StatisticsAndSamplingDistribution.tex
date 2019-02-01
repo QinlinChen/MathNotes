@@ -1,3 +1,249 @@
 \chapter{统计量与抽样分布}
 
+\section{统计的基本概念}
+本小节主要介绍了总体，个体，样本，统计量与抽样分布的基本概念。
+
+\subsection{总体与个体}
+\begin{definition}[总体]
+  研究对象的某项数量指标的值的全体被称为\textbf{总体}。
+\end{definition}
+
+\begin{definition}[个体]
+  总体中的每个元素被称为\textbf{个体}。
+\end{definition}
+
+\begin{definition}[总体分布]
+  研究对象的数量指标$X$的取值在客观上有一定的分布，
+  因此，可将其看做随机变量，它的分布被称为\textbf{总体分布}。
+\end{definition}
+
+\subsection{样本}
+\begin{definition}[样本]
+  从总体中随机抽取的一些个体被称为\textbf{样本}。
+\end{definition}
+
+\begin{definition}[抽样]
+  抽得样本的过程被称为\textbf{抽样}。
+\end{definition}
+
+\begin{definition}[样本容量]
+  样本中个体的数量被称为\textbf{样本容量}。
+\end{definition}
+
+\begin{definition}[样本值]
+  对样本观察得到的数值被称为\textbf{样本值}。
+\end{definition}
+
+就一次具体观察而言，样本值是确定的数。
+但在不同的抽样下，样本值会发生变化，因此可将样本看做是随机变量。
+
+\begin{definition}[简单随机样本]
+  设随机变量$X$的分布函数是$F(x)$。
+  若相互独立的随机变量$X_1,X_2,\dots,X_n$具有同一分布函数$F$，
+  则称$X_1,X_2,\dots,X_n$为从总体$X$中得到的容量为$n$的\textbf{简单随机样本}，
+  简称为样本，其观察值$x_1,x_2,\dots,x_n$称为样本值。
+\end{definition}
+
+样本的两个特性(对抽样的要求)：
+\begin{enumerate}
+  \item 代表性：
+  样本的每个分量$X_i$与总体$X$具有相同的分布。
+  \item 独立性：
+  $X_1,X_2,\dots,X_n$相互独立。
+\end{enumerate}
+
+\begin{definition}[样本联合分布/密度]
+  若$X_1,X_2,\dots,X_n$为$X$的一个样本，
+  $F(x)$和$p(x)$为$X$的分布函数与密度函数，
+  则$X_1,X_2,\dots,X_n$的\textbf{联合分布函数}为
+  \begin{displaymath}
+    F^*(x_1,x_2,\dots,x_n)=\prod_{i=1}^n F(x_i)
+  \end{displaymath}
+  $X_1,X_2,\dots,X_n$的\textbf{联合概率密度}为
+  \begin{displaymath}
+    p^*(x_1,x_2,\dots,x_n)=\prod_{i=1}^n p(x_i)
+  \end{displaymath}
+\end{definition}
+
+\subsection{统计量}
+\begin{definition}[统计量]
+  设$X_1,X_2,\dots,X_n$为来自总体$X$的一个样本。
+  若$g(x_1,x_2,\dots,x_n)$是连续函数，且$g$中不含任何未知参数，则称
+  \begin{displaymath}
+    g(X_1,X_2,\dots,X_n)
+  \end{displaymath}
+  是一个\textbf{统计量}。
+  设$x_1,x_2,\dots,x_n$是$X_1,X_2,\dots,X_n$的样本值，则称
+  \begin{displaymath}
+    g(x_1,x_2,\dots,x_n)
+  \end{displaymath}
+  是$g(X_1,X_2,\dots,X_n)$的观察值。
+\end{definition}
+
+\begin{remark}
+  统计量也是随机变量。
+\end{remark}
+
+\begin{definition}[常用统计量]
+  设$X_1,X_2,\dots,X_n$为来自总体$X$的一个样本，
+  下面是一些常用统计量的定义：
+  \begin{enumerate}
+    \item 样本均值：
+    \begin{displaymath}
+      \mbar{X}=\frac{1}{n}\sum_{i=1}^{n}X_i
+    \end{displaymath}
+    \item 样本方差：
+    \begin{displaymath}
+      S_n^2 = \frac{1}{n}\sum_{i=1}^{n}(X_i-\mbar{X})^2
+      = \frac{1}{n}\sum_{i=1}^{n}X_i^2- \mbar{X}^2
+    \end{displaymath}
+    \item 修正样本方差：
+    \begin{displaymath}
+      S_{n-1}^2 = \frac{1}{n-1}\sum_{i=1}^{n}(X_i-\mbar{X})^2
+    \end{displaymath}
+    \item 样本标准差：
+    \begin{displaymath}
+      S_n = \sqrt{S_n^2}
+    \end{displaymath}
+    \item 样本$k$阶(原点)矩：
+    \begin{displaymath}
+      A_k = \frac{1}{n}\sum_{1=1}^{n}X_i^k
+    \end{displaymath}
+    \item 样本$k$阶中心矩：
+    \begin{displaymath}
+      B_k = \frac{1}{n}\sum_{i=1}^{n}(X_i-\mbar{X})^k
+    \end{displaymath}
+  \end{enumerate}
+\end{definition}
+
+\subsection{抽样分布}
+\begin{definition}[抽样分布]
+  统计量的分布称为\textbf{抽样分布}。
+\end{definition}
+
+\section{正态总体的抽样分布}
+% TODO
+
+\subsection{正态总体样本的线性函数的分布}
+\begin{theorem}
+  设$X_1,X_2,\dots,X_n$为来自正态总体$X\sim N(\mu,\sigma^2)$的样本，
+  则统计量$U=\sum_{i=1}^{n}a_iX_i$服从正态分布
+  \begin{displaymath}
+    U\sim N\left(\mu\sum_{i=1}^{n}a_i,\sigma^2\sum_{i=1}^{n}a_i^2\right)
+  \end{displaymath}
+  若取$a_i=1/n\ (i=1,2,\dots,n)$，则
+  \begin{displaymath}
+    U = \mbar{X} \sim N(\mu, \frac{\sigma^2}{n})
+  \end{displaymath}
+\end{theorem}
+
+\begin{definition}[标准正态分布的上$\alpha$分位点]
+  设$X\sim N(0,1)$，$0<\alpha<1$，称满足
+  \begin{displaymath}
+    P(X>u_\alpha) = \alpha
+  \end{displaymath}
+  的$u_\alpha$为$N(0,1)$分布的上$\alpha$分位点。
+\end{definition}
+
+\begin{theorem}
+  设$u_\alpha$是标准正态分布的上$\alpha$分位点，
+  则$\Phi(u_\alpha)=1-\alpha$。
+\end{theorem}
+
+\subsection{$\chi^2$分布}
+\begin{definition}[$\chi^2$分布]
+  设$X_1,X_n,\dots,X_n$独立同分布于$N(0,1)$，则称随机变量
+  \begin{displaymath}
+    \chi^2 = X_1^2+X_2^2+\dots+X_n^2
+  \end{displaymath}
+  所服从的分布为自由度为$n$的$\chi^2$分布，
+  记为$\chi^2\sim\chi^2(n)$。
+\end{definition}
+
+\begin{theorem}[$\chi^2$分布的可加性]
+  设$X_1\sim\chi^2(n_1), X_2\sim\chi^2(n_2)$，
+  且$X_1,X_2$相互独立，则
+  \begin{displaymath}
+    X_1+X_2\sim\chi^2(n_1+n_2)
+  \end{displaymath}
+\end{theorem}
+
+\begin{theorem}[$\chi^2$分布的数字特征]
+  若$X\sim\chi^2(n)$，则
+  \begin{displaymath}
+    \mexpect[X] = n,\quad \mvar(X) = 2n
+  \end{displaymath}
+\end{theorem}
+
+\begin{definition}[$\chi^2$分布的上$\alpha$分位点]
+  设$X\sim\chi^2(n)$，$0<\alpha<1$，称满足
+  \begin{displaymath}
+  P(X>\chi_\alpha^2(n)) = \alpha
+  \end{displaymath}
+  的点$\chi_\alpha^2(n)$为$\chi^2(n)$分布的上$\alpha$分位点。
+\end{definition}
+
+\subsection{$t$分布}
+\begin{definition}[$t$分布]
+  设$X\sim N(0,1),Y\sim \chi^2(n)$，且$X,Y$相互独立，
+  则称随机变量
+  \begin{displaymath}
+    T=\frac{X}{\sqrt{Y/N}}
+  \end{displaymath}
+  服从自由度为$n$的$t$分布，记为$T\sim t(n)$。
+\end{definition}
+
+\begin{theorem}[$t$分布的性质]
+  $t$分布具有下面一些性质：
+  \begin{enumerate}
+    \item
+    $t$分布的密度函数关于$t=0$对称。
+    \item
+    当$n$充分大时，$t$分布的密度函数$p(t)$近似于$N(0,1)$的密度函数$\Phi(t)$。
+  \end{enumerate}
+\end{theorem}
+
+\begin{definition}[$t$分布的上$\alpha$分位点]
+  设$X\sim t(n)$，$0<\alpha<1$，称满足
+  \begin{displaymath}
+    P(X>t_\alpha(n)) = \alpha
+  \end{displaymath}
+  的点$t_\alpha(n)$为$t(n)$分布的上$\alpha$分位点，
+\end{definition}
+
+\begin{theorem}[$t$分布的上$\alpha$分位点的性质]
+  $t_{1-\alpha}(n) = -t_\alpha(n)$。
+\end{theorem}
+
+\subsection{$F$分布}
+\begin{definition}[$F$分布]
+  设$U\sim\chi^2(n_1), V\sim\chi^2(n_2)$，且$U,V$独立，
+  则称随机变量
+  \begin{displaymath}
+    F = \frac{U/n_1}{V/n_2}
+  \end{displaymath}
+  服从自由度为$(n_1,n_2)$的$F$分布，
+  记为$F\sim F(n_1,n_2)$。
+\end{definition}
+
+\begin{theorem}[$F$分布的性质]
+  若$F\sim F(n_1,n_2)$，则
+  \begin{displaymath}
+    \frac{1}{F} \sim F(n_2,n_2)
+  \end{displaymath}
+\end{theorem}
+
+\begin{definition}[$F$分布的上$\alpha$分位点]
+  设$X\sim F(n_1,n_2)$，$0<\alpha<1$，称满足
+  \begin{displaymath}
+    P(X>F_\alpha(n_1,n_2)) = \alpha
+  \end{displaymath}
+  的点$F_\alpha(n_1,n_2)$为$F(n_1,n_2)$分布的上$\alpha$分位点，
+\end{definition}
+
+\begin{theorem}[$F$分布的上$\alpha$分位点的性质]
+  $F_{1-\alpha}(n_1,n_2) = 1/F_\alpha(n_2,n_1)$。
+\end{theorem}
+
+\subsection{正态总体的抽样分布的四个定理}
 % TODO
