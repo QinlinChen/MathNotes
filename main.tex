@@ -71,20 +71,29 @@
 \newcommand{\mim}{\mfuncname{im}}
 \newcommand{\mker}{\mfuncname{ker}}
 \newcommand{\mtr}{\mfuncname{tr}}
-\newcommand{\mconj}[1]{\overline{#1}}
-\newcommand{\mcmpl}[1]{\overline{#1}} % complement set
-\newcommand{\mbar}[1]{\overline{#1}}
 \newcommand{\mexpect}{\mathbb{E}}
 \newcommand{\mvar}{\mfuncname{Var}}
 \newcommand{\msdev}{\sigma}
 \newcommand{\mcov}{\mfuncname{Cov}}
 % math function end
 
+% math operator beign
+\newcommand{\mconj}[1]{\overline{#1}}
+\newcommand{\mcmpl}[1]{\overline{#1}} % complement set
+\newcommand{\mbar}[1]{\overline{#1}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\mintcumto}[1]{\int_{-\infty}^{#1}}
+\newcommand{\mintall}{\mintcumto{+\infty}}
+\newcommand{\mdiffs}[2]{\frac{d #2}{d #1}}
+\newcommand{\mdiffl}[1]{\frac{d}{d #1}}
+\newcommand{\mpartials}[2]{\frac{\partial #2}{\partial #1}}
+\newcommand{\mpartiall}[1]{\frac{\partial}{\partial #1}}
+% math operator end
+
 % math symbol begin
 \newcommand{\mT}{\textrm{T}}
 \newcommand{\meqdef}{\overset{\text{def}}{=}}
-\newcommand{\mintcumto}[1]{\int_{-\infty}^{#1}}
-\newcommand{\mintall}{\mintcumto{+\infty}}
 \newcommand{\mprto}{\xrightarrow{P}}
 % math symbol end
 

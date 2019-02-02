@@ -1,2 +1,192 @@
 \chapter{参数估计}
+
+\section{点估计}
+本小节首先讨论两种点估计的方法：矩估计和极大似然估计。
+然后讨论估计量的评选标准。
+
+\subsection{点估计的概念}
+参数的\textbf{点估计}就是对总体分布中的未知参数$\theta$，
+以样本$X_1,X_2,\dots,X_n$构造统计量
+$\hat{\theta}(X_1,X_2,\dots,X_n)$作为参数$\theta$的估计，
+称$\hat{\theta}(X_1,X_2,\dots,X_n)$为参数$\theta$\textbf{估计量}。
+
+当测得样本值$(x_1,x_2,\dots,x_n)$时，
+代入$\hat{\theta}(X_1,X_2,\dots,X_n)$，
+即可得到参数$\theta$\textbf{估计值}：
+$\hat{\theta}(x_1,x_2,\dots,x_n)$。
+
+\subsection{矩估计}
+矩估计的思想是：以样本矩作为总体矩的估计，从而得到参数的估计量。
+具体方法如下。
+
+设$X_1,X_2,\dots,X_n$为来自总体$X$的样本，总体$X$的分布函数为
+\begin{displaymath}
+  F(x;\theta_1,\theta_2,\dots,\theta_k)
+\end{displaymath}
+其中$\theta_1,\theta_2,\dots,\theta_k$为未知参数。
+记$\mu_m(\theta_1,\theta_2,\dots,\theta_k)=\mexpect[X^m]$
+为总体的$m$阶矩，
+$A_m=\frac{1}{n}\sum_{i=1}^{n}X_i^m$为样本的$m$阶矩。
+
+若$\mu_m\ (m=1,2,\dots,k)$都存在，那么我们联立方程
+\begin{displaymath}
+  \meqs{c}{
+    \mu_1(\theta_1,\theta_2,\dots,\theta_k) = A_1 \\
+    \vdots \\
+    \mu_k(\theta_1,\theta_2,\dots,\theta_k) = A_k
+  }
+\end{displaymath}
+从中解出方程组的解$\hat{\theta}_1,\hat{\theta}_2,\dots,\hat{\theta}_k$。
+
+我们把$\hat{\theta}_1,\hat{\theta}_2,\dots,\hat{\theta}_k$
+作为$\theta_1,\theta_2,\dots,\theta_k$的估计量，称为\textbf{矩估计量}。
+矩估计量的观察值叫做\textbf{矩估计值}。
+
+\begin{theorem}
+  无论总体$X$服从何种分布，
+  若总体均值$\mu$和总体方差$\sigma^2$为未知参数，
+  那么其矩估计量一定是样本均值和样本方差，即：
+  \begin{displaymath}
+    \hat{\mu}=\mbar{X},\quad \hat{\sigma^2}=S_n^2
+  \end{displaymath}
+\end{theorem}
+
+\begin{remark}
+  注意，对于矩估计来说，$\hat{\sigma^2}$和$\hat{\sigma}^2$不一定是相同的。
+  前者是方差的矩估计量，后者是标准差矩估计量的平方。
+  但对于后面介绍的极大似然估计来说，它们是相同的。
+\end{remark}
+
+\subsection{极大似然估计}
+极大似然估计的思想是：
+以样本$X_1,X_2,\dots,X_n$的观测值$x_1,x_2,\dots,x_n$来
+估计参数$\theta_1,\theta_2,\dots,\theta_k$。
+若选取$\hat{\theta}_1,\hat{\theta}_2,\dots,\hat{\theta}_k$
+使观测值出现的概率最大，那么把
+$\hat{\theta}_1,\hat{\theta}_2,\dots,\hat{\theta}_k$
+作为参数$\theta_1,\theta_2,\dots,\theta_k$的估计量。
+下面分离散和连续两种情形来讨论具体方法。
+
+\begin{enumerate}
+  \item
+  若总体$X$为离散型，其分布律的形式已知为
+  \begin{displaymath}
+    P(X=x) = f(x; \theta)
+  \end{displaymath}
+  其中$\theta$为待估参数(这里仅讨论一个参数的情况)。
+  又设$x_1,x_2,\dots,x_n$是样本$X_1,X_2,\dots,X_n$的一组样本值。
+  那么事件$X_1=x_1$，$X_2=x_2$，$\dots$，$X_n=x_n$同时发生的概率为
+  \begin{displaymath}
+    L(\theta) = P(X_1=x_1,X_2=x_2,\dots,X_n=x_n)
+    = \prod_{i=1}^n f(x_i;\theta)
+  \end{displaymath}
+  我们把$L(\theta)$称为样本的\textbf{极大似然函数}。取
+  \begin{displaymath}
+    \hat{\theta}(x_1,x_2,\dots,x_n)= \argmax_\theta L(\theta)
+  \end{displaymath}
+  为参数$\theta$的\textbf{极大似然估计值}。
+  $\hat{\theta}(X_1,X_2,\dots,X_n)$称为$\theta$的\textbf{极大似然估计量}。
+  \item
+  若总体$X$为连续型，其概率密度的形式已知为
+  \begin{displaymath}
+    p(x;\theta)
+  \end{displaymath}
+  其中$\theta$为待估参数(这里仅讨论一个参数的情况)。
+  设$x_1,x_2,\dots,x_n$是样本$X_1,X_2,\dots,X_n$的一组样本值，
+  那么连续型随机变量的极大似然函数为
+  \begin{displaymath}
+    L(\theta) = \prod_{i=1}^n p(x_i;\theta)
+  \end{displaymath}
+  其极大似然估计量和估计值的定义和离散型的定义相同。
+\end{enumerate}
+
+现在我们讨论求解$\hat{\theta}=\argmax_\theta L(\theta)$的方法。
+若极大似然函数$L$只有一个参数，即$L=L(\theta)$，
+那么通过下列方程来解$\theta$：
+\begin{displaymath}
+  \mdiffs{\theta}{L}=0
+  \quad\text{或}\quad
+  \mdiffs{\theta}{\ln L}=0
+\end{displaymath}
+若极大似然函数$L$有多个参数，即$L=L(\theta_1,\theta_2,\dots,\theta_k)$，
+那么通过下列方程组来解$\theta_1,\theta_2,\dots,\theta_k$：
+\begin{displaymath}
+  \meqs{c}{
+    \mpartials{\theta_1}{L} = 0\\
+    \vdots \\
+    \mpartials{\theta_k}{L} = 0
+  }\quad\text{或}\quad
+  \meqs{c}{
+    \mpartials{\theta_1}{\ln L} = 0\\
+    \vdots \\
+    \mpartials{\theta_k}{\ln L} = 0
+  }
+\end{displaymath}
+
+\begin{theorem}[极大似然估计的不变性]
+  设$\hat{\theta}$是$\theta$的极大似然估计量，
+  $u=u(\theta)$是$\theta$的函数，且有单值反函数，
+  则$\hat{u}=u(\hat{\theta})$是$u(\theta)$的极大似然估计量。
+\end{theorem}
+
+\subsection{估计量的评选标准}
+
+\begin{definition}[无偏性]
+  设$\theta$的估计量为$\hat{\theta}$。若
+  $\mexpect[\hat{\theta}]=\theta$，
+  则称$\hat{\theta}$是$\theta$的\textbf{无偏估计量}。
+\end{definition}
+
+\begin{remark}
+  $S_n^2$不是$\sigma^2$的无偏估计量，
+  而$S_{n-1}^2$才是$\sigma_2$的无偏估计量，
+  但$S_{n-1}$不是$\sigma$的无偏估计量。
+  由此也能看出，$\hat{\theta}$是$\theta$的无偏估计量
+  不一定能推出$g(\hat{\theta})$是$g(\theta)$的无偏估计量。
+\end{remark}
+
+\begin{definition}[有效性]
+  设$\hat{\theta}_1,\hat{\theta}_2$是$\theta$的无偏估计量。
+  若$\mvar(\hat{\theta}_2)\le \mvar(\hat{\theta}_1)$，
+  则称$\hat{\theta}_2$比$\hat{\theta}_1$\textbf{有效}。
+\end{definition}
+
+\begin{definition}[一致性]
+  设$\hat{\theta}_n=\hat{\theta}_n(X_1,X_2,\dots,X_n)$
+  是$\theta$的估计量。
+  若$\hat{\theta}_n \mprto \theta$，
+  则称$\hat{\theta}_n$是$\theta$的\textbf{一致估计量}。
+\end{definition}
+
+下面是两个常用的结论：
+
+\begin{theorem}
+  样本的$k$阶矩是总体$k$阶矩的一致性估计量。
+\end{theorem}
+
+\begin{theorem}
+  设$\hat{\theta}$是$\theta$的无偏估计量。若
+  \begin{displaymath}
+    \lim_{n\to\infty}\mvar(\hat{\theta})=0
+  \end{displaymath}
+  则$\hat{\theta}$是$\theta$的一致估计量。
+\end{theorem}
+
+\section{区间估计}
 % TODO
+
+\subsection{区间估计的概念}
+参数的\textbf{区间估计}是对总体分布中的未知参数$\theta$，
+以样本$X_1,X_2,\dots,X_n$构造2个统计量
+$\hat{\theta_1}(X_1,X_2,\dots,X_n)$和
+$\hat{\theta_2}(X_1,X_2,\dots,X_n)$，
+以区间$(\theta_1,\theta_2)$作为参数$\theta$的估计，
+使得对给定的概率$1-\alpha$，满足：
+\begin{displaymath}
+  P\left(\hat{\theta_1}(X_1,X_2,\dots,X_n) < \theta <
+    \hat{\theta_2}(X_1,X_2,\dots,X_n)\right) = 1-\alpha 
+\end{displaymath}  
+
+\subsection{单个正态总体的均值和方差的区间估计}
+
+\subsection{两个正态总体的均值差和方差比的区间估计}
