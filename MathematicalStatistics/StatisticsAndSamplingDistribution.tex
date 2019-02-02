@@ -107,7 +107,7 @@
     \end{displaymath}
     \item 样本$k$阶(原点)矩：
     \begin{displaymath}
-      A_k = \frac{1}{n}\sum_{1=1}^{n}X_i^k
+      A_k = \frac{1}{n}\sum_{i=1}^{n}X_i^k
     \end{displaymath}
     \item 样本$k$阶中心矩：
     \begin{displaymath}
@@ -122,7 +122,9 @@
 \end{definition}
 
 \section{正态总体的抽样分布}
-% TODO
+本小节首先介绍正态总体的四种抽样分布以及相关的上$\alpha$分为点的概念，
+它们分别是：正态总体样本的线性函数的分布，$\chi^2$分布，$t$分布和$F$分布。
+然后，我们给出四个定理，它们描述了正态总体的统计量的分布。
 
 \subsection{正态总体样本的线性函数的分布}
 \begin{theorem}
@@ -246,4 +248,70 @@
 \end{theorem}
 
 \subsection{正态总体的抽样分布的四个定理}
-% TODO
+\begin{theorem}[样本均值的分布]
+  设$X_1,X_2,\dots,X_n$是来自正态总体$X\sim N(\mu,\sigma^2)$的样本，则
+  \begin{displaymath}
+    \frac{\mbar{X}-\mu}{\sigma/\sqrt{n}}\sim N(0,1)
+  \end{displaymath}
+\end{theorem}
+
+\begin{theorem}[样本方差的分布]
+  设$X_1,X_2,\dots,X_n$是来自正态总体$X\sim N(\mu,\sigma^2)$的样本，则
+  \begin{displaymath}
+    \frac{nS_n^2}{\sigma^2} =
+    \frac{\sum_{i=1}^n(X_i-\mbar{X})^2}{\sigma^2} \sim \chi^2(n-1)
+  \end{displaymath}
+  且$\mbar{X}$与$S_n^2$相互独立。
+\end{theorem}
+
+\begin{remark}
+  作为对比，我们还能记得，根据$\chi^2$分布的定义有
+  \begin{displaymath}
+    \frac{\sum_{i=1}^n(X_i-\mu)^2}{\sigma^2} \sim \chi^2(n)
+  \end{displaymath}
+  把$\mu$换成$\mbar{X}$就会导致自由度的变化。
+\end{remark}
+
+\begin{theorem}[样本均值和样本方差的分布]
+  设$X_1,X_2,\dots,X_n$是来自正态总体$X\sim N(\mu,\sigma^2)$的样本，则
+  \begin{displaymath}
+    \frac{\mbar{X}-\mu}{S_n/\sqrt{n-1}}\sim t(n-1)
+  \end{displaymath}
+\end{theorem}
+
+\begin{remark}
+  这是由样本均值的分布和样本方差的分布根据$t$分布的定义相除得到的。
+\end{remark}
+
+\begin{theorem}[两总体样本方差比、样本均值差的分布]
+  设$X_1,X_2,\dots,X_{n_1}$是来自正态总体$X\sim N(\mu_1,\sigma_1^2)$的样本，
+  $Y_1,Y_2,\dots,Y_{n_2}$是来自正态总体$Y\sim N(\mu_2,\sigma_2^2)$的样本，
+  $S_1^2=\frac{1}{n_1-1}\sum_{i=1}^{n_1}(X_i-\mbar{X})^2$和
+  $S_2^2=\frac{1}{n_2-1}\sum_{i=1}^{n_2}(Y_i-\mbar{Y})^2$
+  分别是$X$和$Y$的修正样本方差，则
+  \begin{enumerate}
+    \item 样本方差比：
+    \begin{displaymath}
+      \frac{S_1^2/S_2^2}{\sigma_1^2/\sigma_2^2}\sim F(n_1-1,n_2-1)
+    \end{displaymath}
+    \item 样本均值差：
+    \begin{displaymath}
+      \frac{(\mbar{X}-\mbar{Y})-(\mu_1-\mu_2)}
+      {\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}
+      \sim N(0,1)
+    \end{displaymath}
+    \item 若$\sigma_1^2=\sigma_2^2=\sigma^2$，则
+    \begin{displaymath}
+      \frac{1}{\sigma^2}\left[(n_1-1)S_1^2+(n_2-1)S_2^1\right]
+      \sim \chi^2(n_1+n_2-2)
+    \end{displaymath}
+    从而有
+    \begin{displaymath}
+      \frac{(\mbar{X}-\mbar{Y})-(\mu_1-\mu_2)}
+      {S_w\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}
+      \sim t(n_1+n_2-2)
+    \end{displaymath}
+    其中，$S_w^2=\frac{(n_1-1)S_1^2+(n_2-1)S_2^2}{n_1+n_2-2}$
+    为$S_1^2$和$S_2^2$的加权平均。
+  \end{enumerate}
+\end{theorem}
