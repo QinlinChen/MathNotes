@@ -177,7 +177,9 @@ $\hat{\theta}_1,\hat{\theta}_2,\dots,\hat{\theta}_k$
 \end{remark}
 
 \section{区间估计}
-% TODO
+本小节首先给出区间估计的概念和用来求置信区间的枢轴变量法。
+然后就单正态总体和双正态总体给出求它们一些参数的置信区间的示例。
+最后讨论一下单侧置信区间和非正态总体均值的区间估计。
 
 \subsection{区间估计的概念}
 参数的\textbf{区间估计}是对总体分布中的未知参数$\theta$，
@@ -222,13 +224,12 @@ $1-\alpha$为该区间的\textbf{置信度}。
   则$[\hat{\theta}_1,\hat{\theta}_2]$为所求的置信区间。
 \end{enumerate}
 
-\subsection{单正态总体的均值的区间估计}
-设$X_1,X_2,\dots,X_n$为正态总体$X\sim N(\mu,\sigma^2)$的一个样本。
-在置信度$1-\alpha$下，求均值$\mu$的置信区间。
-有两种情况需要讨论：
+\subsection{单正态总体的均值和方差的区间估计}
+设$X_1,X_2,\dots,X_n$为正态总体$X\sim N(\mu,\sigma^2)$的一个样本，
+置信度为$1-\alpha$。
 \begin{enumerate}
   \item
-  已知方差$\sigma^2$：
+  已知方差$\sigma^2$，求均值$\mu$的置信区间：
   \begin{align*}
     &\because U = \frac{\mbar{X}-\mu}{\sigma/\sqrt{n}}\sim N(0,1) \\
     &\therefore P\left(-u_{\alpha/2} \le U
@@ -240,7 +241,7 @@ $1-\alpha$为该区间的\textbf{置信度}。
        \mbar{X}+u_{\alpha/2}\frac{\sigma}{\sqrt{n}}\right]
   \end{align*}
   \item
-  方差未知：
+  方差未知，求均值$\mu$的置信区间：
   \begin{align*}
     &\because \frac{\mbar{X}-\mu}{S_n/\sqrt{n-1}}\sim t(n-1) \\
     &\therefore P\left(-t_{\alpha/2}(n-1)
@@ -250,20 +251,18 @@ $1-\alpha$为该区间的\textbf{置信度}。
       \left[\mbar{X}-t_{\alpha/2}(n-1)\frac{S_n}{\sqrt{n-1}},
         \mbar{X}+t_{\alpha/2}(n-1)\frac{S_n}{\sqrt{n-1}}\right]
   \end{align*}
+  \item
+  求方差$\sigma^2$的置信区间：
+  \begin{align*}
+    &\because \frac{nS_n^2}{\sigma^2}\sim \chi^2(n-1) \\
+    &\therefore P\left(\chi^2_{1-\alpha/2}(n-1)
+      \le \frac{nS_n^2}{\sigma^2}
+      \le \chi^2_{\alpha/2}(n-1)\right) = 1-\alpha \\
+    &\therefore \text{置信区间为}
+      \left[\frac{nS_n^2}{\chi^2_{\alpha/2}(n-1)},
+        \frac{nS_n^2}{\chi^2_{1-\alpha/2}(n-1)}\right]
+  \end{align*}
 \end{enumerate}
-
-\subsection{单正态总体的方差的区间估计}
-设$X_1,X_2,\dots,X_n$为正态总体$X\sim N(\mu,\sigma^2)$的一个样本。
-在置信度$1-\alpha$下，求方差$\sigma^2$的置信区间。
-\begin{align*}
-  &\because \frac{nS_n^2}{\sigma^2}\sim \chi^2(n-1) \\
-  &\therefore P\left(\chi^2_{1-\alpha/2}(n-1)
-    \le \frac{nS_n^2}{\sigma^2}
-    \le \chi^2_{\alpha/2}(n-1)\right) = 1-\alpha \\
-  &\therefore \text{置信区间为}
-    \left[\frac{nS_n^2}{\chi^2_{\alpha/2}(n-1)},
-      \frac{nS_n^2}{\chi^2_{1-\alpha/2}(n-1)}\right]
-\end{align*}
 
 \subsection{双正态总体的均值差和方差比的区间估计}
 设$X_1,X_2,\dots,X_{n_1}$为正态总体$X\sim N(\mu_1,\sigma_1^2)$的样本，
