@@ -1,6 +1,9 @@
 \chapter{分析基础}
 
 \section{基础概念}
+这一节主要介绍了邻域的概念和常用的不等式。
+关于函数的基础知识，这里就不再赘述了。
+
 \subsection{邻域}
 对于实数$a\in\mfR$，定义它的邻域为
 $N(a,\delta) = \{ x: |x-a| < \delta \}$，
@@ -25,6 +28,12 @@ $N(a,\delta)_- = \{ x: -\delta < x - a \le 0  \}$。
 \end{enumerate}
 
 \section{极限的概念}
+这一节首先介绍数列极限和函数极限的定义。微积分的大厦自此开始建立。
+然后我们介绍比较重要的函数左极限与右极限的概念，
+这是因为函数极限存在与左极限、右极限之间有一定关系。
+最后，我们介绍函数极限和数列极限的关系，
+从而获得另一个判定函数极限存在的方法。
+
 \subsection{数列的极限}
 数列的极限主要讨论自变量$n$无限增大时(记为$n\to+\infty$或$n\to\infty$)，
 因变量$a_n$的变化趋向。
@@ -157,16 +166,348 @@ $N(a,\delta)_- = \{ x: -\delta < x - a \le 0  \}$。
   该推论为证明函数极限不存在提供了简单的方法。
 \end{remark}
 
-\section{极限的性质与运算法则}
-掌握极限的性质及四则运算法则．
+\section{极限的性质与运算法则} \label{sec:limit-property}
+当函数或数列存在有限极限时，极限具有唯一性、有界性、保序性和夹逼性。
+同时，极限还可以与四则运算交换顺序。
+必须指出的是，上述性质及运算法则对函数极限在其自变量$x$的六种极限过程及
+数列极限在$n\to\infty$的极限过程都是同样成立的。
+为了节省篇幅，我们仅就极限过程$x\to a$和$n\to\infty$叙述。
+
+\subsection{极限的性质}
+以下为统一写法，用$X,Y$代表因变量$x_n$或$f(x)$，而$\lim$代表某同一过程的极限。
+
+\begin{theorem}[唯一性]
+  设$\lim X=A,\lim Y=B$，$A,B$为有限数，则$A=B$。
+\end{theorem}
+
+\begin{theorem}[收敛函数的局部有界性]
+  若$\lim_{x\to a}f(x)=A$(有限数)，则函数$f$在$a$点附近有界。
+\end{theorem}
+
+\begin{theorem}[收敛数列的整体有界性]
+  若$\lim_{n\to \infty}x_n=A$(有限数)，则$\{x_n\}$是有界数列。
+\end{theorem}
+
+\begin{theorem}[函数极限的保序性]
+  设$\lim_{x\to a} f(x)=A,\lim_{x\to a} g(x)=B$，$A,B$为有限数，则
+  \begin{enumerate}
+    \item
+    若$A<B$，则存在$a$的某个去心邻域$N(a,\delta)-\{a\}$，
+    在该邻域内，有$f(x) < g(x)$。
+    \item
+    若在$a$的某个去心邻域内有$f(x) \le g(x)$，
+    则$A\le B$。
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary}[函数极限的保号性质]
+  设$\lim_{x\to a} f(x)=A$(有限数)，则
+  \begin{enumerate}
+    \item
+    若$A>C$($A<C$)，则存在$a$的某个去心邻域，
+    在该邻域内，有$f(x)>C$($f(x)<C$)。
+    \item
+    若在$a$的某个去心邻域内有$f(x)\le C$($f(x)\ge C$)，
+    则$A\le C$($A\ge C$)。
+  \end{enumerate}
+\end{corollary}
+
+\begin{remark}
+  数列极限的保序性和保号性质的推论与函数极限类似。这里不再赘述了。
+\end{remark}
+
+根据保号性，就能得到夹逼定理：
+\begin{theorem}[夹逼定理] \label{thrm:squeeze}
+  设$X\le Z\le Y$。若$\lim X = \lim Y = A$，则$\lim Z = A$。
+\end{theorem}
+
+\subsection{运算法则}
+设$\lim X=A,\lim Y=B$，$A,B$为有限数，则
+\begin{itemize}
+  \item
+  $\lim (X\pm Y) = A \pm B$
+  \item
+  $\lim (cX) = cA$，$c$是常数。
+  \item
+  $\lim (XY) = AB$
+  \item
+  $\lim (X/Y) = A/B$，$B\neq 0$
+\end{itemize}
+
+\subsection{复合函数的极限}
+\begin{theorem}[复合函数的极限]
+  若函数$y=g(u)$与$u=\phi(x)$在点$a$的去心邻域上能构成复合函数，且满足
+  \begin{enumerate}
+    \item $\lim_{x\to a}\phi(x)=b$，且$x\neq a$时，$\phi(x)\neq b$，
+    \item $\lim_{u\to b}g(u)=A$(有限)，
+  \end{enumerate}
+  则$\lim_{x\to a}g(\phi(x))=A$。
+\end{theorem}
 
 \section{极限的存在准则}
-掌握极限存在的两个准则，并会利用它们求极限，掌握利用两个重要极限求极限的方法．
+本小节的主要内容是极限存在的两个准则和两个重要极限。
+此外，我们还简单介绍了一下刻画实数系的连续性的方法。
+
+\subsection{实数系的连续性}
+实数系的连续性是使求极限这一分析运算能封闭的必备条件。
+下面列举了刻画实数系的连续性的7个等价定理：
+\begin{enumerate}
+  \item
+  确界存在定理：非空有界数集必有确界。
+  \item
+  单调有界定理：单调有界的数列必存在有限极限。
+  \item
+  区间套定理：闭区间套可以套出一个点。
+  \item
+  有限覆盖定理：闭区间上的任意开覆盖必有有限子覆盖。
+  \item
+  聚点定理：有界无限点列必有聚点。
+  \item
+  致密性定理：有界数列必有收敛子列。
+  \item
+  柯西收敛准则：若对任意$\epsilon > 0$，存在$N$，使得
+  对任意$m,n\ge N$，有$|a_m-a_n|\le \epsilon$，
+  则$\{a_n\}$有极限。
+\end{enumerate}
+以上内容只是做个小拓展。我也理解得不够深刻。
+
+\subsection{极限的存在准则}
+极限存在的两个准则分别是：夹逼定理(见定理\ref{thrm:squeeze})和单调有界定理。
+
+\begin{theorem}[数列的单调有界定理]
+  单调有界的数列必存在有限极限。
+\end{theorem}
+
+\begin{theorem}[函数的单调有界定理]
+  设$f$是定义在区间$I$上的单调有界函数，
+  则$f$在$I$的任意一点上都存在有限的单侧极限。
+\end{theorem}
+
+\subsection{两个重要极限}
+\begin{displaymath}
+  \lim_{x\to 0}\frac{\sin x}{x}=1
+\end{displaymath}
+\begin{displaymath}
+  \lim_{x\to\infty}\left(1+x\right)^{\frac{1}{x}} = e
+  \quad\text{或}\quad
+  \lim_{x\to 0}\left(1+\frac{1}{x}\right)^{x} = e
+\end{displaymath}
 
 \section{连续}
-理解函数连续性的概念（含左连续与右连续），会判别函数间断点的类型．
+本小节首先介绍函数连续性的概念(含左连续与右连续)与间断点的类型。
+然后讨论连续函数的性质和初等函数的连续性。
+最后，我们给出闭区间上连续函数的性质，
+包括有界性定理、最值定理、介值定理和零点定理。
 
-了解连续函数的性质和初等函数的连续性，理解闭区间上连续函数的性质（有界性、最大值和最小值定理、介值定理），并会应用这些性质
+\subsection{连续与间断}
+\begin{definition}[函数在点$a$连续与间断]
+  设函数在点$a$的某个邻域上有定义。
+  如果$\lim_{x\to a}f(x)=f(a)$，
+  则称$f$在点$a$\textbf{连续}，
+  否则称$f$在点$a$\textbf{间断}。
+  若$f(a-0)=f(a)$，则称$f$在点$a$\textbf{左连续}。
+  若$f(a+0)=f(a)$，则称$f$在点$a$\textbf{右连续}。
+\end{definition}
+\begin{remark}
+  显然，$f$在点$a$连续的充要条件有
+  \begin{displaymath}
+    f(a+0)=f(a-0)=f(a)
+  \end{displaymath}
+\end{remark}
+
+函数$f$在点$a$连续有以下等价的说法：
+\begin{align*}
+  \text{$f$在点$a$连续}
+  &\iff \text{$f$在$a$的某邻域有定义且$\lim_{x\to a}f(x)=a$} \\
+  &\iff \lim_{\Delta x\to 0}f(a+\Delta x)=f(a) \\
+  &\iff \lim_{\Delta x\to 0}\Delta f = 0
+\end{align*}
+
+如果函数$f$在点$a$间断，那么可以把间断点分成以下两类：
+\begin{center}
+  \begin{tabular}{|c|l|l|}
+    \hline
+    间断点类型 & \multicolumn{1}{c|}{$f(a+0)$与$f(a-0)$}
+      & \multicolumn{1}{c|}{说明} \\
+    \hline
+    \multirow{2}{*}{第I类间断点}
+      & \begin{tabular}[c]{@{}l@{}}存在且相等，\\ 极限值为$A$\end{tabular}
+      & \begin{tabular}[c]{@{}l@{}}也称\textbf{可去间断点}，因$f$在点$a$\\
+      无定义或$f(a)\neq A$引起间断\end{tabular} \\
+    \cline{2-3}
+    & 存在但不相等 & 也称\textbf{跳跃型间断点} \\
+    \hline
+    \multirow{2}{*}{第II间断点} & 至少有一个是无穷大 & 也称\textbf{无穷型间断点} \\
+    \cline{2-3}
+    & 至少有一个不存在 &  \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection{连续函数的局部性质与运算法则}
+若函数$f$在点$a$连续，根据\ref{sec:limit-property}节描述的
+存在有限极限的函数的局部性质和运算法则，
+能得到以下定理：
+
+\begin{theorem}[局部有界性]
+  若函数$f$在点$a$连续，则$f$在点$a$的某个邻域里有界。
+\end{theorem}
+
+\begin{theorem}[局部保号性]
+  若函数$f$在点$a$连续，且$f(a)\neq 0$，
+  则函数$f$在点$a$的某邻域内与$f(a)$同号。
+
+  又若$f(a)>p(<q)$，则存在$a$的某个邻域$U$，在$U$内有
+  $f(x)>p(<q)$。
+\end{theorem}
+
+\begin{theorem}[四则运算]
+  若函数$f,g$都在点$a$连续，则它们的和、差、积、商
+  \begin{displaymath}
+    f\pm g,\ f\cdot g,\ \frac{f}{g}(g(a)\neq 0)
+  \end{displaymath}
+  也都在点$a$连续。
+\end{theorem}
+
+\begin{theorem}[复合函数的连续性]
+   若函数$y=g(u)$与$u=\phi(x)$在点$a$的邻域上能构成复合函数，
+   且函数$\phi$在点$a$连续，函数$g$在点$b=\phi(a)$连续，
+   则复合函数$g\circ\phi$在点$a$连续。
+\end{theorem}
+
+\subsection{初等函数的连续性}
+\begin{theorem}[初等函数的连续性]
+  初等函数在其自然定义域内都是连续的。
+\end{theorem}
+
+\subsection{闭区间上连续函数的性质}
+\begin{theorem}[有界性定理]
+  若$f$在闭区间$[a,b]$上连续，那么$f$在闭区间$[a,b]$上有界，即
+  存在$m,M$，使得对任意$x\in[a,b]$，有$m\le f(x)\le M$。
+\end{theorem}
+
+\begin{theorem}[最值定理]
+  若$f$在闭区间$[a,b]$上连续，那么$f$在闭区间$[a,b]$上有最大值和最小值，即
+  存在$x_1,x_2\in[a,b]$，使得对任意$x\in[a,b]$，有
+  $f(x_1)\le f(x)\le f(x_2)$。
+\end{theorem}
+
+\begin{theorem}[介值定理]
+  若$f$在闭区间$[a,b]$上连续，
+  记$m=\min_{x\in[a,b]}f(x)$，$M=\max_{x\in[a,b]}f(x)$，
+  则$f$取到介于$m,M$之间的所有值，即对任意$m<\mu<M$，
+  必然存在$\xi\in(a,b)$，使得$f(\xi)=\mu$。
+\end{theorem}
+\begin{remark}
+  介值定理可以推广到在任意区间$I$上也成立。只要把$m$和$M$的重新记为
+  $\inf_{x\in I}f(x)$和$\sup_{x\in I}f(x)$。
+\end{remark}
+
+\begin{theorem}[零点定理]
+  若$f$在闭区间$[a,b]$上连续，且$f(a)\cdot f(b) < 0$，
+  则必存在一点$\xi\in(a,b)$，使得$f(\xi)=0$。
+\end{theorem}
 
 \section{无穷小量}
-理解无穷小量、无穷大量的概念，掌握无穷小量的比较方法，会用等价无穷小量求极限。
+我们首先给出无穷小量的定义及其性质。
+然后介绍无穷小量的比较方法。
+最后讨论不定型的极限。
+以下介绍的内容都适用于无穷大量。
+
+\subsection{无穷小量及其性质}
+\begin{definition}[无穷小量]
+  在某一极限过程中，以零为极限的变量$\alpha$(数列或函数)
+  称为该极限过程中的\textbf{无穷小量}，常称为无穷小，
+  记为$\alpha=o(1)$。
+\end{definition}
+\begin{remark}
+  无穷大量的定义类似。
+\end{remark}
+
+\begin{theorem}[无穷小量与极限]
+  $\lim_{x\to a}f(x)=A$(有限)$\iff f(x)=A+\alpha(x)$，
+  其中$\alpha(x)\to 0\ (x\to a)$是一个无穷小量。
+\end{theorem}
+
+\begin{theorem}[无穷小量的性质]
+  设$\alpha,\beta$是某个过程中的两个无穷小量，那么
+  \begin{enumerate}
+    \item
+    $\alpha\pm\beta$是无穷小量。
+    \item
+    $\alpha\cdot\beta$是无穷小量。
+    \item
+    若$\gamma$有界，则$\alpha\cdot\gamma$是无穷小量。
+  \end{enumerate}
+\end{theorem}
+
+\subsection{无穷小量的比较}
+\begin{definition}[无穷小量的比较]
+  设$\alpha,\beta$是同一极限过程中的两个无穷小量。
+  \begin{enumerate}
+    \item
+    若$\lim \frac{\alpha}{\beta}=0$，
+    则称$\alpha$是关于$\beta$的\textbf{高阶无穷小量}，
+    记为$\alpha = o(\beta)$。
+
+    \item
+    若$\lim \frac{\alpha}{\beta}=A$(非零有限)，
+    则称$\alpha$与$\beta$是\textbf{同阶无穷小量}，
+    记为$\alpha = \Theta(\beta)$。
+
+    \item
+    若$\lim \frac{\alpha}{\beta}=1$，
+    则称$\alpha$与$\beta$是\textbf{等价无穷小量}，
+    记为$\alpha \sim \beta$。
+
+    以上三种情况，$\alpha$的阶都不低于$\beta$的阶，
+    可以记为$\frac{\alpha}{\beta}=O(1)$或$\alpha=O(\beta)$。
+
+    \item
+    若$\lim \frac{\alpha}{\beta^s}=A$(非零有限)，
+    其中$\alpha$是大于0的常数，
+    则称$\alpha$是关于$\beta$的\textbf{$s$阶无穷小量}。
+  \end{enumerate}
+\end{definition}
+
+\begin{remark}
+  关于无穷小量的比较，有下面一些注意点：
+  \begin{enumerate}
+    \item
+    在使用$o,\Theta,O,\sim$记号的时候，必须指出自变量趋于什么，例如：
+    \begin{displaymath}
+      y_n=o(x_n), n\to\infty,\text{是指}\lim_{n\to\infty}\frac{y_n}{x_n}=0
+    \end{displaymath}
+    \item
+    $\alpha=o(\beta)$,$\alpha=\Theta(\beta)$,$\alpha=O(\beta)$
+    中的等号有着特殊的含义。
+    实际上，$o(\beta)$,$\Theta(\beta)$,$O(\beta)$表示函数类，
+    所以等号的含义是``属于''。
+    \item
+    $o,\Theta,O$记号在算法复杂度分析中也用到了呢。
+  \end{enumerate}
+\end{remark}
+
+\begin{theorem}[替换定理]
+  设$X_1,X_2,Y_1,Y_2$是同一极限过程中的无穷小量。
+  若$X_1\sim X_2$，$Y_1\sim Y_2$，且$\lim Y_1/X_1$存在，则
+  \begin{displaymath}
+    \lim \frac{Y_2}{X_2}=\lim \frac{Y_1}{X_1}
+  \end{displaymath}
+\end{theorem}
+
+\begin{theorem}[常用的等价无穷小]
+  当$x\to 0$时，
+  \begin{align*}
+    & \sin x \sim x;\quad \tan x \sim x;\quad 1-\cos x \sim \frac{1}{2}x^2;  \\
+    & \arcsin x \sim x;\quad \arctan x \sim x;\quad \ln(x+1)\sim x; \\
+    & e^x-1\sim x;\quad (1+x)^\mu - 1 \sim \mu x
+  \end{align*}
+\end{theorem}
+
+\subsection{不定型}
+不定型主要包括一下7类：
+\begin{displaymath}
+  \frac{0}{0};\ \frac{\infty}{\infty};\ \infty-\infty;\ 0\cdot\infty;
+  \ 1^\infty;\ 0^0;\ \infty^0.
+\end{displaymath}
