@@ -68,7 +68,7 @@
 \subsection{矩阵的线性运算}
 矩阵的线性运算包含\textbf{加法}和\textbf{数乘}。定义比较简单，在此不加赘述。
 
-根据后面线性空间的定义\ref{def-linear-space}，
+根据后面线性空间的定义\ref{def:linear-space}，
 矩阵空间也是线性空间。
 
 \subsection{矩阵的乘法}
@@ -138,7 +138,7 @@
 分块矩阵的运算中需要注意的是转置和乘法。
 
 转置运算不仅需要把矩阵的每一行转成列，而且内部子块也需要转置。
-对于式\ref{eq:mat-partition}中的矩阵$\mmA$，它的转置是
+对于式\eqref{eq:mat-partition}中的矩阵$\mmA$，它的转置是
 \[
   \mmA^\mT = \mmat{cccc}{
     \mmA_{11}^\mT & \mmA_{21}^\mT & \cdots & \mmA_{r1}^\mT \\
@@ -304,7 +304,7 @@ $\mmRowSwi{i}{j}$，$\mmRowMul{k}{i}$和$\mmRowAdd{i}{+k}{j}$。
   则$\mmA,\mmB$都是可逆阵，且它们互为逆阵。
 \end{theorem}
 
-\begin{theorem} \label{thrm-inv-equiv-cond}
+\begin{theorem} \label{thrm:inv-equiv-cond}
   设$\mmA$是$n$阶方阵，则下列结论等价：
   \begin{enumerate}
     \item $\mmA$是可逆矩阵。

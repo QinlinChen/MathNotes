@@ -14,7 +14,7 @@
 最后我们会简单讨论一下子空间的概念。
 
 \subsection{线性空间}
-\begin{definition}[线性空间] \label{def-linear-space}
+\begin{definition}[线性空间] \label{def:linear-space}
   设$V$是非空集合，$\mfF$是一个数域。
   若在$V$上定义两种运算：加法$\oplus$和数乘$\otimes$，满足
   \begin{description}
@@ -128,7 +128,7 @@
 \begin{theorem}[基底变换公式]
   设$\alpha_1,\alpha_2,\dots,\alpha_n$与$\beta_1,\beta_2,\dots,\beta_n$是
   线性空间$V$的两组基底，那么可以写成
-  \begin{equation} \label{eq-basis-transform}
+  \begin{equation} \label{eq:basis-transform}
     (\beta_1,\beta_2,\dots,\beta_n) = (\alpha_1,\alpha_2,\dots,\alpha_n)
     \mmat{cccc}{
       a_{11} & a_{12} & \cdots & a_{1n} \\
@@ -141,7 +141,7 @@
     \mmBasis{\beta} = \mmBasis{\alpha}\cdot\mmP
   \end{displaymath}
   我们称$\mmP$是$\mmBasis{\alpha}$到$\mmBasis{\beta}$的\textbf{过渡矩阵}，
-  式\ref{eq-basis-transform}是\textbf{基底变换公式}。
+  式\eqref{eq:basis-transform}是\textbf{基底变换公式}。
 \end{theorem}
 
 \begin{remark}
@@ -158,10 +158,10 @@
   分别是元素$\alpha\in V$在基底$\mmBasis{\alpha}$和$\mmBasis{\beta}$下的坐标，即
   \[ \alpha = \mmBasis{\beta}\mvy = \mmBasis{\alpha}\mvx \]
   那么有
-  \begin{equation} \label{eq-coordinate-transform}
+  \begin{equation} \label{eq:coordinate-transform}
     \mvy = \mmP^{-1}\mvx
   \end{equation}
-  式\ref{eq-coordinate-transform}被称为\textbf{坐标变换公式}。
+  式\eqref{eq:coordinate-transform}被称为\textbf{坐标变换公式}。
 \end{theorem}
 
 \subsection{子空间}
@@ -346,7 +346,7 @@
 其中$\mmA=(a_{ij})_{n\times n}$。
 这样，对任意$\alpha=x_1\epsilon_1+x_2\epsilon_2+\dots+x_n\epsilon_n\in V$，
 我们就能通过矩阵求出它经过线性变换后元素：
-\begin{equation} \label{eq-coord-after-linear-trans}
+\begin{equation} \label{eq:coord-after-linear-trans}
   T(\alpha) = (\epsilon_1,\epsilon_2,\dots,\epsilon_n)\mmA
     (x_1,x_2,\dots,x_n)^\mT
 \end{equation}
@@ -411,7 +411,7 @@
   矩阵的相似是等价关系。
 \end{remark}
 
-\begin{theorem}[矩阵相似的等价条件] \label{thrm-mat-sim-equiv-cond}
+\begin{theorem}[矩阵相似的等价条件] \label{thrm:mat-sim-equiv-cond}
   两个$n$阶方阵$\mmA,\mmB$相似当且仅当
   它们是$n$维线性空间$V$上的某一线性变换$T$在不同基下的矩阵。
 \end{theorem}
@@ -426,11 +426,11 @@
 对于$n$维线性空间$V$内的一个线性变换$T$，
 我们总希望找一组基$\xi_1,\xi_2,\dots,\xi_n$，
 使得$T$在这组基下的矩阵具有最简单的形式，即有
-\begin{equation} \label{eq-diagonalizable}
+\begin{equation} \label{eq:diagonalizable}
   (T(\xi_1), T(\xi_2),\dots,T(\xi_n)) = (\xi_1,\xi_2,\dots,\xi_n)
     \cdot \mdiag(\lambda_1,\lambda_2,\dots,\lambda_n)
 \end{equation}
-这样，根据式\ref{eq-coord-after-linear-trans}，
+这样，根据式\eqref{eq:coord-after-linear-trans}，
 任意$\alpha\in V$经过$T$变换后的坐标就是把它在
 基$\xi_1,\xi_2,\dots,\xi_n$下的坐标放大常数倍。
 
@@ -464,7 +464,7 @@ $T$在这组基下的矩阵是$\mmA$。
 设$\xi$是线性变换$T$的一个特征向量，它对应的特征值是$\lambda$，
 它在基$\epsilon_1,\epsilon_2,\dots,\epsilon_n$下的坐标是
 $\mvx=(x_1,\dots,x_n)^\mT$。
-那么，根据式\ref{eq-coord-after-linear-trans}，我们有
+那么，根据式\eqref{eq:coord-after-linear-trans}，我们有
 \[ T(\xi) = (\epsilon_1,\epsilon_2,\dots,\epsilon_n)\mmA\mvx \]
 又因为
 \[ T(\xi) = \lambda\xi = \lambda(\epsilon_1,\epsilon_2,\dots,\epsilon_n)\mvx \]
@@ -474,7 +474,7 @@ $\mvx=(x_1,\dots,x_n)^\mT$。
 \end{displaymath}
 因为$\epsilon_1,\epsilon_2,\dots,\epsilon_n$线性无关，
 所以只可能是$\mmA\mvx - \lambda\mvx = \mvZero$，即
-\begin{equation} \label{eq-eigen}
+\begin{equation} \label{eq:eigen}
   (\mmA - \lambda\mmI)\mvx = \mvZero
 \end{equation}
 
@@ -482,10 +482,10 @@ $\mvx=(x_1,\dots,x_n)^\mT$。
 和特征向量对应的坐标$\mvx$。
 想要$\mvx$有非零解，充要条件是$|\mmA - \lambda\mmI| = 0$。
 我们就能根据这一条件解出$\lambda$，
-然后把$\lambda$代入上面的方程\ref{eq-eigen}中，
+然后把$\lambda$代入上面的方程\eqref{eq:eigen}中，
 最后按照解方程的一般步骤，就能获得$\mvx$的基础解系。
 
-我们还能发现，对式\ref{eq-eigen}变形，能得到类似于$T(\xi)=\lambda\xi$形式的等式
+我们还能发现，对式\eqref{eq:eigen}变形，能得到类似于$T(\xi)=\lambda\xi$形式的等式
 \begin{displaymath}
 \mmA\mvx=\lambda\mvx
 \end{displaymath}
@@ -579,11 +579,11 @@ $\mvx=(x_1,\dots,x_n)^\mT$。
 \end{theorem}
 
 \subsection{矩阵的对角化}
-回想一下式\ref{eq-diagonalizable}，
+回想一下式\eqref{eq:diagonalizable}，
 这是我们一开始就想要获得的性质，
 我们把这个性质称为``可对角化''。
 经过之前的讨论，我们现在知道，
-式\ref{eq-diagonalizable}中对角矩阵上的对角线元素就是特征值，
+式\eqref{eq:diagonalizable}中对角矩阵上的对角线元素就是特征值，
 那一组基就是特征向量。
 然而，尽管我们现在会找特征值与特征向量了，
 但是能找到的所有特征向量未必能构成一组基。
@@ -596,7 +596,7 @@ $\mvx=(x_1,\dots,x_n)^\mT$。
 \end{definition}
 
 \begin{remark}
-  根据定理\ref{thrm-mat-sim-equiv-cond}，
+  根据定理\ref{thrm:mat-sim-equiv-cond}，
   我们可以得到另一种说法：
   矩阵可对角化当且仅当它相似于对角矩阵。
 \end{remark}

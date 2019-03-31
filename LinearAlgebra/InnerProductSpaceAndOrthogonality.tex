@@ -29,10 +29,10 @@
   有限维的实内积空间又称\textbf{欧几里得空间}。
 \end{definition}
 
-\begin{theorem}[实内积空间的性质] \label{thrm-real-inner-prod-space-prop}
+\begin{theorem}[实内积空间的性质] \label{thrm:real-inner-prod-space-prop}
   设$V$是实内积空间。对于$\alpha,\beta,\gamma\in V, k\in\mfR$，有
   \begin{enumerate}
-    \item \label{thrm-RIPS-prop1}
+    \item \label{thrm:RIPS-prop1}
     $(\alpha,\beta+\gamma)=(\alpha,\gamma)+(\beta,\gamma)$
     \item
     $(\alpha,k\beta)=k(\alpha,\beta)$
@@ -41,7 +41,7 @@
     \item
     $(\alpha,\beta)=
       \left(\sum_{i=1}^{m}a_i\alpha_i,\sum_{j=1}^{n}b_j\beta_j\right) $
-    \begin{equation} \label{eq-metric-mat}
+    \begin{equation} \label{eq:metric-mat}
       = (a_1,a_2,\dots,a_m) \mmat{cccc}{
         (\alpha_1,\beta_1)&(\alpha_1,\beta_2)&\cdots&(\alpha_1,\beta_n)\\
         (\alpha_2,\beta_1)&(\alpha_2,\beta_2)&\cdots&(\alpha_2,\beta_n)\\
@@ -113,9 +113,9 @@
 \end{definition}
 
 \begin{theorem}[复内积空间的性质]
-  复内积空间满足定理\ref{thrm-real-inner-prod-space-prop}列出的
-  除了性质\ref{thrm-RIPS-prop1}以外的所有性质。
-  性质\ref{thrm-RIPS-prop1}应该改写为：
+  复内积空间满足定理\ref{thrm:real-inner-prod-space-prop}列出的
+  除了性质\ref{thrm:RIPS-prop1}以外的所有性质。
+  性质\ref{thrm:RIPS-prop1}应该改写为：
   \[ (\alpha,k\beta)=\mconj{k}(\alpha,\beta) \]
 \end{theorem}
 
@@ -196,7 +196,7 @@
 \end{remark}
 
 \section{欧几里得空间的标准正交基}
-根据式\ref{eq-metric-mat}，我们能发现，给定一组基，
+根据式\eqref{eq:metric-mat}，我们能发现，给定一组基，
 任意两个元素的内积可以通过坐标向量和一个与这组基相关联矩阵来计算，
 我们把这样的矩阵定义为度量矩阵，以此为起点开始讨论。
 
@@ -212,11 +212,11 @@
   设$V$是$n$维欧几里得空间，$\alpha_1,\dots,\alpha_n$是一组基底。
   对任意$\alpha,\beta\in V$，存在坐标向量$\mvx,\mvy$，使得
   $\alpha=\mmBasis{\alpha}\mvx$，$\beta=\mmBasis{\alpha}\mvy$。
-  根据式\ref{eq-metric-mat}，我们有
+  根据式\eqref{eq:metric-mat}，我们有
   \begin{displaymath}
     (\alpha,\beta) = \mvx^\mT\mmA\mvy
   \end{displaymath}
-  其中，$\mmA$如式\ref{eq-metric-mat}中所示。
+  其中，$\mmA$如式\eqref{eq:metric-mat}中所示。
   我们称矩阵$\mmA$为维欧几里得空间在基底$\alpha_1,\dots,\alpha_n$下的
   \textbf{度量矩阵}。
 \end{definition}
@@ -233,7 +233,7 @@
   合同关系是等价关系。
 \end{remark}
 
-\begin{theorem}[不同基底下的度量矩阵的关系] \label{thrm-metric-mat-rel}
+\begin{theorem}[不同基底下的度量矩阵的关系] \label{thrm:metric-mat-rel}
   欧几里得空间中两组不同基底下的度量矩阵是合同的。
 \end{theorem}
 
@@ -294,7 +294,7 @@
 
 \section{正交矩阵与正交变换}
 欧几里得空间的两组标准正交基之间的过渡矩阵$\mmP$有着特殊的性质：
-因为标准正交基的度量矩阵是单位矩阵，所以根据定理\ref{thrm-metric-mat-rel}，
+因为标准正交基的度量矩阵是单位矩阵，所以根据定理\ref{thrm:metric-mat-rel}，
 有$\mmI=\mmP^\mT\mmI\mmP=\mmP^\mT\mmP$。
 满足这种性质的矩阵$\mmP$我们将称之为正交矩阵。
 

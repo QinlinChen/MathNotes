@@ -11,11 +11,11 @@
   我们把实值函数$X:\Omega\mapsto\mfR$称为\textbf{随机变量}，简记为r.v.。
 \end{definition}
 
-随机变量分为离散型随机变量(定义\ref{def-discrete-rv})
-和连续型随机变量(定义\ref{def-continuous-rv})。
+随机变量分为离散型随机变量(定义\ref{def:discrete-rv})
+和连续型随机变量(定义\ref{def:continuous-rv})。
 
 \subsection{离散型随机变量与分布律}
-\begin{definition}[离散型随机变量] \label{def-discrete-rv}
+\begin{definition}[离散型随机变量] \label{def:discrete-rv}
   若随机变量$X$的取值是有限个或者可列无穷个，
   则称$X$为\textbf{离散型随机变量}。
 \end{definition}
@@ -46,7 +46,7 @@
   \end{enumerate}
 \end{theorem}
 
-\subsection{随机变量的函数} \label{subsec-disc-rv-func-distribution}
+\subsection{随机变量的函数} \label{subsec:disc-rv-func-distribution}
 \begin{definition}[随机变量的函数]
   设$X$是随机变量，$y=g(x)$是实函数。
   构造另一随机变量$Y$，当$X$取值$x$时，$Y$取值$y=g(x)$，
@@ -56,7 +56,7 @@
 离散型随机变量函数的分布律的求法：
 \[ P(Y=y)=\sum_{x:g(x)=y} P(X=x) \]
 
-连续型随机变量函数的分布的求法见小节\ref{subsec-con-rv-func-distribution}。
+连续型随机变量函数的分布的求法见小节\ref{subsec:con-rv-func-distribution}。
 
 \subsection{二维离散型随机变量}
 \begin{definition}[二维离散型随机变量]
@@ -209,7 +209,7 @@
   \end{displaymath}
 \end{theorem}
 
-\begin{theorem}[泊松定理] \label{thrm-poisson}
+\begin{theorem}[泊松定理] \label{thrm:poisson}
   如果$np_n\to\lambda(>0) (n\to\infty)$，
   那么对于固定的正整数$k$，有
   \begin{displaymath}
@@ -237,7 +237,7 @@
 
 \begin{remark}
   泊松分布通常用于描述大量试验中稀有事件出现次数的概率模型。
-  从定理\ref{thrm-poisson}就能看出来这一点。
+  从定理\ref{thrm:poisson}就能看出来这一点。
   参数$\lambda$的物理含义是：事件平均的发生次数。
 \end{remark}
 

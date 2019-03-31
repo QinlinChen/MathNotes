@@ -98,12 +98,12 @@
   \end{displaymath}
 \end{theorem}
 
-\begin{theorem} \label{thrm-det-rowswi}
+\begin{theorem} \label{thrm:det-rowswi}
   交换方阵$\mmA$的两行，仅改变$\mmA$行列式的符号，
   即\[ |\mmRowSwi{i}{j}\mmA| = -|\mmA| \]
 \end{theorem}
 
-\begin{theorem} \label{thrm-det-rowadd}
+\begin{theorem} \label{thrm:det-rowadd}
   对方阵$\mmA$做$\mTfRowAdd{i}{+k}{j}$变换，不改变$\mmA$的行列式，
   即\[ |\mmRowAdd{i}{+k}{j}\mmA| = |\mmA| \]
 \end{theorem}
@@ -125,7 +125,7 @@
   这里$1\le i, j \le n$。
 \end{definition}
 
-\begin{theorem}[按行(列)展开] \label{thrm-det-expansion}
+\begin{theorem}[按行(列)展开] \label{thrm:det-expansion}
   $n$阶行列式$|\mmA|=|a_{ij}|_{n\times n}$
   等于任一行(列)各元素与其代数余子式的乘积之和，即
   \begin{align*}
@@ -134,7 +134,7 @@
   \end{align*}
 \end{theorem}
 
-\begin{theorem} \label{thrm-det-expansion-zero}
+\begin{theorem} \label{thrm:det-expansion-zero}
   $n$阶行列式$|\mmA|=|a_{ij}|_{n\times n}$
   的任一行(列)元素与另一行(列)元素的代数余子式乘积之和等于零，即
   \begin{align*}
@@ -144,7 +144,7 @@
 \end{theorem}
 
 \begin{remark}
-  定理\ref{thrm-det-expansion}和\ref{thrm-det-expansion-zero}
+  定理\ref{thrm:det-expansion}和\ref{thrm:det-expansion-zero}
   可以统一表示为(仅列出行的情况)
   \begin{displaymath}
   \sum_{k=1}^{n}a_{ik}A_{jk} = \begin{cases}
@@ -175,7 +175,7 @@
 后面会讲高斯消元来解一般线性方程组。
 
 \subsection{用行列式求逆矩阵}
-\begin{theorem}[行列式乘法规则] \label{thrm-det-mul}
+\begin{theorem}[行列式乘法规则] \label{thrm:det-mul}
   对任意$n$阶方阵$\mmA,\mmB$,有
   \[ |\mmA\mmB|=|\mmA||\mmB| \]
 \end{theorem}
@@ -183,12 +183,12 @@
 \begin{remark}
   证明思路是，首先证明引理：对任意$n$阶方阵$\mmA$和$n$阶初等阵$\mmP$，
   有$|\mmA\mmP|=|\mmP\mmA|=|\mmP||\mmA|$。
-  然后利用定理\ref{thrm-inv-equiv-cond}对$\mmB$讨论：
+  然后利用定理\ref{thrm:inv-equiv-cond}对$\mmB$讨论：
   如果$\mmB$可逆，就能拆成一系列初等阵之积，从而利用引理得证；
   如果$\mmB$不可逆，只要证明等式两边都等于0。
 \end{remark}
 
-\begin{theorem}[行列式数乘规则] \label{thrm-det-num-mul}
+\begin{theorem}[行列式数乘规则] \label{thrm:det-num-mul}
   对任意$n$阶方阵$\mmA$和$\lambda\in\mfR$，有
   \[ |\lambda\mmA| = \lambda^n|\mmA| \]
 \end{theorem}
@@ -204,7 +204,7 @@
   \end{displaymath}
 \end{definition}
 
-\begin{theorem}[伴随矩阵的性质] \label{thrm-adjugate-mat-prop}
+\begin{theorem}[伴随矩阵的性质] \label{thrm:adjugate-mat-prop}
   设$\mmA$是$n$阶方阵，那么有
   \[ \mmA\mmA^*=\mmA^*\mmA=|\mmA|\mmI \]
 \end{theorem}
@@ -221,9 +221,9 @@
 \begin{remark}
   该式对$|\mmA|$取任意值都成立。
   当$|\mmA|\neq 0$时，
-  对伴随矩阵的性质\ref{thrm-adjugate-mat-prop}
-  应用行列式乘法规则\ref{thrm-det-mul}
-  以及数乘规则\ref{thrm-det-num-mul}即可证明该式。
+  对伴随矩阵的性质\ref{thrm:adjugate-mat-prop}
+  应用行列式乘法规则\ref{thrm:det-mul}
+  以及数乘规则\ref{thrm:det-num-mul}即可证明该式。
   当$|\mmA|=0$时，
   则直接通过定义来证明。
 \end{remark}
@@ -240,17 +240,17 @@
 
 \subsection{线性代数方程组与克莱姆(Cramer)法则}
 $n$元方程组的矩阵形式为
-\begin{equation} \label{eq-linear-eq-set}
+\begin{equation} \label{eq:linear-eq:set}
   \mmA \mvx = \mvb
 \end{equation}
 其中$\mmA = (a_{ij})_{n\times n}$是\textbf{系数矩阵}，
 $\overline{\mmA}=(\mmA, \mvb)$是\textbf{增广矩阵}，
 $\mvx = (x_1,\dots,x_n)^\mT$与$\mvb = (b_1,\dots,b_n)^\mT$是$n$维列向量，
 分别称为\textbf{未知向量}与\textbf{常数向量}。
-若$\mvx$的一组取值$\hat{\mvx}$能满足\ref{eq-linear-eq-set}，
-则称$\hat{\mvx}$为\ref{eq-linear-eq-set}的一个\textbf{解向量}。
+若$\mvx$的一组取值$\hat{\mvx}$能满足\eqref{eq:linear-eq:set}，
+则称$\hat{\mvx}$为\eqref{eq:linear-eq:set}的一个\textbf{解向量}。
 
-若常数向量不为$\mvZero$，则称\ref{eq-linear-eq-set}为\textbf{非齐次线性方程组}，
+若常数向量不为$\mvZero$，则称\eqref{eq:linear-eq:set}为\textbf{非齐次线性方程组}，
 否则，叫做\textbf{齐次线性方程组}。
 
 \begin{theorem}[克莱姆(Cramer)法则]

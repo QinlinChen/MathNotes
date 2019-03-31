@@ -86,13 +86,13 @@
   向量组的等价是等价关系。
 \end{remark}
 
-\begin{theorem} \label{thrm-vector-set-size}
+\begin{theorem} \label{thrm:vector-set-size}
   设有两个向量组$S_1$和$S_2$，分别含有$r$和$s$个向量。
   若$S_1$能由$S_2$线性表出，且$r > s$，那么$S_1$线性相关。
   反之，若$S_1$线性无关且能由$S_2$线性表出，那么$r \le s$。
 \end{theorem}
 
-\begin{corollary} \label{thrm-vector-set-equiv}
+\begin{corollary} \label{thrm:vector-set-equiv}
   若两个线性无关的向量组$S_1$和$S_2$等价，那么它们包含的向量个数相同。
 \end{corollary}
 
@@ -109,14 +109,14 @@
   那么称$\alpha_1,\alpha_2,\dots,\alpha_s$为原向量组的\textbf{极大线性无关组}。
 \end{definition}
 
-\begin{theorem} \label{thrm-vector-set-self-equiv}
+\begin{theorem} \label{thrm:vector-set-self-equiv}
    向量组的任意一个极大线性无关组都与向量组本身等价。
 \end{theorem}
 
 \begin{remark}
   一个向量组的极大线性无关组不一定是唯一的，
-  但是根据定理\ref{thrm-vector-set-self-equiv}
-  和推论\ref{thrm-vector-set-equiv}可以证明，
+  但是根据定理\ref{thrm:vector-set-self-equiv}
+  和推论\ref{thrm:vector-set-equiv}可以证明，
   它们的大小一定是相同的。
 \end{remark}
 
@@ -125,8 +125,8 @@
   记作$r(S)$。
 \end{definition}
 
-有的秩的概念，定理\ref{thrm-vector-set-size}
-和推论\ref{thrm-vector-set-equiv}可以做出如下推广：
+有的秩的概念，定理\ref{thrm:vector-set-size}
+和推论\ref{thrm:vector-set-equiv}可以做出如下推广：
 \begin{theorem}
   设有向量组$S_1$和$S_2$。
   \begin{enumerate}
@@ -208,7 +208,7 @@
   }
 \end{displaymath}
 通过高斯消元，可以转化为如下形式：
-\begin{equation} \label{eq-gauss-elim}
+\begin{equation} \label{eq:gauss-elim}
   \mmat{cccccc|c}{
     c_{11} & c_{12} & \cdots & c_{1r} & \cdots & c_{1n} & c_1    \\
            & c_{22} & \cdots & c_{2r} & \cdots & c_{2n} & c_2    \\
@@ -241,9 +241,9 @@
 \end{remark}
 
 \subsection{线性代数方程组解的结构}
-经过高斯消元得到的式\ref{eq-gauss-elim}如果有解(即$c_{r+1}=0$)，
+经过高斯消元得到的式\eqref{eq:gauss-elim}如果有解(即$c_{r+1}=0$)，
 那么可以进一步转化为
-\begin{equation} \label{eq-gauss-elim-further}
+\begin{equation} \label{eq:gauss-elim-further}
   \mmat{ccccccc|c}{
     1 &        &        &   & d_{r1}   & \cdots & d_{r1} & d_1    \\
       & 1      &        &   & d_{r2}   & \cdots & d_{r2} & d_2    \\
@@ -267,7 +267,7 @@
 \end{theorem}
 
 \begin{remark}
-  把式\ref{eq-gauss-elim-further}中$d_1,\dots,d_r$设为0，
+  把式\eqref{eq:gauss-elim-further}中$d_1,\dots,d_r$设为0，
   则有如下形式的解：
   \begin{displaymath}
   \meqs{rcl}{
