@@ -1,3 +1,199 @@
 \chapter{一元函数的微分学}
-% TODO
 
+\section{导数与微分的概念}
+本小节给出导数与微分的定义。
+并且介绍导数与连续的关系、导数与微分的关系。
+
+\subsection{导数的概念}
+\begin{definition}[导数]
+  设函数$f$在点$a$的某一邻域内有定义。
+  若极限
+  \begin{displaymath}
+    \lim_{\Delta x\to 0}\frac{f(a+\Delta x)-f(a)}{\Delta x}
+  \end{displaymath}
+  存在有限，则称函数$f$在点$a$\textbf{可导}，
+  并称此极限值为$f$在点$a$的\textbf{导数}，记为
+  \begin{displaymath}
+    f'(a)\quad\textrm{或}\quad \left.\frac{\md f}{\md x}\right|_a
+  \end{displaymath}
+\end{definition}
+
+\begin{definition}[左导数和右导数]
+  极限
+  \begin{displaymath}
+    \lim_{\Delta x\to 0-}\frac{f(a+\Delta x)-f(a)}{\Delta x}
+    \quad\textrm{以及}\quad
+    \lim_{\Delta x\to 0+}\frac{f(a+\Delta x)-f(a)}{\Delta x}
+  \end{displaymath}
+  被称为函数$f$在点$a$的\textbf{左导数}和\textbf{右导数}
+\end{definition}
+\begin{remark}
+  $f$在点$a$可导$\iff$ $f$在点$a$的左导数和右导数存在且相等。
+\end{remark}
+
+\begin{theorem}[可导与连续的关系]
+  若函数$f$在点$a$可导，则$f$在点$a$连续。
+\end{theorem}
+\begin{remark}
+  反之不成立。即在点$a$连续的函数未必在点$a$可导。
+\end{remark}
+
+\subsection{微分的概念}
+\begin{definition}[微分]
+  设函数$f$在区间$I$上有定义。
+  对点$a\in I$，当自变量有增量$\Delta x$时，
+  相应地，因变量$y$有增量$\Delta y=f(a+\Delta x)-f(a)$。
+  若当$\Delta x\to 0$时，有
+  \begin{displaymath}
+    \Delta y = A\Delta x +o(\Delta x)
+  \end{displaymath}
+  其中$A$与$\Delta x$无关(一般与$a$有关)，
+  则称函数$f$在点$a$\textbf{可微}，
+  且称$A\Delta x$为$f$在点$a$的\textbf{微分}，记作
+  \begin{displaymath}
+    \md f(a)\quad\textrm{或}\quad \left.\md y\right|_a
+  \end{displaymath}
+\end{definition}
+
+\begin{remark}
+  当$\Delta x\to 0$时，无穷小$\md y$是$\Delta y$的主部。
+  又因为$\md y$关于$\Delta x$是一次的，
+  故称$\md y$是$\Delta y$的\textbf{线性主部}。
+\end{remark}
+
+\begin{theorem}[可导与可微等价]
+  函数$f$在点$a$可微的充要条件是
+  $f$在点$a$存在有限导数$f'(a)$，
+  于是就有
+  \begin{displaymath}
+    \md y = f'(a)\Delta x
+  \end{displaymath}
+\end{theorem}
+
+\begin{remark}
+  我们约定自变量$x$的增量$\Delta x$为自变量的微分，
+  即$\md x = \Delta x$，
+  于是上面的微分可以写成
+  \begin{displaymath}
+    \md y = f'(a)\md x
+  \end{displaymath}
+  需要注意的是，
+  $\frac{\md y}{\md x} = f'(x)$中的左半部分应当视为一个整体，
+  而不是一个分子除以分母的形式。
+  只是因为上述定理的存在，
+  才使得看起来只要把等式左边的分母移到右边就能得到$f$的微分形式。
+  事实上，\textbf{该定理只对一元函数成立}。
+\end{remark}
+
+\section{导数与微分的计算}
+本小节首先说明了导数和微分的四则运算法则。
+然后讨论了复合函数的求导法则以及一阶微分形式的不变性。
+接着讨论了反函数导数的求法。
+最后，我们列出一些常用且容易遗忘的函数的导数。
+
+\subsection{四则运算}
+\begin{theorem}[导数的四则运算]
+  设函数$u,v$在点$x$可导，那么
+  \begin{enumerate}
+    \item 
+    $y=u\pm v$在点$x$可导，且有
+    \begin{displaymath}
+      (u\pm v)'=u'\pm v'
+    \end{displaymath}
+    \item 
+    $y=uv$在点$x$可导，且有
+    \begin{displaymath}
+      (uv)' = u'v+uv'
+    \end{displaymath}
+    \item 
+    当$v(x)\neq 0$时，$y=u/v$在点$x$可导，且有
+    \begin{displaymath}
+      \left(\frac{u}{v}\right)'=\frac{u'v-uv'}{v^2}
+    \end{displaymath}
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[微分的四则运算]
+  设函数$u,v$在点$x$可微，那么
+  \begin{enumerate}
+    \item 
+    $\md (u\pm v) = \md u \pm \md v$
+    \item 
+    $\md (uv) = v\md u + u \md v$
+    \item 
+    $\md (\frac{u}{v}) = \frac{v\md u - u\md v}{v^2}$
+  \end{enumerate}
+\end{theorem}
+
+\subsection{复合函数的导数}
+\begin{theorem}[复合函数的导数]
+  设函数$y=f(u)$与$u=u(x)$在$x_0$的邻域能构成复合函数，
+  且$u=u(x)$在点$x_0$可导，$y=f(x)$在点$u_0=u(x_0)$可导。
+  那么，复合函数$f\circ u$在点$x_0$可导，且有
+  \begin{displaymath}
+    (f\circ u)'(x_0) = f'(u_0)u'(x_0)
+  \end{displaymath}
+\end{theorem}
+
+\begin{corollary}[一阶微分形式不变性]
+  设$y=f(u)$，则无论$u$是自变量还是中间变量$u=u(x)$，
+  其微分形式不变，都是
+  \begin{displaymath}
+    \md y = f'(u)\md u
+  \end{displaymath}
+\end{corollary}
+
+\begin{remark}
+  该定理对高阶微分不成立：若$y=f(x)$，但$x$是中间变量，
+  即$x=u(t)$，那么有
+  \begin{align*}
+    \md^2 y
+    &= \md (f'(x)\md x) \\
+    &= f''(x)\md x^2 + f'(x)\md^2 x
+      & (\text{不是$f''(x)\md x^2$}) \\
+    &= f''(x)\left(u'(t)\md t\right)^2 + f'(x)(u''(t)\md t^2)\\
+    &= \left(f''(x)u'(t)^2 + f'(x)u''(t)\right)\md t^2
+  \end{align*}
+\end{remark}
+
+\subsection{反函数的导数}
+\begin{theorem}[反函数的导数]
+  设函数$x=\phi(y)$在某一区间$I$内严格单调，
+  有在区间$I$内一点$y$出导数$\phi(y)$存在且不为零，
+  则反函数$y=f(x)$在对应点$x$出具有导数$f'(x)$，且
+  \begin{displaymath}
+    f'(x) = \frac{1}{\phi'(y)}
+  \end{displaymath}
+\end{theorem}
+
+\subsection{公式表}
+下面是一些常用且容易遗忘的函数的导数：
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline 
+    $f(x)$ & $f'(x)$ \\ 
+    \hline 
+    $a^x$ & $a^x\ln a$  \\ 
+    \hline 
+    $\log_a |x|$ & $\frac{1}{x\ln a}$ \\ 
+    \hline 
+    $\arcsin x$ & $\frac{1}{\sqrt{1-x^2}}$ \\ 
+    \hline 
+    $\arccos x$ & $-\frac{1}{\sqrt{1-x^2}}$ \\ 
+    \hline 
+    $\arctan x$ & $\frac{1}{1+x^2}$ \\ 
+    \hline 
+  \end{tabular} 
+\end{center}
+
+\section{高阶导数与高阶微分}
+
+\section{微分中值定理}
+
+\section{洛必达法则}
+
+\section{泰勒公式}
+
+\section{利用导数研究函数的性质}
+
+\section{利用导数作函数的图形}
