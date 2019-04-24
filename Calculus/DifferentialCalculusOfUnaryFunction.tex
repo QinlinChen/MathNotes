@@ -187,6 +187,87 @@
 \end{center}
 
 \section{高阶导数与高阶微分}
+本小节我们讨论高阶导数和高阶微分。
+需要注意高阶微分与一阶微分性质的差异。
+
+\subsection{高阶导数}
+对于函数$f$，如果它的一阶导数可导，那么对之求导能得到二阶导数。
+如果它的二阶导数可导，那么对之求导能得到三阶导数。
+以此类推，我们可以得到$n$阶导数，并称它$n$阶可导。
+
+对于$n$阶可导的函数$f$，我们把它的$n$阶导数记为
+\begin{displaymath}
+  f^{(n)}\quad\text{或}\quad \frac{\md^n f}{\md x^n}
+\end{displaymath}
+
+下面是一些常见导数的高阶导数：
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline 
+    $f(x)$ & $f^{(n)}(x)$ \\ 
+    \hline 
+    $a^x$ & $a^x\ln^n a$  \\ 
+    \hline 
+    $x^\mu$ & $\mu(\mu-1)(\mu-2)\dots(\mu-n+1)x^{\mu-n }$ \\ 
+    \hline
+    $x^{-1}$ & $(-1)^n\frac{n!}{x^{n+1}}$ \\
+    \hline 
+    $\ln(x+1)$ & $\left[(1+x)^{-1}\right]^{(n-1)}=(-1)^{n-1}\frac{(n-1)!}{(1+x)^n}$ \\ 
+    \hline 
+    $\sin x$ & $\sin(x + \frac{n\pi}{2})$ \\ 
+    \hline 
+  \end{tabular} 
+\end{center}
+
+\begin{theorem}[高阶导数的运算公式]
+  设函数$u,v$都$n$阶可导，则
+  \begin{enumerate}
+    \item 
+    $(u\pm v)^{(n)} = u^{(n)} \pm v^{(n)}$
+    \item 
+    $(uv)^{(n)}=\sum_{i=0}^{n}\binom{n}{i}u^{(n-i)}v^{(i)}$
+  \end{enumerate}
+\end{theorem}
+
+\subsection{高阶微分}
+和高阶导数一样，对一阶微分$\md y$再求微分得到二阶微分，
+记为$\md^2 y$，即
+\begin{displaymath}
+  \md^2 y = \md(\md y)
+\end{displaymath}
+类似可定义各阶微分。
+
+对$y=f(x)$，当$x$是自变量时，$\md x = \Delta x$可任意变化，
+与$x$无关，因此，对$x$求导时，$\md x$可看作常数，故有
+\begin{align*}
+  \md^2 y
+  &= \md(f'(x)\md x) \\
+  &= \md(f'(x))\md x \\
+  &= f''(x)(\md x)^2
+\end{align*}
+为书写方便，$(\md x)^2$习惯上记作$dx^2$，于是
+\begin{displaymath}
+  \md^2 y = f''(x)\md x^2
+\end{displaymath}
+以此类推，有
+\begin{displaymath}
+  \md^n y = f^{(n)}(x) \md x^n
+\end{displaymath}
+这样，前面引入的高阶导数记号$\frac{\md^n y}{\md x^n}$，
+现在可以看成是函数$y$的$n$阶微分$\md^n y$
+与自变量的一阶微分$\md x$的$n$次幂之商了。
+
+需要注意的是，当$x$不是自变量而是中间变量时，即$y=f(x)$，$x=x(t)$，
+$\md x$不可视作任意变换的常数$\Delta x$了，
+而是有$\md x = x'(t)\md t$，因此
+\begin{align*}
+  \md^2 y
+  &= \md (f'(x)\md x) \\
+  &= f''(x)\md x^2 + f'(x)\md^2 x \\
+  &= f''(x)\left(u'(t)\md t\right)^2 + f'(x)(u''(t)\md t^2)\\
+  &= \left(f''(x)u'(t)^2 + f'(x)u''(t)\right)\md t^2
+\end{align*}
+从上面第二行等式可以看出，高阶微分不满足形式不变性。
 
 \section{微分中值定理}
 
