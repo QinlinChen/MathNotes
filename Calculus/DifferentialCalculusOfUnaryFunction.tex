@@ -95,17 +95,17 @@
 \begin{theorem}[导数的四则运算]
   设函数$u,v$在点$x$可导，那么
   \begin{enumerate}
-    \item 
+    \item
     $y=u\pm v$在点$x$可导，且有
     \begin{displaymath}
       (u\pm v)'=u'\pm v'
     \end{displaymath}
-    \item 
+    \item
     $y=uv$在点$x$可导，且有
     \begin{displaymath}
       (uv)' = u'v+uv'
     \end{displaymath}
-    \item 
+    \item
     当$v(x)\neq 0$时，$y=u/v$在点$x$可导，且有
     \begin{displaymath}
       \left(\frac{u}{v}\right)'=\frac{u'v-uv'}{v^2}
@@ -116,11 +116,11 @@
 \begin{theorem}[微分的四则运算]
   设函数$u,v$在点$x$可微，那么
   \begin{enumerate}
-    \item 
+    \item
     $\md (u\pm v) = \md u \pm \md v$
-    \item 
+    \item
     $\md (uv) = v\md u + u \md v$
-    \item 
+    \item
     $\md (\frac{u}{v}) = \frac{v\md u - u\md v}{v^2}$
   \end{enumerate}
 \end{theorem}
@@ -170,20 +170,20 @@
 下面是一些常用且容易遗忘的函数的导数：
 \begin{center}
   \begin{tabular}{|c|c|}
-    \hline 
-    $f(x)$ & $f'(x)$ \\ 
-    \hline 
-    $a^x$ & $a^x\ln a$  \\ 
-    \hline 
-    $\log_a |x|$ & $\frac{1}{x\ln a}$ \\ 
-    \hline 
-    $\arcsin x$ & $\frac{1}{\sqrt{1-x^2}}$ \\ 
-    \hline 
-    $\arccos x$ & $-\frac{1}{\sqrt{1-x^2}}$ \\ 
-    \hline 
-    $\arctan x$ & $\frac{1}{1+x^2}$ \\ 
-    \hline 
-  \end{tabular} 
+    \hline
+    $f(x)$ & $f'(x)$ \\
+    \hline
+    $a^x$ & $a^x\ln a$  \\
+    \hline
+    $\log_a |x|$ & $\frac{1}{x\ln a}$ \\
+    \hline
+    $\arcsin x$ & $\frac{1}{\sqrt{1-x^2}}$ \\
+    \hline
+    $\arccos x$ & $-\frac{1}{\sqrt{1-x^2}}$ \\
+    \hline
+    $\arctan x$ & $\frac{1}{1+x^2}$ \\
+    \hline
+  \end{tabular}
 \end{center}
 
 \section{高阶导数与高阶微分}
@@ -203,28 +203,28 @@
 下面是一些常见导数的高阶导数：
 \begin{center}
   \begin{tabular}{|c|c|}
-    \hline 
-    $f(x)$ & $f^{(n)}(x)$ \\ 
-    \hline 
-    $a^x$ & $a^x\ln^n a$  \\ 
-    \hline 
-    $x^\mu$ & $\mu(\mu-1)(\mu-2)\dots(\mu-n+1)x^{\mu-n }$ \\ 
+    \hline
+    $f(x)$ & $f^{(n)}(x)$ \\
+    \hline
+    $a^x$ & $a^x\ln^n a$  \\
+    \hline
+    $x^\mu$ & $\mu(\mu-1)(\mu-2)\dots(\mu-n+1)x^{\mu-n }$ \\
     \hline
     $x^{-1}$ & $(-1)^n\frac{n!}{x^{n+1}}$ \\
-    \hline 
-    $\ln(x+1)$ & $\left[(1+x)^{-1}\right]^{(n-1)}=(-1)^{n-1}\frac{(n-1)!}{(1+x)^n}$ \\ 
-    \hline 
-    $\sin x$ & $\sin(x + \frac{n\pi}{2})$ \\ 
-    \hline 
-  \end{tabular} 
+    \hline
+    $\ln(x+1)$ & $\left[(1+x)^{-1}\right]^{(n-1)}=(-1)^{n-1}\frac{(n-1)!}{(1+x)^n}$ \\
+    \hline
+    $\sin x$ & $\sin(x + \frac{n\pi}{2})$ \\
+    \hline
+  \end{tabular}
 \end{center}
 
 \begin{theorem}[高阶导数的运算公式]
   设函数$u,v$都$n$阶可导，则
   \begin{enumerate}
-    \item 
+    \item
     $(u\pm v)^{(n)} = u^{(n)} \pm v^{(n)}$
-    \item 
+    \item
     $(uv)^{(n)}=\sum_{i=0}^{n}\binom{n}{i}u^{(n-i)}v^{(i)}$
   \end{enumerate}
 \end{theorem}
@@ -245,7 +245,7 @@
   &= \md(f'(x))\md x \\
   &= f''(x)(\md x)^2
 \end{align*}
-为书写方便，$(\md x)^2$习惯上记作$dx^2$，于是
+为书写方便，$(\md x)^2$习惯上记作$\md x^2$，于是
 \begin{displaymath}
   \md^2 y = f''(x)\md x^2
 \end{displaymath}
@@ -258,7 +258,7 @@
 与自变量的一阶微分$\md x$的$n$次幂之商了。
 
 需要注意的是，当$x$不是自变量而是中间变量时，即$y=f(x)$，$x=x(t)$，
-$\md x$不可视作任意变换的常数$\Delta x$了，
+$\md x$不可视作可任意变化的常数$\Delta x$了，
 而是有$\md x = x'(t)\md t$，因此
 \begin{align*}
   \md^2 y
@@ -270,9 +270,213 @@ $\md x$不可视作任意变换的常数$\Delta x$了，
 从上面第二行等式可以看出，高阶微分不满足形式不变性。
 
 \section{微分中值定理}
+本小节，我们会介绍费马引理、罗尔定理、拉格朗日中值定理和柯西中值定理。
+因为这些定理的证明思路比较重要，并且也不是很难，所以我们会给出证明。
+
+\subsection{两个引理}
+\begin{definition}[极值]
+  设$f$是定义在区间$I$上的一个实函数，$a\in I$。
+  如果存在$a$的$\delta$邻域$U(a,\delta)$，使
+  \begin{displaymath}
+    f(x) \le a,\quad x\in U
+  \end{displaymath}
+  则称$f$在点$a$取\textbf{极大值}$f(a)$，
+  称$a$为$f(x)$的\textbf{极大点}。
+  如果
+  \begin{displaymath}
+    f(x) \ge a,\quad x\in U
+  \end{displaymath}
+  则称$f$在点$a$取\textbf{极小值}$f(a)$，
+  称$a$为$f(x)$的\textbf{极小点}。
+  极大、极小值称为\textbf{极值}，
+  达到极值的点统称为\textbf{极值点}。
+\end{definition}
+
+\begin{lemma}[费马(Fermat)定理] \label{thrm:fermat}
+  设函数$f$在点$a$的某邻域有定义，在点$a$可导。
+  如果$f(x)$在点$a$取极大或极小，则$f'(a)=0$。
+\end{lemma}
+\begin{proof}
+  不妨设$f(x)$在点$a$取极大，则对$a+\Delta x\in U(a,\delta)$，有
+  \begin{displaymath}
+    f(a+\Delta x) \le f(a)
+  \end{displaymath}
+  当$\Delta x < 0$时，$[f(a+\Delta x) - f(a)]/\Delta x \ge 0$，
+  所以根据极限的保号性(\ref{thrm:limit-sign-preserve})
+  \begin{displaymath}
+    f'(a) = f'_{-}(a) =\lim_{\Delta x\to 0-}
+      \frac{f(a+\Delta x) - f(a)}{\Delta x} \ge 0
+  \end{displaymath}
+  当$\Delta x > 0$时，$[f(a+\Delta x) - f(a)]/\Delta x \le 0$，同样有
+  \begin{displaymath}
+  f'(a) = f'_{+}(a) =\lim_{\Delta x\to 0+}
+  \frac{f(a+\Delta x) - f(a)}{\Delta x} \le 0
+  \end{displaymath}
+  因此只能等号成立，即$f'(a)=0$。
+\end{proof}
+\begin{remark}
+  费马引理给出了极值的必要条件，但不是充分条件。
+\end{remark}
+
+\begin{lemma}[罗尔(Rolle)定理] \label{thrm:rolle}
+  设函数$f$满足：
+  \begin{enumerate}
+    \item
+    在闭区间$[a,b]$上连续；
+    \item
+    在开区间$(a,b)$上可导；
+    \item
+    $f(a)=f(b)$。
+  \end{enumerate}
+  则在$(a,b)$内至少存在一个点$\xi$，使得$f'(\xi)=0$。
+\end{lemma}
+\begin{proof}
+  因为$f$在闭区间$[a,b]$上连续，
+  所以根据闭区间上连续函数的性质(\ref{thrm:continuous-func-bounded})，
+  $f$在$[a,b]$上能取到最大值$M$和最小值$m$。下面有两种可能：
+  \begin{enumerate}
+    \item
+    若$M = m$，则$f$在$[a,b]$上为常数，
+    因此对$(a,b)$内的任一点$x$都有$f'(x)=0$，
+    即$\xi$可取$(a,b)$内任一点。
+    \item
+    若$M\neq m$，则$M$和$m$中至少有一个不等于$f(a)$，
+    不妨设$M\neq f(a)=f(b)$，
+    于是至少有一个点$\xi\in(a,b)$，使得$f(\xi)=M$。
+    根据费马定理(\ref{thrm:fermat})得到$f'(\xi)=0$。
+  \end{enumerate}
+\end{proof}
+
+\subsection{中值定理}
+\begin{theorem}[拉格朗日(Lagrange)中值定理] \label{thrm-lagrange-mean-value}
+  设函数$f$满足：
+  \begin{enumerate}
+    \item
+    在闭区间$[a,b]$上连续；
+    \item
+    在开区间$(a,b)$上可导。
+  \end{enumerate}
+  则至少存在一点$\xi\in(a,b)$，使得
+  \begin{displaymath}
+    f'(\xi)=\frac{f(b)-f(a)}{b-a}
+  \end{displaymath}
+\end{theorem}
+
+\begin{proof}
+  作辅助函数
+  \begin{displaymath}
+    F(x) = f(x)-f(a)-\frac{f(b)-f(a)}{b-a}(x-a)
+  \end{displaymath}
+  它是由$f(x)$与端点为$(a,f(a))$、$(b,f(b))$的直线相减得到的。
+  这样，就有$F(a)=F(b)=0$，
+  且不难验证它满足罗尔定理(\ref{thrm:rolle})的其它条件。
+  因此，至少存在一点$\xi\in(a,b)$，使得$F'(\xi)=0$，即
+  \begin{displaymath}
+    f'(\xi)-\frac{f(b)-f(a)}{b-a} = 0
+  \end{displaymath}
+  此即为求证的目标式。
+\end{proof}
+
+\begin{remark}
+  需要留意辅助函数的构造方法。此外，拉格朗日中值定理还能写成
+  \begin{align*}
+    f(x_0 + \Delta x)
+    &= f(x_0) + f'(\xi)\Delta x &\xi\in(0,x_0+\Delta x)\\
+    &= f(x_0) + f'(x_0+\theta \Delta x)\Delta x &\theta\in(0,1)
+  \end{align*}
+\end{remark}
+
+\begin{theorem}[柯西(Cauchy)中值定理] \label{thrm:cauchy-mean-value}
+  设函数$f,g$满足
+  \begin{enumerate}
+     \item
+    在闭区间$[a,b]$上连续；
+    \item
+    在开区间$(a,b)$上可导，且$g'(x)\neq 0$。
+  \end{enumerate}
+  则至少存在一点$\xi\in(a,b)$，使得
+  \begin{displaymath}
+    \frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f'(\xi)}{g'(\xi)}
+  \end{displaymath}
+\end{theorem}
+
+\begin{proof}
+  因为$g'(x)\neq 0$，所以$g(b)-g(a)=g'(\xi)(b-a)\neq 0$，
+  所以我们能构造有意义的函数
+  \begin{displaymath}
+    F(x)=f(x)-\frac{f(b)-f(a)}{g(b)-g(a)}g(x)
+  \end{displaymath}
+  不难发现$F(a)=F(b)$，
+  且$F(x)$满足罗尔定理(\ref{thrm:rolle})的其它条件，
+  所以至少存在一点$\xi\in(a,b)$，使得$F'(x)=0$，即
+  \begin{displaymath}
+    f'(\xi)-\frac{f(b)-f(a)}{g(b)-g(a)}g'(\xi)=0
+  \end{displaymath}
+  此即为求证的目标式
+\end{proof}
 
 \section{洛必达法则}
+本小节介绍能够求$\frac{0}{0}$和$\frac{\infty}{\infty}$型不定型极限的有效方法
+——洛必达(L'Hospital)法则。
 
+\subsection{求$\frac{0}{0}$型不定型极限的法则}
+\begin{theorem}
+  设在去心邻域$U(a,r)-\{a\}$内函数$f,g$满足
+  \begin{enumerate}
+    \item
+    $\lim_{x\to a} f(x) = \lim_{x\to a}g(x) = 0$，
+    \item
+    $f',g'$存在且$g'(x) \neq 0$，
+    \item \label{item:deri-lim-exist}
+    $\lim_{x\to a} \frac{f'(x)}{g'(x)}=A$(有限或$\pm\infty$)。
+  \end{enumerate}
+  则有
+  \begin{displaymath}
+    \lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a} \frac{f'(x)}{g'(x)}
+  \end{displaymath}
+\end{theorem}
+
+\begin{remark}
+  一些注意点：
+  \begin{enumerate}
+    \item
+    对单侧极限，该定理仍成立。
+    \item
+    对于$x\to\infty$，该定理也成立。
+    \item
+    定理的条件是充分的，不是必要的。
+    即当条件\ref{item:deri-lim-exist}不满足时，
+    不能断定极限$\lim \frac{f(x)}{g(x)}$不存在。
+  \end{enumerate}
+\end{remark}
+
+\subsection{求$\frac{\infty}{\infty}$型不定型极限的法则}
+\begin{theorem}
+  设在去心邻域$U(a,r)-\{a\}$内函数$f,g$满足
+  \begin{enumerate}
+    \item
+    $\lim_{x\to a} f(x) = \lim_{x\to a}g(x) = \infty$，
+    \item
+    $f',g'$存在且$g'(x) \neq 0$，
+    \item
+    $\lim_{x\to a} \frac{f'(x)}{g'(x)}=A$(有限或$\pm\infty$)。
+  \end{enumerate}
+  则有
+  \begin{displaymath}
+    \lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a} \frac{f'(x)}{g'(x)}
+  \end{displaymath}
+\end{theorem}
+
+\subsection{其它五种不定型极限}
+其它五种不定型都可化为$\frac{0}{0}$或$\frac{\infty}{\infty}$型：
+\begin{itemize}
+  \item
+  $0\cdot\infty$可以化成$\frac{0}{1/\infty}$。
+  \item
+  $\infty - \infty$可以进行通分。
+  \item
+  $0^0$，$1^{\infty}$，$\infty^0$可以取对数。
+\end{itemize}
 \section{泰勒公式}
 
 \section{利用导数研究函数的性质}
