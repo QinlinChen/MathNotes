@@ -540,8 +540,33 @@ $\md x$不可视作可任意变化的常数$\Delta x$了，
 \end{align*}
 
 \section{利用导数研究函数的性质}
+本小节主要介绍函数的凹凸性与导数的关系。
+至于导数与单调性、极值和最值的关系，
+这些已经在高中阶段学习得很透彻了，
+这里不再多讲。
 
-\subsection{单调性}
+\subsection{单调性\ 极值\ 最值}
 高中内容。略。
 
-\section{利用导数作函数的图形}
+\subsection{凹凸性}
+\begin{definition}[凸函数]
+  设函数$f$在区间$I$上定义。
+  如果对$I$上任意两点$x_1,x_2$，以及$\lambda\in[0,1]$，都有
+  \begin{displaymath}
+    f(\lambda x_1 + (1-\lambda)x_2)\le
+    \lambda f(x_1) + (1-\lambda)f(x_2)
+  \end{displaymath}
+  则称$f$为$I$上的\textbf{凸函数}。
+  若式中不等号反向，则称$f$为$I$上的\textbf{凹函数}。
+  若式中是严格不等式，则称$f$为$I$上的\textbf{严格凸函数}。
+\end{definition}
+
+\begin{theorem}[凸函数的充要条件(一阶可导)]
+  设函数$f$在$I$内可导，
+  则$f$在$I$内是严格凸函数的充要条件是$f'(x)$在$I$上严格递增。
+\end{theorem}
+
+\begin{theorem}[凸函数的充要条件(二阶可导)]
+  设函数$f$在$I$内二阶可导，
+  则$f$在$I$内是严格凸函数的充要条件是对任意$x\in I$，$f''(x)>0$。
+\end{theorem}
