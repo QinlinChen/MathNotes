@@ -477,8 +477,71 @@ $\md x$不可视作可任意变化的常数$\Delta x$了，
   \item
   $0^0$，$1^{\infty}$，$\infty^0$可以取对数。
 \end{itemize}
+
 \section{泰勒公式}
+本小节介绍泰勒公式，并给出常用的基本初等函数的麦克劳林公式。
+
+\subsection{泰勒公式}
+\begin{theorem}[泰勒(Taylor)公式]
+  设函数$f$在点$a$的邻域$U$内存在直到$n+1$阶导数，
+  则$f$在$U$上可展成$n$阶泰勒公式
+  \begin{equation} \label{eq:talor}
+     f(x) = \sum_{k=0}^{n}\frac{f^{(k)}(a)}{k!}(x-a)^k + r_n(x)
+  \end{equation}
+  其中$r_n(x)$可表达为\textbf{拉格朗日余项}形式
+  \begin{displaymath}
+    r_n(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-a)^{n+1},
+    \quad \xi\in(a,x)
+  \end{displaymath}
+  或
+  \begin{displaymath}
+    r_n(x)=\frac{f^{(n+1)}(a+\theta(x-a))}{(n+1)!}(x-a)^{n+1},
+    \quad \theta\in(0,1)
+  \end{displaymath}
+  这时，称式\eqref{eq:talor}为\textbf{带拉格朗日余项的$n$阶泰勒公式}。
+  $r_n(x)$也可表达为\textbf{皮亚诺(Peano)余项}形式
+  \begin{displaymath}
+    r_n(x)=o\left((x-a)^n\right),\quad((x-a)\to 0)
+  \end{displaymath}
+  这时，称式\eqref{eq:talor}为\textbf{带皮亚诺余项的$n$阶泰勒公式}。
+  
+  特别的，若$a=0$，分别称
+  \begin{displaymath}
+    f(x) = \sum_{k=0}^{n}\frac{f^{(k)}(0)}{k!}x^k
+      + \frac{f^{(n+1)}(\theta x)}{(n+1)!}x^{n+1},
+      \quad \theta\in (0,1)
+  \end{displaymath}
+  与
+  \begin{displaymath}
+    f(x) = \sum_{k=0}^{n}\frac{f^{(k)}(0)}{k!}x^k
+      + o(x^n),\quad (x\to 0)
+  \end{displaymath}
+  为带拉格朗日余项与皮亚诺余项的\textbf{$n$阶麦克劳林(Maclaurin)公式}。
+\end{theorem}
+
+\subsection{基本初等函数的麦克劳林公式}
+下面是带拉格朗日余项的初等函数的麦克劳林公式。其中，$\theta\in (0,1)$。
+\begin{align*}
+  e^x &= 1+x+\frac{x^2}{2!}+\dots+\frac{x^n}{n!}
+    + \frac{e^{\theta x}}{(n+1)!}x^{n+1} \\
+  \sin x &= x - \frac{x^3}{3!} + \frac{x^5}{5!} -\dots
+    + \frac{(-1)^{m-1}}{(2m-1)!}x^{2m-1}\\
+    &\quad + \frac{\sin(\theta x + (2m+1)\pi / 2)}{(2m+1)!}x^{2m+1}\\
+  \cos x &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!} -\dots
+    + \frac{(-1)^{m}}{(2m)!}x^{2m}\\
+    &\quad + \frac{\cos(\theta x + (m+1)\pi)}{(2m+2)!}x^{2m+2} \\
+  \ln(1+x) &= x -\frac{x^2}{2} + \frac{x^3}{3}-\dots
+    + \frac{(-1)^{n-1}}{n}x^n \\
+    &\quad + \frac{(-1)^{n}}{(n+1)(1+\theta x)^{n+1}}x^{n+1} \\
+  (1+x)^{\mu} &= 1 + \mu x + \frac{\mu(\mu-1)}{2}x^2+\dots
+    + \frac{\mu(\mu-1)\dots(\mu-n+1)}{n!}x^n \\
+    &\quad + \frac{\mu(\mu-1)\dots(\mu-n)}{(n+1)!}
+    (1+\theta x)^{\mu-n-1}x^{n+1}
+\end{align*}
 
 \section{利用导数研究函数的性质}
+
+\subsection{单调性}
+高中内容。略。
 
 \section{利用导数作函数的图形}
